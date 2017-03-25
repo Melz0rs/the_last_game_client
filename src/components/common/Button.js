@@ -3,12 +3,12 @@ import React from 'react';
 class Button extends React.Component {
 
   render() {
-    return    (
+    return (
       <div className="col-md-3">
-      <span className="text-primary text-center">{this.props.text}</span>
-      <button onClick={this.props.onClick}
+      <span className="text-primary text-center">{this.props.button.description}</span>
+      <button onClick={this.props.button.onClick}
               className="btn btn-default btn-block text-center">
-        Click
+        {this.props.button.text}
       </button>
     </div>
     );
@@ -16,8 +16,7 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-  onClick: React.PropTypes.func.isRequired,
-  text: React.PropTypes.string.isRequired
+  button: React.PropTypes.object.isRequired
 };
 
 export default Button;

@@ -1,28 +1,55 @@
-/* eslint-disable no-console */
-
 import io from 'socket.io-client';
 
-const socket = io('localhost:3000');
+let socket = io('http://localhost:3000');
 
-socket.on('connect', function(){
-  console.log('Joined server!');
+socket.on('connect', function() {
+  socket.emit('join', 'Client is connected!');
 });
 
-const buttons = [
-  {
+const buttons =  [{
+  onClick: function() {
+    socket.emit('resetGame');
+  },
+
+  description: 'Reset game',
+
+  text: 'Reset'
+}, {
+  onClick: function() {
+    socket.emit('toggleClosetToBedroom');
+  },
+
+  description: 'Toggle closet to bedroom',
+
+  text: 'Toggle'
+}, {
+  onClick: function() {
+    socket.emit('dropLivingRoomVaseAndOpenClosetToBedroom');
+  },
+
+  description: 'drop drop living room vase and open closet to bedroom',
+
+    text: 'Click'
+  }
+
+  , {
     onClick: function() {
-      socket.emit('open');
-      console.log('open');
+      socket.emit('openClosetToBedroomAndDropLivingRoomVase');
     },
 
-    text: 'Open the magnet!'
-  } , {
+    description: 'openClosetToBedroomAndDropLivingRoomVase',
+
+    text: 'Click'
+  }
+
+  , {
     onClick: function() {
-      socket.emit('close');
-      console.log('close');
+      socket.emit('rapidToggleBedroomCloset');
     },
 
-    text: 'Close the magnet!'
+    description: 'rapidToggleBedroomCloset',
+
+    text: 'Click'
   }
 ];
 

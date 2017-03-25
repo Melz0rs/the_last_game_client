@@ -4,7 +4,7 @@ import Button from '../common/Button';
 class ButtonList extends React.Component {
   createObjectRow(btn, i) {
     return (
-      <Button onClick={btn.onClick} text={btn.text} key={i} />
+      <Button button={btn}  key={i} />
     );
   }
 
