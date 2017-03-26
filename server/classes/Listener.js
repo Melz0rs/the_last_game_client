@@ -16,7 +16,7 @@ export default class Listener extends Module {
 
     pin.read(function(err, val) {
       if(pinPrevVal !== null) {
-        if(that.actionExecutedCounter < 2 ) {
+        if (that.actionExecutedCounter < 2) {
           if (val !== pinPrevVal) {
             pinPrevVal = val;
             that.executeAction();

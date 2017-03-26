@@ -53,11 +53,13 @@ ioServer.on('connection', function(client) {
     });
 
     actionNames.forEach(actionName => {
-      const action = boardsSetupService.getAction(actionName);
+      client.on(actionName, function() {
+        const action = boardsSetupService.getAction(actionName);
 
-      console.log('action called, action: ', actionName);
+        console.log('action called, action: ', actionName);
 
-      action.execute();
+        action.execute();
+      });
     });
 
   });
@@ -80,8 +82,8 @@ new five.Boards(ports).on("ready", function() {
     const listenersConfig = listenersConfigs[i];
 
     boardsSetupService.createListeners(board, listenersConfig);
-    //
-    // // TODO: Register listeners pins
+    
+    // TODO: Register listeners pins
     boardsSetupService.registerPins();
   });
 
