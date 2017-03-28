@@ -11,30 +11,15 @@ export default class Listener extends Module {
   registerPins() {
     let pin = new five.Pin({pin: this.pin, board: this.board});
     let that = this;
-    let pinPrevVal = null;
     this.actionExecutedCounter = 0;
 
     pin.read(function(err, val) {
-      if(pinPrevVal !== null) {
-        if(that.actionExecutedCounter < 2 ) {
-          if (val !== pinPrevVal) {
-            pinPrevVal = val;
-            that.executeAction();
-            that.actionExecutedCounter++;
-            console.log('action executed!');
-          }
-        } else {
-          pinPrevVal = val;
-        }
-      } else {
-        console.log('here');
-        pinPrevVal = val;
-      }
+        that.executeAction(val);
     });
   }
 
-  executeAction() {
-    this.action.execute();
+  executeAction(val) {
+    this.action.execute({ value: val, listenerName: this.name });
   }
 
   resetActionExecutedCounter() {

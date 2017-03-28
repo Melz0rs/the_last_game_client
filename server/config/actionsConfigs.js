@@ -1,68 +1,33 @@
 import actionNames from '../constants/actionsNames';
 import emittersNames from '../constants/emittersNames';
+import listenersNames from '../constants/listenersNames';
+
 
 export default [
   {
-    name: actionNames.dropLivingRoomVaseAndOpenClosetToBedroom,
-    emitterNames: [emittersNames.livingRoomVase, emittersNames.closetToBedroom, emittersNames.livingRoomVase, emittersNames.closetToBedroom],
-    timeouts: [0, 1000, 1000, 1000]
-  }, {
-    name: actionNames.openClosetToBedroomAndDropLivingRoomVase,
-    emitterNames: [emittersNames.closetToBedroom, emittersNames.livingRoomVase, emittersNames.closetToBedroom, emittersNames.livingRoomVase],
-    timeouts: [0, 500, 500, 500]
-  }, {
-    name: actionNames.toggleClosetToBedroom,
-    emitterNames: [emittersNames.closetToBedroom]
-  }, {
-    name: actionNames.rapidToggleBedroomCloset,
-    emitterNames: [emittersNames.closetToBedroom, emittersNames.closetToBedroom, emittersNames.closetToBedroom, emittersNames.closetToBedroom ,
-      emittersNames.closetToBedroom , emittersNames.closetToBedroom , emittersNames.closetToBedroom, emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom, emittersNames.closetToBedroom],
-    timeouts: [200, 200, 200, 200, 200, 200, 200, 200, 200 ,200]
-  }, {
-    name: actionNames.ransAction,
+    name: actionNames.wekslerAction,
     emitterNames: [
       emittersNames.closetToBedroom,
       emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.livingRoomVase,
+      emittersNames.closetToBedroom
     ],
-    timeouts: [0, 300, 300,
-      500, 300, 300,
-      500, 300, 300,
-      500, 300, 300,
-      500, 300, 300,
-      500, 300, 300,
-      500, 300, 300,
-      500, 300, 300,
-      500, 300, 300,
-      500, 300, 300,
-    ]
+    timeouts: [0, 500, 500],
+    expectedListeners: [{
+      listenerName: listenersNames.kidsroomPicture2Listener,
+      listenerValues: [0]
+    }, {
+      listenerName: listenersNames.kidsroomPicture1Listener,
+      listenerValues: [0]
+    }]
+  }, {
+    name : 'carmelAction',
+    emitterNames: [
+      emittersNames.closetToBedroom
+    ],
+    timeouts: [],
+    expectedListeners: [{
+      listenerName: listenersNames.closetKnobListener,
+      listenerValues: [0]
+    }]
   }
 ];

@@ -52,13 +52,15 @@ ioServer.on('connection', function(client) {
       });
     });
 
-    actionNames.forEach(actionName => {
-      const action = boardsSetupService.getAction(actionName);
+    for (let actionName in actionNames) {
+      client.on(actionName, () => {
+        const action = boardsSetupService.getAction(actionName);
 
-      console.log('action called, action: ', actionName);
+        console.log('action called, action: ', actionName);
 
-      action.execute();
-    });
+        action.execute({ skipCondition: true });
+      });
+    }
 
   });
 });
