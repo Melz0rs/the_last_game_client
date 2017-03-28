@@ -7,15 +7,17 @@ export default class Listener extends Module {
     super(config);
 
     this.actionName = config.actionName;
+    this.pin =new five.Pin({pin: this.pin, board: this.board});
+
   }
 
   registerPins() {
-    let pin = new five.Pin({pin: this.pin, board: this.board});
     let that = this;
     this.actionExecutedCounter = 0;
 
-    pin.read(function(err, val) {
-        that.executeAction(val);
+    this.pin.read(function(err, val) {
+      that.actionExecutedCounter++;
+      that.executeAction(val);
     });
   }
 
@@ -29,5 +31,9 @@ export default class Listener extends Module {
 
   resetActionExecutedCounter() {
     this.actionExecutedCounter = 1;
+  }
+
+  stop() {
+
   }
 }

@@ -2,23 +2,23 @@ import React from 'react';
 import Button from '../common/Button';
 
 class ButtonList extends React.Component {
-  createObjectRow(btn, i) {
+  createObjectRow(buttonConfig, i) {
     return (
-      <Button button={btn}  key={i} />
+      <Button buttonConfig={buttonConfig}  key={i} />
     );
   }
 
   render() {
     return (
       <div>
-        {this.props.buttons.map(this.createObjectRow)}
+        {this.props.buttonsConfigs.map(this.createObjectRow)}
       </div>
     );
   }
 }
 
 ButtonList.propTypes = {
-  buttons: React.PropTypes.array.isRequired
+  buttonsConfigs: React.PropTypes.array.isRequired
 };
 
 export default ButtonList;

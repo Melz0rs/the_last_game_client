@@ -10,16 +10,19 @@ export default class Action {
     this.name = config.name;
     this.expectedListeners = config.expectedListeners;
     this.runnerName = config.runnerName;
-
+    this.emitterNames = config.emitterNames;
     this.reset();
 
-    this.emitters = config.emitterNames.map(name => {
-      return boardsSetupService.getEmitter(name);
-    });
   }
 
   setRunner() {
     this.runner = boardsSetupService.getRunner(this.runnerName);
+  }
+
+  setEmitters() {
+    this.emitters = this.emitterNames.map(name => {
+      return boardsSetupService.getEmitter(name);
+    });
   }
 
   reset() {

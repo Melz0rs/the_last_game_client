@@ -5,10 +5,10 @@ class Button extends React.Component {
   render() {
     return (
       <div className="col-md-3">
-      <span className="text-primary text-center">{this.props.button.description}</span>
-      <button onClick={this.props.button.onClick}
+      <span className="text-primary text-center">{this.props.buttonConfig.description}</span>
+      <button onClick={this.props.buttonConfig.onClick}
               className="btn btn-default btn-block text-center">
-        {this.props.button.text}
+        {this.props.buttonConfig.text}
       </button>
     </div>
     );
@@ -16,7 +16,7 @@ class Button extends React.Component {
 }
 
 Button.propTypes = {
-  button: React.PropTypes.object.isRequired
+  buttonConfig: React.PropTypes.object.isRequired
 };
 
 export default Button;

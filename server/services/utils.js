@@ -12,10 +12,13 @@ export default {
     },
 
     getFirstInstance: function(arr, propName, propVal) {
-     if(arr) {
+     if(arr && propVal && propName) {
        return arr.filter(obj => {
          return obj[propName] === propVal;
        })[0];
+     } else {
+       console.log('getFirstInstance - got null parameter!');
+       return null;
      }
     },
 

@@ -2,8 +2,8 @@ import Listener from '../classes/Listener';
 import Emitter from '../classes/Emitter';
 import Runner from '../classes/Runner';
 import Action from '../classes/Action';
-import actionsConfigs from '../config/actionsConfigs';
-import runnersConfigs from '../config/runnersConfig';
+import actionsConfigs from '../../config/actionsConfigs';
+import runnersConfigs from '../../config/runnersConfig';
 import utils from '../services/utils';
 
 let emitters = [];
@@ -40,6 +40,12 @@ export default {
   registerPins: function() {
     listeners.forEach(listener => {
       listener.registerPins();
+    });
+  },
+
+  setEmittersForActions: function() {
+    actions.forEach(action => {
+      action.setEmitters();
     });
   },
 

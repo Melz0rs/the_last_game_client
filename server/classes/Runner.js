@@ -1,12 +1,10 @@
 import boardsSetupService from '../services/boardsSetupService';
 import utils from '../services/utils';
-import states from '../constants/states';
+import states from '../../constants/states';
 
 
 export default class Runner {
   constructor(config) {
-    super(config);
-
     this.name = config.name;
     this.actionName = config.actionName;
     this.defaultState = config.state;
@@ -20,8 +18,6 @@ export default class Runner {
 
   reset() {
     this.state = this.defaultState;
-
-    this.runOrStop();
   }
 
   toggleState() {
@@ -31,11 +27,9 @@ export default class Runner {
   }
 
   runOrStop() {
-    if(this.state === states.running) {
-      this.run();
-    } else {
+    this.state === states.running ?
+      this.run() :
       this.stop();
-    }
   }
 
   run() {
