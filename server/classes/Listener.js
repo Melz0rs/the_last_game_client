@@ -5,7 +5,8 @@ import boardsSetupService from '../services/boardsSetupService';
 export default class Listener extends Module {
   constructor(config) {
     super(config);
-    this.action = boardsSetupService.getAction(config.actionName);
+
+    this.actionName = config.actionName;
   }
 
   registerPins() {
@@ -16,6 +17,10 @@ export default class Listener extends Module {
     pin.read(function(err, val) {
         that.executeAction(val);
     });
+  }
+
+  setAction() {
+    this.action = boardsSetupService.getAction(this.actionName);
   }
 
   executeAction(val) {

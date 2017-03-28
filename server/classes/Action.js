@@ -9,6 +9,7 @@ export default class Action {
     this.timeouts = config.timeouts;
     this.name = config.name;
     this.expectedListeners = config.expectedListeners;
+    this.runnerName = config.runnerName;
 
     this.reset();
 
@@ -17,9 +18,14 @@ export default class Action {
     });
   }
 
+  setRunner() {
+    this.runner = boardsSetupService.getRunner(this.runnerName);
+  }
+
   reset() {
     this.actionExecuted = false;
     this.currentListeners = [];
+    this.timeoutPromises = [];
   }
 
   execute(options) {
@@ -36,6 +42,8 @@ export default class Action {
 
       console.log('action executed, action: ', this.name);
 
+      this.toggleRunnerState();
+
       this.actionExecuted = true;
       const timeouts = this.timeouts;
       const emitters = this.emitters;
@@ -50,9 +58,9 @@ export default class Action {
           }
         }
 
-        setTimeout(() => {
+        this.timeoutPromises.push(setTimeout(() => {
           emitter.toggle();
-        }, timeout);
+        }, timeout));
       }
     }
   }
@@ -95,5 +103,21 @@ export default class Action {
     });
 
     return condition;
+  }
+
+  stop() {
+    this.timeoutPromises.forEach(timeoutPromise => {
+      clearTimeout(timeoutPromise);
+    });
+
+    if(this.runner) {
+      this.runner.toggleState();
+    }
+  }
+
+  toggleRunnerState() {
+    if(this.runner) {
+      this.runner.toggleState();
+    }
   }
 }

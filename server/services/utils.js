@@ -9,6 +9,20 @@ export default {
       }
 
       return true;
-    }
+    },
+
+    getFirstInstance: function(arr, propName, propVal) {
+     if(arr) {
+       return arr.filter(obj => {
+         return obj[propName] === propVal;
+       })[0];
+     }
+    },
+
+   sum: function (arr){
+     return arr.reduce(function(acc, val) {
+       return acc + val;
+     });
+   }
 
 };

@@ -1,3 +1,3 @@
 export default {
-  closetToBedroom: 'closetToBedroom'
+  closetToBedroomEmitter: 'closetToBedroom'
 };

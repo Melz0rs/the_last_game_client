@@ -1,4 +1,5 @@
 export default {
   wekslerAction: 'wekslerAction',
-  carmelAction: 'carmelAction'
+  carmelAction: 'carmelAction',
+  bedroomVanityLightAction: 'bedroomVanityLightAction'
 };

@@ -70,22 +70,23 @@ new five.Boards(ports).on("ready", function() {
 
   this.forEach((board, i) => {
     console.log('setupping arduino! ID:', board.id);
-    // TODO: Create emitters
-    const emittersConfig = emittersConfigs[i];
 
+    const emittersConfig = emittersConfigs[i];
     boardsSetupService.createEmitters(board, emittersConfig);
 
-    // TODO: Create actions
-    boardsSetupService.createActions();
-
-    // TODO: Create listeners
     const listenersConfig = listenersConfigs[i];
-
     boardsSetupService.createListeners(board, listenersConfig);
-    //
-    // // TODO: Register listeners pins
-    boardsSetupService.registerPins();
   });
+
+  boardsSetupService.createRunners();
+  boardsSetupService.createActions();
+
+  boardsSetupService.setActionsForListeners();
+  boardsSetupService.setActionsForRunners();
+  boardsSetupService.setRunnersForActions();
+
+  boardsSetupService.registerPins();
+  boardsSetupService.runOrStopRunners();
 
 });
 

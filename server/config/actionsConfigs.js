@@ -1,15 +1,16 @@
 import actionNames from '../constants/actionsNames';
 import emittersNames from '../constants/emittersNames';
 import listenersNames from '../constants/listenersNames';
+import runnersNames from '../constants/runnersNames';
 
 
 export default [
   {
     name: actionNames.wekslerAction,
     emitterNames: [
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom,
-      emittersNames.closetToBedroom
+      emittersNames.closetToBedroomEmitter,
+      emittersNames.closetToBedroomEmitter,
+      emittersNames.closetToBedroomEmitter
     ],
     timeouts: [0, 500, 500],
     expectedListeners: [{
@@ -20,11 +21,23 @@ export default [
       listenerValues: [0]
     }]
   }, {
-    name : 'carmelAction',
+    name : actionNames.carmelAction,
     emitterNames: [
-      emittersNames.closetToBedroom
+      emittersNames.closetToBedroomEmitter
     ],
     timeouts: [],
+    expectedListeners: [{
+      listenerName: listenersNames.closetKnobListener,
+      listenerValues: [0]
+    }],
+    runnerName: runnersNames.bedroomVanityLightRunner
+  }, {
+    name : actionNames.bedroomVanityLightRunner,
+    emitterNames: [
+      emittersNames.closetToBedroomEmitter,
+      emittersNames.closetToBedroomEmitter
+    ],
+    timeouts: [0, 300],
     expectedListeners: [{
       listenerName: listenersNames.closetKnobListener,
       listenerValues: [0]
