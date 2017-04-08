@@ -6,11 +6,10 @@ export default class Emitter extends Module {
     super(config);
 
     this.name = config.name;
-    this.relay = new five.Relay({pin: this.pin, board: this.board});
   }
 
-  toggle() {
-    this.relay.toggle();
+  emit() {
+
   }
 
 }

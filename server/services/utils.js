@@ -17,7 +17,6 @@ export default {
          return obj[propName] === propVal;
        })[0];
      } else {
-       console.log('getFirstInstance - got null parameter!');
        return null;
      }
     },

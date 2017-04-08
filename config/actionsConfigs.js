@@ -2,45 +2,127 @@ import actionNames from '../constants/actionsNames';
 import emittersNames from '../constants/emittersNames';
 import listenersNames from '../constants/listenersNames';
 import runnersNames from '../constants/runnersNames';
+import mp3sNames from '../constants/mp3sNames';
+import relayMethods from '../constants/relayMethods';
 
 
 export default [
   {
-    name: actionNames.wekslerAction,
-    emitterNames: [
-      emittersNames.closetToBedroomEmitter,
-      emittersNames.closetToBedroomEmitter,
-      emittersNames.closetToBedroomEmitter
+    name: actionNames.toggleClosetToBedroomMagnet,
+    emitterConfigs: [
+      emittersNames.closetToBedroomRelay
     ],
-    timeouts: [0, 500, 500],
-    expectedListeners: [{
-      listenerName: listenersNames.kidsroomPicture2Listener,
-      listenerValues: [0]
-    }, {
-      listenerName: listenersNames.kidsroomPicture1Listener,
-      listenerValues: [0]
-    }]
+    timeouts: [0],
+    expectedListeners: [],
   }, {
-    name : actionNames.carmelAction,
-    emitterNames: [
-      emittersNames.closetToBedroomEmitter
+    name: actionNames.openClosetToBedroom,
+    emitterConfigs: [
+      emittersNames.closetToBedroomRelay
     ],
-    timeouts: [],
+    timeouts: [3000],
+    expectedListeners: [],
+    runnerName: runnersNames.bedroomVanityLightRunner,
+    mp3Config: {
+      name: mp3sNames.soundsEffects,
+      track: 'a'
+    }
+  }, {
+    name: actionNames.flashBedroomVanityLight,
+    emitterConfigs: [
+      emittersNames.bedroomVanityLightRelay,
+      emittersNames.bedroomVanityLightRelay,
+      emittersNames.bedroomVanityLightRelay,
+      emittersNames.bedroomVanityLightRelay,
+      emittersNames.bedroomVanityLightRelay,
+      emittersNames.bedroomVanityLightRelay,
+      emittersNames.bedroomVanityLightRelay,
+      emittersNames.bedroomVanityLightRelay
+    ],
+    timeouts: [0, 300, 400, 300, 500, 400, 200, 500],
+    expectedListeners: []
+  }, {
+    name : actionNames.openBedroomMemorialLight,
+    emitterConfigs: [
+      emittersNames.bedroomMemorialLightRelay
+    ],
+    timeouts: [0],
     expectedListeners: [{
-      listenerName: listenersNames.closetKnobListener,
+      listenerName: listenersNames.bedroomVanityPictureReadswitch,
       listenerValues: [0]
     }],
     runnerName: runnersNames.bedroomVanityLightRunner
   }, {
-    name : actionNames.bedroomVanityLightRunner,
-    emitterNames: [
-      emittersNames.closetToBedroomEmitter,
-      emittersNames.closetToBedroomEmitter
+    name : actionNames.placePictureOnMemorial,
+    emitterConfigs: [
+      {
+        name: emittersNames.tempServo,
+        config: {
+          to: 10
+        }
+      }, {
+        name: emittersNames.tempServo,
+        config: {
+          to: 20
+        }
+      }, {
+        name: emittersNames.tempServo,
+        config: {
+          to: 30
+        }
+      },
     ],
-    timeouts: [0, 300],
-    expectedListeners: [{
-      listenerName: listenersNames.closetKnobListener,
-      listenerValues: [0]
-    }]
+    timeouts: [0, 2000, 2000],
+    expectedListeners: [
+      // { // TODO: Add listeners
+      // listenerName: listenersNames.bedroomVanityPictureReadswitch,
+      // listenerValues: [0]
+    // }
+    ]
+  }, {
+    name : actionNames.tempCloseRelay,
+    emitterConfigs: [
+      {
+        name: emittersNames.tempRelay,
+        config: {
+          method: relayMethods.close
+        }
+      }
+    ],
+    timeouts: [0, 2000, 2000],
+    expectedListeners: [
+      // { // TODO: Add listeners
+      // listenerName: listenersNames.bedroomVanityPictureReadswitch,
+      // listenerValues: [0]
+      // }
+    ]
+  }, {
+    name : actionNames.resetServo,
+    emitterConfigs: [
+      {
+        name: emittersNames.tempServo,
+        config: {
+          to: 0
+        }
+      }
+    ],
+    timeouts: [0],
+    expectedListeners: [
+      // { // TODO: Add listeners
+      // listenerName: listenersNames.bedroomVanityPictureReadswitch,
+      // listenerValues: [0]
+      // }
+    ]
   }
+  // , {
+  //   name : actionNames.bedroomVanityLightRunner,
+  //   emitterNames: [
+  //     emittersNames.closetToBedroomEmitter,
+  //     emittersNames.closetToBedroomEmitter
+  //   ],
+  //   timeouts: [0, 300],
+  //   expectedListeners: [{
+  //     listenerName: listenersNames.closetKnobListener,
+  //     listenerValues: [0]
+  //   }]
+  // }
 ];

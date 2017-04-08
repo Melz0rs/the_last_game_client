@@ -1,23 +1,48 @@
 import Module from './Module';
-import five from 'johnny-five';
 import boardsSetupService from '../services/boardsSetupService';
+import arduino from '../services/Arduino';
 
 export default class Listener extends Module {
   constructor(config) {
     super(config);
 
     this.actionName = config.actionName;
-    this.pin =new five.Pin({pin: this.pin, board: this.board});
+    this.name = config.name;
+    this.pin = new arduino.Pin({pin: this.pin, board: this.board});
 
   }
 
   registerPins() {
-    let that = this;
+    const that = this;
+    let executeActionTimeout;
+    this.pinPrevVal = null;
     this.actionExecutedCounter = 0;
 
     this.pin.read(function(err, val) {
-      that.actionExecutedCounter++;
-      that.executeAction(val);
+        if (that.pinPrevVal !== null) {
+          if (that.pinPrevVal !== val) {
+            that.pinPrevVal = val;
+
+            if(that.actionExecutedCounter >= 1) {
+
+              if (!executeActionTimeout) {
+                executeActionTimeout = setTimeout(() => {
+                  that.executeAction(val);
+                  executeActionTimeout = null;
+                }, 100);
+              } else {
+                console.log('pulse was detected from ', that.name);
+                clearTimeout(executeActionTimeout);
+                executeActionTimeout = null;
+              }
+            }
+
+            that.actionExecutedCounter++;
+
+          }
+        } else {
+          that.pinPrevVal = val;
+        }
     });
   }
 

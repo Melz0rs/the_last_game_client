@@ -7,7 +7,7 @@ export default class Runner {
   constructor(config) {
     this.name = config.name;
     this.actionName = config.actionName;
-    this.defaultState = config.state;
+    this.defaultState = config.defaultState;
 
     this.reset();
   }
@@ -33,10 +33,12 @@ export default class Runner {
   }
 
   run() {
+    console.log('running!');
     const action = this.action;
     const actionTimeouts = action.timeouts;
     const intervalForExecutingAction = utils.sum(actionTimeouts);
 
+    action.execute({ skipCondition: true });
     this.intervalPromise = setInterval(() => {
       action.execute({ skipCondition: true });
     }, intervalForExecutingAction)

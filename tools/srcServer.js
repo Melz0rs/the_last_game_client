@@ -5,11 +5,11 @@ import config from '../webpack.config.dev';
 import open from 'open';
 import io from 'socket.io';
 import http from 'http';
-import five from 'johnny-five';
 import listenersConfigs from '../config/listenersConfigs';
 import emittersConfigs from '../config/emittersConfigs';
 import boardsSetupService from '../server/services/boardsSetupService';
 import actionNames from '../constants/actionsNames';
+import arduino from '../server/services/Arduino';
 
 /* eslint-disable no-console */
 
@@ -65,31 +65,33 @@ ioServer.on('connection', function(client) {
   });
 });
 
-// new five.Boards(ports).on("ready", function() {
-//   console.log('Arduinos are ready.');
-//
-//   this.forEach((board, i) => {
-//     console.log('setupping arduino! ID:', board.id);
-//
-//     const emittersConfig = emittersConfigs[i];
-//     boardsSetupService.createEmitters(board, emittersConfig);
-//
-//     const listenersConfig = listenersConfigs[i];
-//     boardsSetupService.createListeners(board, listenersConfig);
-//   });
-//
-//   boardsSetupService.createRunners();
-//   boardsSetupService.createActions();
-//
-//   boardsSetupService.setActionsForListeners();
-//   boardsSetupService.setActionsForRunners();
-//   boardsSetupService.setRunnersForActions();
-//   boardsSetupService.setEmittersForActions();
-//
-//   boardsSetupService.registerPins();
-//   boardsSetupService.runOrStopRunners();
-//
-// });
+new arduino.Boards(ports).on("ready", function() {
+  console.log('Arduinos are ready.');
+
+  this.forEach((board, i) => {
+    console.log('setupping arduino! ID:', board.id);
+
+    const emittersConfig = emittersConfigs[i];
+    boardsSetupService.createEmitters(board, emittersConfig);
+
+    const listenersConfig = listenersConfigs[i];
+    boardsSetupService.createListeners(board, listenersConfig);
+  });
+
+  boardsSetupService.createRunners();
+  boardsSetupService.createActions();
+  boardsSetupService.createMp3s();
+
+  boardsSetupService.setActionsForListeners();
+  boardsSetupService.setActionsForRunners();
+  boardsSetupService.setRunnersForActions();
+  boardsSetupService.setEmittersForActions();
+  boardsSetupService.SetMp3ForActions();
+
+  boardsSetupService.registerPins();
+  boardsSetupService.runOrStopRunners();
+
+});
 
 server.listen(port, function(err) {
   if (err) {

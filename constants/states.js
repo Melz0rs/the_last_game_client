@@ -1,4 +1,4 @@
 export default {
-  stopped: 0,
-  running: 1
+  stopped: false,
+  running: true
 }

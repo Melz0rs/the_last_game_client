@@ -1,5 +1,9 @@
 export default {
-  kidsroomPicture1Listener: 'kidsroomPicture1Listener',
-  kidsroomPicture2Listener: 'kidsroomPicture2Listener',
-  closetKnobListener: 'closetKnobListener'
+  bedroomVanityPictureReadswitch: 'bedroomVanityPictureReadswitch',
+  bedroomMemorialLightReadswitch: 'bedroomMemorialLightReadswitch',
+  kidsroomPicture1Readswitch: 'kidsroomPicture1Readswitch',
+  kidsroomPicture2Readswitch: 'kidsroomPicture2Readswitch',
+  kidsroomPicture3Readswitch: 'kidsroomPicture3Readswitch',
+  kidsroomPicture4Readswitch: 'kidsroomPicture4Readswitch',
+  kidsroomPicture5Readswitch: 'kidsroomPicture5Readswitch'
 }

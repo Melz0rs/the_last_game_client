@@ -1,5 +1,3 @@
 export default {
-
-  bedroomVanityLightRunner: 'bedroomVanityLight'
-
-}
+  bedroomVanityLightRunner: 'bedroomVanityLightRunner'
+};

@@ -10,9 +10,17 @@ export default class Action {
     this.name = config.name;
     this.expectedListeners = config.expectedListeners;
     this.runnerName = config.runnerName;
-    this.emitterNames = config.emitterNames;
+    this.emitterConfigs = config.emitterConfigs;
+    this.mp3Config = config.mp3Config;
+
     this.reset();
 
+  }
+
+  setMp3() {
+    if(this.mp3Config) {
+      this.mp3 = boardsSetupService.getMp3(this.mp3Config.name);
+    }
   }
 
   setRunner() {
@@ -20,8 +28,16 @@ export default class Action {
   }
 
   setEmitters() {
-    this.emitters = this.emitterNames.map(name => {
-      return boardsSetupService.getEmitter(name);
+    this.emitterconfigs = this.emitterConfigs.map(emitterConfig => {
+      const emitterName = emitterConfig.name || emitterConfig;
+      const config = emitterConfig.config;
+      const emitter = boardsSetupService.getEmitter(emitterName);
+
+
+      return {
+        emitter,
+        config
+      };
     });
   }
 
@@ -46,13 +62,17 @@ export default class Action {
       console.log('action executed, action: ', this.name);
 
       this.toggleRunnerState();
+      this.playMp3();
 
       this.actionExecuted = true;
       const timeouts = this.timeouts;
-      const emitters = this.emitters;
+      const emitterConfigs = this.emitterconfigs;
 
-      for (let i = 0; i < emitters.length; i++) {
-        let emitter = emitters[i];
+      for (let i = 0; i < emitterConfigs.length; i++) {
+        const emitterConfig = emitterConfigs[i];
+        const emitter = emitterConfig.emitter;
+        const config = emitterConfig.config;
+
         let timeout = 0;
 
         if (timeouts) {
@@ -62,30 +82,34 @@ export default class Action {
         }
 
         this.timeoutPromises.push(setTimeout(() => {
-          emitter.toggle();
+          emitter.emit(config);
         }, timeout));
       }
     }
   }
 
+  playMp3() {
+    if(this.mp3) {
+      const track = this.mp3Config.track;
+      this.mp3.play(track);
+    }
+  }
+
   updateCurrentListeners(val, listenerName) {
     let currentListeners = this.currentListeners;
-
     let currentListener = actionsService.findCurrentListener(currentListeners, listenerName);
-
     if(currentListener) {
       currentListener.listenerValues.push(val);
     } else {
       currentListeners.push({
         listenerName,
-        listenerValue: [val]
+        listenerValues: [val]
       });
     }
   }
 
   checkCondition() {
-    if(this.actionExecuted) { return false; }
-
+    // if(this.actionExecuted) { return false; }
     let condition = true;
 
     const expectedListeners = this.expectedListeners;
@@ -97,11 +121,15 @@ export default class Action {
         const expectedListenerValues = expectedListener.listenerValues;
         const expectedListenerNumberOfValues = expectedListenerValues.length;
         const currentListener = actionsService.findCurrentListener(currentListeners, listenerName);
-        let currentListenerValues = currentListener.listenerValues;
+        if(currentListener) {
+          let currentListenerValues = currentListener.listenerValues;
 
-        currentListenerValues = currentListenerValues.slice(currentListenerValues.length - expectedListenerNumberOfValues - 1);
+          currentListenerValues = currentListenerValues.slice(currentListenerValues.length - expectedListenerNumberOfValues);
 
-        condition = utils.arraysEqual(currentListenerValues, expectedListenerValues);
+          condition = utils.arraysEqual(currentListenerValues, expectedListenerValues);
+        } else {
+          condition = false;
+        }
       }
     });
 

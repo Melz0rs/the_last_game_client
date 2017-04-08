@@ -1,3 +1,8 @@
 export default {
-  closetToBedroomEmitter: 'closetToBedroom'
+  closetToBedroomRelay: 'closetToBedroomRelay',
+  bedroomVanityLightRelay: 'bedroomVanityLightRelay,',
+  bedroomMemorialLightRelay: 'bedroomMemorialLightRelay',
+  openHoleRelay: 'openHoleRelay',
+  tempServo: 'tempServo',
+  tempRelay: 'tempRelay'
 };
