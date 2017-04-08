@@ -6,7 +6,10 @@ export default class Relay extends Emitter {
   constructor(config) {
     super(config);
 
+    this.defaults = config.defaults;
     this.relay = new arduino.Relay({pin: this.pin, board: this.board});
+
+    this.reset();
   }
 
   emit(config) {
@@ -35,6 +38,12 @@ export default class Relay extends Emitter {
 
   close() {
     this.relay.close();
+  }
+
+  reset() {
+    const defaultRelayMethod = this.defaults.method;
+
+    this.emit({method: defaultRelayMethod});
   }
 
 }

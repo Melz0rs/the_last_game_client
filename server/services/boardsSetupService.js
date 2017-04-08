@@ -111,6 +111,14 @@ export default {
     return listeners;
   },
 
+  getEmitters: function() {
+    return emitters;
+  },
+
+  getRunners: function() {
+    return runners;
+  },
+
   getRunner: function(name) {
     return utils.getFirstInstance(runners, 'name', name);
   },

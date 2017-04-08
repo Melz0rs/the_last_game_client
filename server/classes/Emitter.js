@@ -12,4 +12,7 @@ export default class Emitter extends Module {
 
   }
 
+  reset() {
+
+  }
 }

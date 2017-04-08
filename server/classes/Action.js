@@ -141,9 +141,7 @@ export default class Action {
       clearTimeout(timeoutPromise);
     });
 
-    if(this.runner) {
-      this.runner.toggleState();
-    }
+    this.toggleRunnerState();
   }
 
   toggleRunnerState() {

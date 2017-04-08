@@ -54,11 +54,7 @@ export default class Listener extends Module {
     this.action.execute({ value: val, listenerName: this.name });
   }
 
-  resetActionExecutedCounter() {
-    this.actionExecutedCounter = 1;
-  }
-
-  stop() {
-
+  reset() {
+    this.actionExecutedCounter = 0;
   }
 }

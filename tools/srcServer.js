@@ -44,12 +44,24 @@ ioServer.on('connection', function(client) {
 
     client.on('resetGame', function() {
       const listeners = boardsSetupService.getListeners();
+      const emitters = boardsSetupService.getEmitters();
+      const runners = boardsSetupService.getRunners();
 
       console.log('resetting game');
 
       listeners.forEach(listener => {
-        listener.resetActionExecutedCounter();
+        listener.reset();
       });
+
+      runners.forEach(runner => {
+        runner.reset();
+      });
+
+      emitters.forEach(emitter => {
+        emitter.reset();
+      });
+
+
     });
 
     for (let actionName in actionNames) {

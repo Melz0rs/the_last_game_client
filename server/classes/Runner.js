@@ -18,6 +18,8 @@ export default class Runner {
 
   reset() {
     this.state = this.defaultState;
+
+    this.runOrStop();
   }
 
   toggleState() {

@@ -22,4 +22,12 @@ export default class Servo extends Emitter {
     clearInterval(this.intervalPromise);
   }
 
+  reset() {
+    const startAt = this.servo.startAt;
+
+    this.emit({
+      to: startAt
+    });
+  }
+
 }

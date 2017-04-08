@@ -1,11 +1,15 @@
 import emittersNames from '../constants/emittersNames';
 import emitterTypes from '../constants/emitterTypes';
+import relayMethods from '../constants/relayMethods';
 
 export default [
   [{
     pin: 12,
     name: emittersNames.closetToBedroomRelay,
-    emitterType: emitterTypes.relay
+    emitterType: emitterTypes.relay,
+    defaults: {
+      method: relayMethods.open
+    }
   }, {
     pin: 3,
     name: emittersNames.bedroomVanityLightRelay,
