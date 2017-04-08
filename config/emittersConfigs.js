@@ -22,7 +22,7 @@ export default [
       pin: 6,
       name: emittersNames.tempServo,
       emitterType: emitterTypes.servo,
-      range: [0, 270]
+      range: [0, 180]
   }, {
     pin: 7,
     name: emittersNames.tempRelay,

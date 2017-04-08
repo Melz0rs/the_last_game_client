@@ -41,9 +41,11 @@ export default class Relay extends Emitter {
   }
 
   reset() {
-    const defaultRelayMethod = this.defaults.method;
+    if (this.defaults) {
+      const defaultRelayMethod = this.defaults.method;
 
-    this.emit({method: defaultRelayMethod});
+      this.emit({method: defaultRelayMethod});
+    }
   }
 
 }

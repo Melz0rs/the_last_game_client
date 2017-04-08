@@ -57,17 +57,17 @@ export default [
       {
         name: emittersNames.tempServo,
         config: {
-          to: 10
+          to: 45
         }
       }, {
         name: emittersNames.tempServo,
         config: {
-          to: 20
+          to: 90
         }
       }, {
         name: emittersNames.tempServo,
         config: {
-          to: 30
+          to: 135
         }
       },
     ],

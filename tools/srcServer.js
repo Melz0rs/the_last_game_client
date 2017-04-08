@@ -101,7 +101,7 @@ new arduino.Boards(ports).on("ready", function() {
   boardsSetupService.SetMp3ForActions();
 
   boardsSetupService.registerPins();
-  boardsSetupService.runOrStopRunners();
+  boardsSetupService.resetRunners();
 
 });
 

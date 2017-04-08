@@ -8,8 +8,6 @@ export default class Runner {
     this.name = config.name;
     this.actionName = config.actionName;
     this.defaultState = config.defaultState;
-
-    this.reset();
   }
 
   setAction() {
@@ -29,9 +27,11 @@ export default class Runner {
   }
 
   runOrStop() {
-    this.state === states.running ?
-      this.run() :
-      this.stop();
+    if (this.action) {
+      this.state === states.running ?
+        this.run() :
+        this.stop();
+    }
   }
 
   run() {
@@ -41,13 +41,14 @@ export default class Runner {
     const intervalForExecutingAction = utils.sum(actionTimeouts);
 
     action.execute({ skipCondition: true });
+
     this.intervalPromise = setInterval(() => {
       action.execute({ skipCondition: true });
-    }, intervalForExecutingAction)
+    }, intervalForExecutingAction);
   }
 
   stop() {
-    clearInterval(this.intervalPromise);
-    this.action.stop();
+      clearInterval(this.intervalPromise);
+      this.action.stop();
   }
 }

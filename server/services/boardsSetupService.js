@@ -101,9 +101,9 @@ export default {
     });
   },
 
-  runOrStopRunners: function() {
+  resetRunners: function() {
     runners.forEach(runner => {
-      runner.runOrStop();
+      runner.reset();
     });
   },
 
