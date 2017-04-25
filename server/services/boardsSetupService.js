@@ -37,11 +37,18 @@ export default {
             board,
             pin: emitterConfig.pin,
             name: emitterConfig.name,
-            range: emitterConfig.range
+            range: emitterConfig.range,
+            defaults: emitterConfig.defaults,
+            startAt: emitterConfig.startAt
           }));
           break;
         default:
-          emitters.push(new Relay({board, pin: emitterConfig.pin, name: emitterConfig.name}));
+          emitters.push(new Relay({
+            board,
+            pin: emitterConfig.pin,
+            name: emitterConfig.name,
+            defaults: emitterConfig.defaults}
+          ));
           break;
       }
     });

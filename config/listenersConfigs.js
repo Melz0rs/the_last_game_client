@@ -3,20 +3,34 @@ import listenersNames from '../constants/listenersNames';
 
 export default [
   [
-    // {
-    //   pin: 4,
-    //   actionName: actionNames.openBedroomMemorialLight,
-    //   name: listenersNames.bedroomVanityPictureReadswitch
-    // }, {
-    //   pin: 6,
-    //   actionName: actionNames.placePictureOnMemorial,
-    //   name: listenersNames.bedroomMemorialLightReadswitch
-    // },
-    // {
-    //   pin: 7,
-    //   actionName: actionNames.openHole,
-    //   name: listenersNames.kidsroomPicture1Readswitch
-    // }, {
+    {
+      pin: 3,
+      actionName: actionNames.toggleHoleDoor,
+      name: listenersNames.kidsroomPicture1Readswitch
+    }, {
+      pin: 4,
+      actionName: actionNames.toggleHoleDoor,
+      name: listenersNames.kidsroomPicture2Readswitch
+    },
+    {
+      pin: 5,
+      actionName: actionNames.toggleHoleDoor,
+      name: listenersNames.kidsroomPicture3Readswitch
+    }, {
+      pin: 6,
+      actionName: actionNames.toggleHoleDoor,
+      name: listenersNames.kidsroomPicture4Readswitch
+    },
+    {
+      pin: 7,
+      actionName: actionNames.toggleHoleDoor,
+      name: listenersNames.kidsroomPicture5Readswitch
+    }, {
+      pin: 9,
+      actionName: actionNames.toggleMemorialLight,
+      name: listenersNames.bedroomVanityPictureReadswitch
+    }
+    // , {
     //   pin: 8,
     //   actionName: actionNames.openHole,
     //   name: listenersNames.kidsroomPicture2Readswitch
@@ -34,7 +48,23 @@ export default [
     //   name: listenersNames.kidsroomPicture5Readswitch
     // }
   ], [
-
+    {
+      pin: 6,
+      actionName: actionNames.toggleClosetToBedroomMagnet,
+      name: listenersNames.drawer1Readswitch
+    }, {
+      pin: 7,
+      actionName: actionNames.toggleClosetToBedroomMagnet,
+      name: listenersNames.drawer2Readswitch
+    }, {
+      pin: 8,
+      actionName: actionNames.toggleClosetToBedroomMagnet,
+      name: listenersNames.drawer3Readswitch
+    }, {
+      pin: 9,
+      actionName: actionNames.toggleClosetToBedroomMagnet,
+      name: listenersNames.drawer4Readswitch
+    }
   ], [
 
   ]

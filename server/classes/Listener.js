@@ -24,7 +24,6 @@ export default class Listener extends Module {
             that.pinPrevVal = val;
 
             if(that.actionExecutedCounter >= 1) {
-
               if (!executeActionTimeout) {
                 executeActionTimeout = setTimeout(() => {
                   that.executeAction(val);
@@ -51,6 +50,8 @@ export default class Listener extends Module {
   }
 
   executeAction(val) {
+    console.log('pin ', this.name);
+    console.log('executing ', val);
     this.action.execute({ value: val, listenerName: this.name });
   }
 

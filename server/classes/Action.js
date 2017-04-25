@@ -48,7 +48,6 @@ export default class Action {
   }
 
   execute(options) {
-
     const listenerName = options.listenerName;
     const val = options.value;
     const skipCondition = options.skipCondition;

@@ -21,7 +21,8 @@ const ioServer = io(server);
 
 
 const ports = [
-  { id: "A" }
+  { id: "A", port: 'COM4' },
+  { id: "B", port: 'COM3' }
 ];
 
 let clients = [];
@@ -37,31 +38,33 @@ app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));
 });
 
+function resetGame() {
+  const listeners = boardsSetupService.getListeners();
+  const emitters = boardsSetupService.getEmitters();
+  const runners = boardsSetupService.getRunners();
+
+  console.log('resetting game');
+
+  listeners.forEach(listener => {
+    listener.reset();
+  });
+
+  runners.forEach(runner => {
+    runner.reset();
+  });
+
+  emitters.forEach(emitter => {
+    emitter.reset();
+  });
+}
+
 ioServer.on('connection', function(client) {
   client.on('join', function (handshake) {
     console.log(handshake);
     clients.push(client);
 
     client.on('resetGame', function() {
-      const listeners = boardsSetupService.getListeners();
-      const emitters = boardsSetupService.getEmitters();
-      const runners = boardsSetupService.getRunners();
-
-      console.log('resetting game');
-
-      listeners.forEach(listener => {
-        listener.reset();
-      });
-
-      runners.forEach(runner => {
-        runner.reset();
-      });
-
-      emitters.forEach(emitter => {
-        emitter.reset();
-      });
-
-
+      resetGame();
     });
 
     for (let actionName in actionNames) {
@@ -102,6 +105,8 @@ new arduino.Boards(ports).on("ready", function() {
 
   boardsSetupService.registerPins();
   boardsSetupService.resetRunners();
+
+  resetGame();
 
 });
 

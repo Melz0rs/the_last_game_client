@@ -7,6 +7,8 @@ class HomePage extends React.Component {
   getButtonsConfigs() {
     let buttonsConfigs = [];
 
+    actionsNames.resetGame = 'resetGame';
+
     for(const actionName in actionsNames) {
       buttonsConfigs.push({
         onClick: () => {

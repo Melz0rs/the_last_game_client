@@ -4,7 +4,7 @@ import arduino from '../services/Arduino';
 export default class Servo extends Emitter {
   constructor(config) {
     super(config);
-    this.servo = new arduino.Servo({pin: this.pin, board: this.board, range: config.range, startAt: 0});
+    this.servo = new arduino.Servo({pin: this.pin, board: this.board, range: config.range, startAt: config.startAt || 0});
 
   }
 

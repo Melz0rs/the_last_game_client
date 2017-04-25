@@ -5,7 +5,6 @@ import relayMethods from '../../constants/relayMethods';
 export default class Relay extends Emitter {
   constructor(config) {
     super(config);
-
     this.defaults = config.defaults;
     this.relay = new arduino.Relay({pin: this.pin, board: this.board});
 
@@ -13,7 +12,7 @@ export default class Relay extends Emitter {
   }
 
   emit(config) {
-    const relayMethod = config.method;
+    const relayMethod = config ? config.method : null;
 
     switch (relayMethod) {
       case relayMethods.close:
