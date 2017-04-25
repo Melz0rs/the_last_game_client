@@ -1,6 +1,6 @@
 import actionNames from '../constants/actionsNames';
 import listenersNames from '../constants/listenersNames';
-
+import listenerTypes from '../constants/listenerTypes';
 export default [
   [
     {
@@ -42,11 +42,7 @@ export default [
     //   pin: 10,
     //   actionName: actionNames.openHole,
     //   name: listenersNames.kidsroomPicture4Readswitch
-    // }, {
-    //   pin: 11,
-    //   actionName: actionNames.openHole,
-    //   name: listenersNames.kidsroomPicture5Readswitch
-    // }
+
   ], [
     {
       pin: 6,
@@ -64,6 +60,11 @@ export default [
       pin: 9,
       actionName: actionNames.toggleClosetToBedroomMagnet,
       name: listenersNames.drawer4Readswitch
+    }, {
+      pin: 11,
+      actionName: actionNames.toggleMirror,
+      name: listenersNames.tempMovementSensor,
+      listenerType: listenerTypes.movementSensor
     }
   ], [
 

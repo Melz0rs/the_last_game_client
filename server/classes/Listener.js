@@ -19,10 +19,13 @@ export default class Listener extends Module {
     this.actionExecutedCounter = 0;
 
     this.pin.read(function(err, val) {
+
         if (that.pinPrevVal !== null) {
           if (that.pinPrevVal !== val) {
             that.pinPrevVal = val;
-
+            if(that.pin.pin === 12) {
+              console.log(val);
+            }
             if(that.actionExecutedCounter >= 1) {
               if (!executeActionTimeout) {
                 executeActionTimeout = setTimeout(() => {
@@ -30,7 +33,7 @@ export default class Listener extends Module {
                   executeActionTimeout = null;
                 }, 100);
               } else {
-                console.log('pulse was detected from ', that.name);
+                // console.log('pulse was detected from ', that.name);
                 clearTimeout(executeActionTimeout);
                 executeActionTimeout = null;
               }

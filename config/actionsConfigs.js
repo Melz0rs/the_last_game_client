@@ -12,7 +12,7 @@ export default [
     emitterConfigs: [
       emittersNames.closetToBedroomRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: [
       {
         listenerName: listenersNames.drawer1Readswitch,
@@ -41,7 +41,7 @@ export default [
       emittersNames.bedroomVanityLightRelay,
       emittersNames.bedroomVanityLightRelay
     ],
-    timeouts: [0, 300, 400, 300, 500, 400, 200, 500],
+    emittersTimeouts: [0, 300, 400, 300, 500, 400, 200, 500],
     expectedListeners: []
   },  {
     name: actionNames.toggleMirror,
@@ -49,13 +49,25 @@ export default [
       emittersNames.mirrorRelay,
       emittersNames.mirrorRelay
     ],
-    timeouts: [0, 10000]
+    emittersTimeouts: [0, 10000],
+    expectedListeners: [
+      {
+        listenerName: listenersNames.tempMovementSensor,
+        listenerValues: [0]
+      }
+    ]
+    // mp3Config: {
+    //   name: mp3sNames.kidsRoomSoundEffects,
+    //   tracks: ['0']
+    //   // timeouts: [0, 10000, 20000]
+    // }
+
   }, {
     name: actionNames.toggleMemorialLight,
     emitterConfigs: [
       emittersNames.memorialLightRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: [
       {
         listenerName: listenersNames.bedroomVanityPictureReadswitch,
@@ -67,7 +79,7 @@ export default [
     emitterConfigs: [
       emittersNames.holeRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: [
       {
         listenerName: listenersNames.kidsroomPicture1Readswitch,
@@ -91,28 +103,28 @@ export default [
     emitterConfigs: [
       emittersNames.airConditionerRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: []
   }, {
     name: actionNames.toggleClosetToBedroomMagnet,
     emitterConfigs: [
       emittersNames.closetToBedroomRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: []
   }, {
     name: actionNames.toggleDollMagnet,
     emitterConfigs: [
       emittersNames.dollRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: []
   }, {
     name: actionNames.toggleHoleExitMagnet,
     emitterConfigs: [
       emittersNames.holeExitRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: []
   }, {
     name: actionNames.toggleOperativeWallKidsRoom,
@@ -120,21 +132,21 @@ export default [
       emittersNames.operativeWallKidsRoomRelay,
       emittersNames.operativeWallKidsRoomRelay
     ],
-    timeouts: [0, 1000],
+    emittersTimeouts: [0, 1000],
     expectedListeners: []
   },{
     name: actionNames.toggleLettersMagnets,
     emitterConfigs: [
       emittersNames.lettersMagnetsRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: []
   },{
     name: actionNames.toggleVanityLight,
     emitterConfigs: [
       emittersNames.vanityLightRelay
     ],
-    timeouts: [0],
+    emittersTimeouts: [0],
     expectedListeners: []
   }, {
     name : actionNames.throwCutter,
@@ -163,54 +175,6 @@ export default [
       },
       emittersNames.airConditionerRelay
     ],
-    timeouts: [0, 500, 1000, 1000, 1000, 0]
+    emittersTimeouts: [0, 500, 1000, 1000, 1000, 0]
   }
-  // {
-  //   name : actionNames.tempCloseRelay,
-  //   emitterConfigs: [
-  //     {
-  //       name: emittersNames.tempRelay,
-  //       config: {
-  //         method: relayMethods.close
-  //       }
-  //     }
-  //   ],
-  //   timeouts: [0, 2000, 2000],
-  //   expectedListeners: [
-  //     // { // TODO: Add listeners
-  //     // listenerName: listenersNames.bedroomVanityPictureReadswitch,
-  //     // listenerValues: [0]
-  //     // }
-  //   ]
-  // },
-  // {
-  //   name : actionNames.resetServo,
-  //   emitterConfigs: [
-  //     {
-  //       name: emittersNames.tempServo,
-  //       config: {
-  //         to: 0
-  //       }
-  //     }
-  //   ],
-  //   timeouts: [0],
-  //   expectedListeners: [
-  //     // { // TODO: Add listeners
-  //     // listenerName: listenersNames.bedroomVanityPictureReadswitch,
-  //     // listenerValues: [0]
-  //     // }
-  //   ]
-  // }
-  // , {
-  //   name : actionNames.bedroomVanityLightRunner,
-  //   emitterNames: [
-  //     emittersNames.closetToBedroomEmitter,
-  //     emittersNames.closetToBedroomEmitter
-  //   ],
-  //   timeouts: [0, 300],
-  //   expectedListeners: [{
-  //     listenerName: listenersNames.closetKnobListener,
-  //     listenerValues: [0]
-  //   }]
-  // }
 ];

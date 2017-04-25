@@ -1,4 +1,5 @@
 import Listener from '../classes/Listener';
+import MovementSensor from '../classes/MovementSensor';
 import Runner from '../classes/Runner';
 import Servo from '../classes/Servo';
 import Relay from '../classes/Relay';
@@ -9,6 +10,7 @@ import utils from '../services/utils';
 import Mp3 from '../classes/Mp3';
 import mp3Configs from '../../config/mp3sConfigs';
 import emitterTypes from '../../constants/emitterTypes';
+import listenerTypes from '../../constants/listenerTypes';
 
 
 let emitters = [];
@@ -21,12 +23,25 @@ export default {
 
   createListeners: function(board, config) {
       config.forEach(listenerConfig => {
-        listeners.push(new Listener({
-          pin: listenerConfig.pin,
-          board,
-          name: listenerConfig.name,
-          actionName: listenerConfig.actionName }));
+        switch(listenerConfig.listenerType) {
+          case listenerTypes.movementSensor:
+            listeners.push(new MovementSensor({
+              pin: listenerConfig.pin,
+              board,
+              name: listenerConfig.name,
+              actionName: listenerConfig.actionName
+            }));
+            break;
+          default:
+            listeners.push(new Listener({
+              pin: listenerConfig.pin,
+              board,
+              name: listenerConfig.name,
+              actionName: listenerConfig.actionName
+            }));
+        }
       });
+
   },
 
   createEmitters: function(board, config) {
@@ -49,7 +64,6 @@ export default {
             name: emitterConfig.name,
             defaults: emitterConfig.defaults}
           ));
-          break;
       }
     });
   },

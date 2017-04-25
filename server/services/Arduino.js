@@ -19,6 +19,10 @@ export default {
     return five.Pin(config);
   },
 
+  Motion: (config) => {
+    return five.Motion(config);
+  },
+
   Boards: (config) => {
     return five.Boards(config);
   }

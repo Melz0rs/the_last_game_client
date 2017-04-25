@@ -6,7 +6,7 @@ import actionsService from '../services/actionsService';
 
 export default class Action {
   constructor(config) {
-    this.timeouts = config.timeouts;
+    this.emittersTimeouts = config.emittersTimeouts;
     this.name = config.name;
     this.expectedListeners = config.expectedListeners;
     this.runnerName = config.runnerName;
@@ -44,7 +44,8 @@ export default class Action {
   reset() {
     this.actionExecuted = false;
     this.currentListeners = [];
-    this.timeoutPromises = [];
+    this.emitterTimeoutPromises = [];
+    this.mp3TimeoutPromises = [];
   }
 
   execute(options) {
@@ -64,7 +65,7 @@ export default class Action {
       this.playMp3();
 
       this.actionExecuted = true;
-      const timeouts = this.timeouts;
+      const emittersTimeouts = this.emittersTimeouts;
       const emitterConfigs = this.emitterconfigs;
 
       for (let i = 0; i < emitterConfigs.length; i++) {
@@ -74,13 +75,13 @@ export default class Action {
 
         let timeout = 0;
 
-        if (timeouts) {
+        if (emittersTimeouts) {
           for (let j = 0; j <= i; j++) {
-            timeout += timeouts[j];
+            timeout += emittersTimeouts[j];
           }
         }
 
-        this.timeoutPromises.push(setTimeout(() => {
+        this.emitterTimeoutPromises.push(setTimeout(() => {
           emitter.emit(config);
         }, timeout));
       }
@@ -88,9 +89,24 @@ export default class Action {
   }
 
   playMp3() {
-    if(this.mp3) {
-      const track = this.mp3Config.track;
-      this.mp3.play(track);
+    if (this.mp3) {
+      const tracks = this.mp3Config.tracks;
+      const timeouts = this.mp3Config.timeouts;
+
+      for (let i = 0; i < tracks.length; i++) {
+        const track = tracks[i];
+        let timeout = 0;
+
+        if (timeouts) {
+          for (let j = 0; j <= i; j++) {
+            timeout += timeouts[j];
+          }
+        }
+
+        this.mp3TimeoutPromises.push(setTimeout(() => {
+          this.mp3.play(track);
+        }, timeout));
+      }
     }
   }
 
@@ -136,8 +152,13 @@ export default class Action {
   }
 
   stop() {
-    this.timeoutPromises.forEach(timeoutPromise => {
+    this.emitterTimeoutPromises.forEach(timeoutPromise => {
       clearTimeout(timeoutPromise);
+    });
+
+    this.mp3TimeoutPromises.forEach(timeoutPromise => {
+      clearTimeout(timeoutPromise);
+      this.mp3.stop();
     });
 
     this.toggleRunnerState();

@@ -16,7 +16,12 @@ export default class Mp3{
   }
 
   play(track) {
+    console.log('playing ', track);
     this.board.write(track);
+  }
+
+  stop() {
+    this.play(0);
   }
 
 }

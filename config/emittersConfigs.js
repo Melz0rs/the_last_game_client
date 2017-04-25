@@ -75,14 +75,16 @@ export default [
       defaults: {
         method: relayMethods.open
       }
-    }, {
-      pin: 11,
-      name: emittersNames.lettersMagnetsRelay,
-      emitterType: emitterTypes.relay,
-      defaults: {
-        method: relayMethods.open
-      }
-    }, {
+    }
+    // , {
+    //   pin: 11,
+    //   name: emittersNames.lettersMagnetsRelay,
+    //   emitterType: emitterTypes.relay,
+    //   defaults: {
+    //     method: relayMethods.open
+    //   }
+    // }
+    , {
       pin: 12,
       name: emittersNames.vanityLightRelay,
       emitterType: emitterTypes.relay,
