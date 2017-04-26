@@ -44,14 +44,14 @@ export default [
   ], [
     {
       pin: 2,
-      name: emittersNames.dollRelay,
+      name: emittersNames.holeExitRelay,
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.open
       }
     }, {
       pin: 3,
-      name: emittersNames.holeExitRelay,
+      name: emittersNames.dollRelay,
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.open
@@ -75,22 +75,26 @@ export default [
       defaults: {
         method: relayMethods.open
       }
-    }
-    // , {
-    //   pin: 11,
-    //   name: emittersNames.lettersMagnetsRelay,
-    //   emitterType: emitterTypes.relay,
-    //   defaults: {
-    //     method: relayMethods.open
-    //   }
-    // }
-    , {
+    }, {
+      pin: 11,
+      name: emittersNames.lettersMagnetsRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.open
+      }
+    }, {
       pin: 12,
       name: emittersNames.vanityLightRelay,
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.open
       }
+    }, {
+      pin: 'A5',
+      name: emittersNames.vaseServo,
+      emitterType: emitterTypes.servo,
+      range: [0, 180],
+      startAt: 0
     }
   ], [
 

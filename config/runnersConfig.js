@@ -7,5 +7,9 @@ export default [
     name: runnersNames.bedroomVanityLightRunner,
     actionName: actionsNames.flashBedroomVanityLight,
     defaultState: states.stopped
+  },  {
+    name: runnersNames.lightningRunner,
+    actionName: actionsNames.flashLightnings,
+    defaultState: states.stopped
   }
 ];

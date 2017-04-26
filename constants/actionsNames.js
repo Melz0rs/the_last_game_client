@@ -12,5 +12,7 @@ export default {
   throwCutter: 'throwCutter',
   toggleOperativeWallKidsRoom: 'toggleOperativeWallKidsRoom',
   toggleLettersMagnets: 'toggleLettersMagnets',
-  toggleVanityLight: 'toggleVanityLight'
+  toggleVanityLight: 'toggleVanityLight',
+  flashLightnings: 'flashLightnings',
+  dropVase: 'dropVase'
 };

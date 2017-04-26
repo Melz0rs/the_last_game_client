@@ -16,7 +16,6 @@ export default class Runner {
 
   reset() {
     this.state = this.defaultState;
-
     this.runOrStop();
   }
 
@@ -35,11 +34,10 @@ export default class Runner {
   }
 
   run() {
-    console.log('running!');
+    this.stop();
     const action = this.action;
-    const actionTimeouts = action.timeouts;
+    const actionTimeouts = action.emittersTimeouts;
     const intervalForExecutingAction = utils.sum(actionTimeouts);
-
     action.execute({ skipCondition: true });
 
     this.intervalPromise = setInterval(() => {

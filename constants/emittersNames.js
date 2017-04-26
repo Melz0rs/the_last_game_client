@@ -11,5 +11,6 @@ export default {
   airConditionerVisherServo: 'airConditionerVisherServo',
   operativeWallKidsRoomRelay: 'operativeWallKidsRoomRelay',
   lettersMagnetsRelay: 'lettersMagnetsRelay',
-  vanityLightRelay: 'vanityLightRelay'
+  vanityLightRelay: 'vanityLightRelay',
+  vaseServo: 'vaseServo'
 };

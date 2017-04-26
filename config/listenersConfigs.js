@@ -30,29 +30,18 @@ export default [
       actionName: actionNames.toggleMemorialLight,
       name: listenersNames.bedroomVanityPictureReadswitch
     }
-    // , {
-    //   pin: 8,
-    //   actionName: actionNames.openHole,
-    //   name: listenersNames.kidsroomPicture2Readswitch
-    // },  {
-    //   pin: 9,
-    //   actionName: actionNames.openHole,
-    //   name: listenersNames.kidsroomPicture3Readswitch
-    // },  {
-    //   pin: 10,
-    //   actionName: actionNames.openHole,
-    //   name: listenersNames.kidsroomPicture4Readswitch
-
   ], [
     {
       pin: 6,
       actionName: actionNames.toggleClosetToBedroomMagnet,
       name: listenersNames.drawer1Readswitch
-    }, {
-      pin: 7,
-      actionName: actionNames.toggleClosetToBedroomMagnet,
-      name: listenersNames.drawer2Readswitch
-    }, {
+    },
+    // {
+    //   pin: 7,
+    //   actionName: actionNames.toggleClosetToBedroomMagnet,
+    //   name: listenersNames.drawer2Readswitch
+    // },
+    {
       pin: 8,
       actionName: actionNames.toggleClosetToBedroomMagnet,
       name: listenersNames.drawer3Readswitch
@@ -60,12 +49,13 @@ export default [
       pin: 9,
       actionName: actionNames.toggleClosetToBedroomMagnet,
       name: listenersNames.drawer4Readswitch
-    }, {
-      pin: 11,
-      actionName: actionNames.toggleMirror,
-      name: listenersNames.tempMovementSensor,
-      listenerType: listenerTypes.movementSensor
     }
+    // , {
+    //   pin: 11,
+    //   actionName: actionNames.toggleMirror,
+    //   name: listenersNames.tempMovementSensor,
+    //   listenerType: listenerTypes.movementSensor
+    // }
   ], [
 
   ]

@@ -148,6 +148,20 @@ export default [
     ],
     emittersTimeouts: [0],
     expectedListeners: []
+  },{
+    name: actionNames.flashLightnings,
+    emitterConfigs: [
+      emittersNames.closetToBedroomRelay,
+      emittersNames.closetToBedroomRelay,
+      emittersNames.closetToBedroomRelay,
+      emittersNames.closetToBedroomRelay,
+      emittersNames.closetToBedroomRelay,
+      emittersNames.closetToBedroomRelay,
+      emittersNames.closetToBedroomRelay,
+      emittersNames.closetToBedroomRelay
+    ],
+    emittersTimeouts: [3000, 100, 100, 100, 200, 100, 300, 100],
+    expectedListeners: []
   }, {
     name : actionNames.throwCutter,
     emitterConfigs: [
@@ -176,5 +190,16 @@ export default [
       emittersNames.airConditionerRelay
     ],
     emittersTimeouts: [0, 500, 1000, 1000, 1000, 0]
+  }, {
+    name : actionNames.dropVase,
+    emitterConfigs: [
+      {
+        name: emittersNames.vaseServo,
+        config: {
+          to: 60
+        }
+      }
+    ],
+    emittersTimeouts: [0]
   }
 ];
