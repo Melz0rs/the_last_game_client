@@ -12,7 +12,7 @@ export default class Listener extends Module {
 
   }
 
-  registerPins() {
+  registerPins(onChange) {
     const that = this;
     let executeActionTimeout;
     this.pinPrevVal = null;
@@ -29,6 +29,7 @@ export default class Listener extends Module {
             if(that.actionExecutedCounter >= 1) {
               if (!executeActionTimeout) {
                 executeActionTimeout = setTimeout(() => {
+                  onChange(val);
                   that.executeAction(val);
                   executeActionTimeout = null;
                 }, 100);

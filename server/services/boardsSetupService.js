@@ -19,6 +19,7 @@ let actions = [];
 let runners = [];
 let mp3s =[];
 
+
 export default {
 
   createListeners: function(board, config) {
@@ -86,9 +87,9 @@ export default {
     });
   },
 
-  registerPins: function() {
+  registerPins: function(onChange) {
     listeners.forEach(listener => {
-      listener.registerPins();
+      listener.registerPins(onChange);
     });
   },
 

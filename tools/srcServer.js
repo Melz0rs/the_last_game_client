@@ -43,8 +43,6 @@ function resetGame() {
   const emitters = boardsSetupService.getEmitters();
   const runners = boardsSetupService.getRunners();
 
-  console.log('resetting game');
-
   listeners.forEach(listener => {
     listener.reset();
   });
@@ -55,6 +53,12 @@ function resetGame() {
 
   emitters.forEach(emitter => {
     emitter.reset();
+  });
+}
+
+function emitChangesToClient(listenerName, listenerValue) {
+  clients.forEach(client => {
+    client.emit({ listenerName, listenerValue });
   });
 }
 
@@ -103,7 +107,7 @@ new arduino.Boards(ports).on("ready", function() {
   boardsSetupService.setEmittersForActions();
   boardsSetupService.SetMp3ForActions();
 
-  boardsSetupService.registerPins();
+  boardsSetupService.registerPins(emitChangesToClient);
   boardsSetupService.resetRunners();
 
   resetGame();
