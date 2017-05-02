@@ -71,7 +71,7 @@ export default [
     expectedListeners: [
       {
         listenerName: listenersNames.bedroomVanityPictureReadswitch,
-        listenerValues: [0]
+        listenerValues: [1]
       }
     ]
   }, {
@@ -132,33 +132,47 @@ export default [
       emittersNames.operativeWallKidsRoomRelay,
       emittersNames.operativeWallKidsRoomRelay
     ],
-    emittersTimeouts: [0, 1000],
+    emittersTimeouts: [0, 20000],
     expectedListeners: []
-  },{
+  }, {
+    name: actionNames.toggleVitrinaDoor,
+    emitterConfigs: [
+      emittersNames.operativeVitrinaRelay,
+      emittersNames.operativeVitrinaRelay
+    ],
+    emittersTimeouts: [0, 20000],
+    expectedListeners: []
+  }, {
     name: actionNames.toggleLettersMagnets,
     emitterConfigs: [
       emittersNames.lettersMagnetsRelay
     ],
     emittersTimeouts: [0],
-    expectedListeners: []
-  },{
-    name: actionNames.toggleVanityLight,
+    expectedListeners: [
+      {
+        listenerName: listenersNames.drawerMovementSensor,
+        listenerValues: [0]
+      }
+    ]
+  },
+  {
+    name: actionNames.toggleMomClosetMagnet,
     emitterConfigs: [
-      emittersNames.vanityLightRelay
+      emittersNames.momClosetRelay
     ],
     emittersTimeouts: [0],
     expectedListeners: []
-  },{
+  }, {
     name: actionNames.flashLightnings,
     emitterConfigs: [
-      emittersNames.closetToBedroomRelay,
-      emittersNames.closetToBedroomRelay,
-      emittersNames.closetToBedroomRelay,
-      emittersNames.closetToBedroomRelay,
-      emittersNames.closetToBedroomRelay,
-      emittersNames.closetToBedroomRelay,
-      emittersNames.closetToBedroomRelay,
-      emittersNames.closetToBedroomRelay
+      emittersNames.lightningRelay,
+      emittersNames.lightningRelay,
+      emittersNames.lightningRelay,
+      emittersNames.lightningRelay,
+      emittersNames.lightningRelay,
+      emittersNames.lightningRelay,
+      emittersNames.lightningRelay,
+      emittersNames.lightningRelay
     ],
     emittersTimeouts: [3000, 100, 100, 100, 200, 100, 300, 100],
     expectedListeners: []
@@ -179,7 +193,7 @@ export default [
       }, {
         name: emittersNames.airConditionerVisherServo,
         config: {
-          to: 180
+          to: -1
         }
       }, {
         name: emittersNames.airConditionerHatchServo,
@@ -189,17 +203,33 @@ export default [
       },
       emittersNames.airConditionerRelay
     ],
-    emittersTimeouts: [0, 500, 1000, 1000, 1000, 0]
+    emittersTimeouts: [0, 500, 1000, 1000, 1000, 0],
+    expectedListeners: [
+      {
+        listenerName: listenersNames.clockReadswitch1,
+        listenerValues: [0]
+      }, {
+        listenerName: listenersNames.clockReadswitch2,
+        listenerValues: [0]
+      }
+    ]
   }, {
     name : actionNames.dropVase,
     emitterConfigs: [
+      emittersNames.vaseServoRelay,
       {
         name: emittersNames.vaseServo,
         config: {
-          to: 60
+          to: 45
         }
-      }
+      }, {
+        name: emittersNames.vaseServo,
+        config: {
+          to: -1
+        }
+      },
+      emittersNames.vaseServoRelay
     ],
-    emittersTimeouts: [0]
+    emittersTimeouts: [0, 200, 1000, 3000]
   }
 ];

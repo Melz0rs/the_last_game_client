@@ -16,7 +16,8 @@ export default [
       pin: 5,
       actionName: actionNames.toggleHoleDoor,
       name: listenersNames.kidsroomPicture3Readswitch
-    }, {
+    },
+    {
       pin: 6,
       actionName: actionNames.toggleHoleDoor,
       name: listenersNames.kidsroomPicture4Readswitch
@@ -36,11 +37,6 @@ export default [
       actionName: actionNames.toggleClosetToBedroomMagnet,
       name: listenersNames.drawer1Readswitch
     },
-    // {
-    //   pin: 7,
-    //   actionName: actionNames.toggleClosetToBedroomMagnet,
-    //   name: listenersNames.drawer2Readswitch
-    // },
     {
       pin: 8,
       actionName: actionNames.toggleClosetToBedroomMagnet,
@@ -50,13 +46,25 @@ export default [
       actionName: actionNames.toggleClosetToBedroomMagnet,
       name: listenersNames.drawer4Readswitch
     }
-    // , {
-    //   pin: 11,
-    //   actionName: actionNames.toggleMirror,
-    //   name: listenersNames.tempMovementSensor,
-    //   listenerType: listenerTypes.movementSensor
-    // }
-  ], [
 
+  ], [
+    {
+      pin: 3,
+      actionName: actionNames.throwCutter,
+      name: listenersNames.clockReadswitch1
+    }, {
+      pin: 4,
+      actionName: actionNames.throwCutter,
+      name: listenersNames.clockReadswitch2
+    }, {
+      pin: 6,
+      actionName: actionNames.toggleLettersMagnets,
+      name: listenersNames.drawerMovementSensor,
+      listenerType: listenerTypes.movementSensor
+    }, {
+      pin: 9,
+      actionName: actionNames.toggleLettersMagnets,
+      name: listenersNames.kidsroomPicture6Readswitch
+    }
   ]
 ];

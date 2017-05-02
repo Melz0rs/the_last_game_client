@@ -16,6 +16,7 @@ export default class Listener extends Module {
     let executeActionTimeout;
 
     this.motion.on("motionstart", () => {
+      console.log('movementstart');
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
           this.executeAction(0);
@@ -29,6 +30,7 @@ export default class Listener extends Module {
     });
 
     this.motion.on("motionend", () => {
+      console.log('movementend');
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
           this.executeAction(1);

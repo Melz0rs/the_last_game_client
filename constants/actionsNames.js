@@ -14,5 +14,7 @@ export default {
   toggleLettersMagnets: 'toggleLettersMagnets',
   toggleVanityLight: 'toggleVanityLight',
   flashLightnings: 'flashLightnings',
-  dropVase: 'dropVase'
+  dropVase: 'dropVase',
+  toggleMomClosetMagnet: 'toggleMomClosetMagnet',
+  toggleVitrinaDoor: 'toggleVitrinaDoor'
 };

@@ -23,9 +23,6 @@ export default class Listener extends Module {
         if (that.pinPrevVal !== null) {
           if (that.pinPrevVal !== val) {
             that.pinPrevVal = val;
-            if(that.pin.pin === 12) {
-              console.log(val);
-            }
             if(that.actionExecutedCounter >= 1) {
               if (!executeActionTimeout) {
                 executeActionTimeout = setTimeout(() => {

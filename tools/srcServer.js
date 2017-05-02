@@ -10,6 +10,7 @@ import emittersConfigs from '../config/emittersConfigs';
 import boardsSetupService from '../server/services/boardsSetupService';
 import actionNames from '../constants/actionsNames';
 import arduino from '../server/services/Arduino';
+// import five from 'johnny-five';
 
 /* eslint-disable no-console */
 
@@ -22,7 +23,8 @@ const ioServer = io(server);
 
 const ports = [
   { id: "A", port: 'COM4' },
-  { id: "B", port: 'COM3' }
+  { id: "B", port: 'COM3' },
+  { id: "C", port: 'COM6' }
 ];
 
 let clients = [];
@@ -107,6 +109,16 @@ new arduino.Boards(ports).on("ready", function() {
   boardsSetupService.resetRunners();
 
   resetGame();
+
+  // let stepper = five.Stepper({
+  //   type: five.Stepper.TYPE.FOUR_WIRE,
+  //   stepsPerRev: 64,
+  //   pins: [9, 10, 11, 12]
+  // });
+  //
+  // stepper.step({ steps: 2048, direction: 1 }, () => {
+  //   console.log(stepper.rpm());
+  // });
 
 });
 

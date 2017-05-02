@@ -67,7 +67,7 @@ export default [
       name: emittersNames.airConditionerVisherServo,
       emitterType: emitterTypes.servo,
       range: [0, 180],
-      startAt: 180
+      startAt: 177
     }, {
       pin: 10,
       name: emittersNames.operativeWallKidsRoomRelay,
@@ -83,7 +83,7 @@ export default [
         method: relayMethods.open
       }
     }, {
-      pin: 12,
+      pin: 'A4',
       name: emittersNames.vanityLightRelay,
       emitterType: emitterTypes.relay,
       defaults: {
@@ -94,9 +94,37 @@ export default [
       name: emittersNames.vaseServo,
       emitterType: emitterTypes.servo,
       range: [0, 180],
-      startAt: 0
+      startAt: 8
     }
   ], [
-
+    {
+      pin: 2,
+      name: emittersNames.lightningRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 5,
+      name: emittersNames.momClosetRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 7,
+      name: emittersNames.operativeVitrinaRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 8,
+      name: emittersNames.vaseServoRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }
   ]
 ];

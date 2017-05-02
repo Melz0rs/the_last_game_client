@@ -5,6 +5,7 @@ export default class Emitter extends Module {
   constructor(config) {
     super(config);
 
+    this.pinType = config.pinType || 'digital';
     this.name = config.name;
   }
 

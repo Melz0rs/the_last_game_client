@@ -12,5 +12,9 @@ export default {
   operativeWallKidsRoomRelay: 'operativeWallKidsRoomRelay',
   lettersMagnetsRelay: 'lettersMagnetsRelay',
   vanityLightRelay: 'vanityLightRelay',
-  vaseServo: 'vaseServo'
+  vaseServo: 'vaseServo',
+  lightningRelay: 'lightningRelay',
+  momClosetRelay: 'momClosetRelay',
+  operativeVitrinaRelay: 'operativeVitrinaRelay',
+  vaseServoRelay: 'vaseServoRelay'
 };

@@ -6,9 +6,13 @@ export default {
   kidsroomPicture3Readswitch: 'kidsroomPicture3Readswitch',
   kidsroomPicture4Readswitch: 'kidsroomPicture4Readswitch',
   kidsroomPicture5Readswitch: 'kidsroomPicture5Readswitch',
+  kidsroomPicture6Readswitch: 'kidsroomPicture6Readswitch',
   drawer1Readswitch: 'drawer1Readswitch',
   drawer2Readswitch: 'drawer2Readswitch',
   drawer3Readswitch: 'drawer3Readswitch',
   drawer4Readswitch: 'drawer4Readswitch',
-  tempMovementSensor: 'tempMovementSensor'
+  drawerMovementSensor: 'drawerMovementSensor',
+  clockReadswitch1: 'clockReadswitch1',
+  clockReadswitch2: 'clockReadswitch2',
+
 }
