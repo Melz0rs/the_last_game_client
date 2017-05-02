@@ -1,8 +1,8 @@
-import Module from './Module';
+ import Module from './Module';
 import boardsSetupService from '../services/boardsSetupService';
 import arduino from '../services/Arduino';
 
-export default class Listener extends Module {
+export default class MovementSensor extends Module {
   constructor(config) {
     super(config);
 
@@ -12,13 +12,14 @@ export default class Listener extends Module {
 
   }
 
-  registerPins() {
+  registerPins(onChange) {
     let executeActionTimeout;
 
     this.motion.on("motionstart", () => {
       console.log('movementstart');
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
+          onChange(0);
           this.executeAction(0);
           executeActionTimeout = null;
         }, 100);
@@ -33,6 +34,7 @@ export default class Listener extends Module {
       console.log('movementend');
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
+          onChange(1);
           this.executeAction(1);
           executeActionTimeout = null;
         }, 100);
