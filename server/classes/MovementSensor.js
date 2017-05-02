@@ -19,7 +19,7 @@ export default class MovementSensor extends Module {
       console.log('movementstart');
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
-          onChange(0);
+          onChange(this.name, 0);
           this.executeAction(0);
           executeActionTimeout = null;
         }, 100);
@@ -34,7 +34,7 @@ export default class MovementSensor extends Module {
       console.log('movementend');
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
-          onChange(1);
+          onChange(this.name, 1);
           this.executeAction(1);
           executeActionTimeout = null;
         }, 100);

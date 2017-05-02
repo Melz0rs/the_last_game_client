@@ -60,6 +60,7 @@ function resetGame() {
 
 function emitChangesToClient(listenerName, listenerValue) {
   clients.forEach(client => {
+    console.log('emitting listener: ', listenerName, listenerValue);
     client.emit({ listenerName, listenerValue });
   });
 }

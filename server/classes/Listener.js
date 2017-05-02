@@ -26,7 +26,6 @@ export default class Listener extends Module {
             if(that.actionExecutedCounter >= 1) {
               if (!executeActionTimeout) {
                 executeActionTimeout = setTimeout(() => {
-                  onChange(val);
                   that.executeAction(val);
                   executeActionTimeout = null;
                 }, 100);
@@ -41,6 +40,7 @@ export default class Listener extends Module {
 
           }
         } else {
+          onChange(that.name, val);
           that.pinPrevVal = val;
         }
     });

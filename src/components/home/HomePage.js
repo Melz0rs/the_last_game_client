@@ -1,16 +1,18 @@
 import React from 'react';
-import ButtonList from '../common/ButtonList';
+import ActionButtons from '../action/ActionButtons';
+import Listeners from '../listener/Listeners';
 import actionsNames from '../../../constants/actionsNames';
+import listenersNames from '../../../constants/listenersNames';
 import { socket } from '../../index';
 
 class HomePage extends React.Component {
-  getButtonsConfigs() {
-    let buttonsConfigs = [];
+  getActionButtonsConfigs() {
+    let actionButtonsConfigs = [];
 
     actionsNames.resetGame = 'resetGame';
 
     for(const actionName in actionsNames) {
-      buttonsConfigs.push({
+      actionButtonsConfigs.push({
         onClick: () => {
           socket.emit(actionName);
         },
@@ -19,14 +21,29 @@ class HomePage extends React.Component {
       });
     }
 
-    return buttonsConfigs;
+    return actionButtonsConfigs;
+  }
 
+  getListenersConfigs() {
+    let listenersConfigs = [];
+
+    for(const listenerName in listenersNames) {
+      listenersConfigs.push({
+        subscribe: (callbackFn) => {
+          socket.on(listenerName, callbackFn);
+        },
+        listenerName
+      });
+    }
+
+    return listenersConfigs;
   }
 
   render() {
     return (
       <div>
-        <ButtonList buttonsConfigs={this.getButtonsConfigs()}/>
+        <ActionButtons buttonsConfigs={this.getActionButtonsConfigs()} />
+        <Listeners listenersConfigs={this.getListenersConfigs()} />
       </div>
     );
   }

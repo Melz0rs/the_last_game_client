@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Button extends React.Component {
+export default class ActionButton extends React.Component {
 
   render() {
     return (
@@ -15,8 +15,6 @@ class Button extends React.Component {
   }
 }
 
-Button.propTypes = {
+ActionButton.propTypes = {
   buttonConfig: React.PropTypes.object.isRequired
 };
-
-export default Button;
