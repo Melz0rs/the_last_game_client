@@ -1,4 +1,4 @@
-import Listener from '../classes/Listener';
+import Sensor from '../classes/Sensor';
 import MovementSensor from '../classes/MovementSensor';
 import Runner from '../classes/Runner';
 import Servo from '../classes/Servo';
@@ -34,7 +34,7 @@ export default {
             }));
             break;
           default:
-            listeners.push(new Listener({
+            listeners.push(new Sensor({
               pin: listenerConfig.pin,
               board,
               name: listenerConfig.name,
@@ -87,9 +87,9 @@ export default {
     });
   },
 
-  registerPins: function(onChange) {
+  registerEvents: function(onChange) {
     listeners.forEach(listener => {
-      listener.registerPins(onChange);
+      listener.registerEvents(onChange);
     });
   },
 

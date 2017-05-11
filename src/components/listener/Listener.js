@@ -8,7 +8,7 @@ export default class Listener extends React.Component {
   }
 
   componentWillMount () {
-    this.props.listenerConfig.subscribe((listenerValue) => {
+    this.props.listenerConfig.subscribe(listenerValue => {
       this.setState( { stateClass: listenerValue === 0 ? 'has-signal' : 'no-signal'} );
     });
 

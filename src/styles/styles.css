@@ -1,7 +1,11 @@
 .has-signal {
-  color: green;
+  border-radius: 5px;
+  border: 1px black solid;
+  background-color: green;
 }
 
 .no-signal {
-  color: red;
+  border-radius: 5px;
+  border: 1px black solid;
+  background-color: red;
 }

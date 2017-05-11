@@ -12,9 +12,16 @@ export default {
   throwCutter: 'throwCutter',
   toggleOperativeWallKidsRoom: 'toggleOperativeWallKidsRoom',
   toggleLettersMagnets: 'toggleLettersMagnets',
-  toggleVanityLight: 'toggleVanityLight',
   flashLightnings: 'flashLightnings',
   dropVase: 'dropVase',
   toggleMomClosetMagnet: 'toggleMomClosetMagnet',
-  toggleVitrinaDoor: 'toggleVitrinaDoor'
+  toggleVitrinaDoor: 'toggleVitrinaDoor',
+  toggleVaseServoRelay: 'toggleVaseServoRelay',
+  toggleNextToBedLightLeft: 'toggleNextToBedLightLeft',
+  toggleNextToBedLightRight: 'toggleNextToBedLightRight',
+  toggleKidsRoomLight1: 'toggleKidsRoomLight1',
+  toggleKidsRoomLight2: 'toggleKidsRoomLight2',
+  toggleKidsRoomLight3: 'toggleKidsRoomLight3',
+  toggleBedroomWallLight: 'toggleBedroomWallLight'
+
 };

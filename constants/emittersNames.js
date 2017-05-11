@@ -1,6 +1,5 @@
 export default {
   closetToBedroomRelay: 'closetToBedroomRelay',
-  bedroomVanityLightRelay: 'bedroomVanityLightRelay',
   mirrorRelay: 'mirrorRelay',
   holeRelay: 'holeRelay',
   memorialLightRelay: 'memorialLightRelay',
@@ -9,6 +8,7 @@ export default {
   dollRelay: 'dollRelay',
   airConditionerHatchServo: 'airConditionerHatchServo',
   airConditionerVisherServo: 'airConditionerVisherServo',
+  airConditionerServosRelay: 'airConditionerServosRelay',
   operativeWallKidsRoomRelay: 'operativeWallKidsRoomRelay',
   lettersMagnetsRelay: 'lettersMagnetsRelay',
   vanityLightRelay: 'vanityLightRelay',
@@ -16,5 +16,15 @@ export default {
   lightningRelay: 'lightningRelay',
   momClosetRelay: 'momClosetRelay',
   operativeVitrinaRelay: 'operativeVitrinaRelay',
-  vaseServoRelay: 'vaseServoRelay'
+  vaseServoRelay: 'vaseServoRelay',
+  nextToBedLightLeft: 'nextToBedLightLeft',
+  nextToBedLightRight: 'nextToBedLightRight',
+  kidsroomLight1: 'kidsroomLight1',
+  kidsroomLight2: 'kidsroomLight2',
+  kidsroomLight3: 'kidsroomLight3',
+  bedroomWallLight: 'bedroomWallLight',
+  livingRoomLight1: 'livingRoomLight1',
+  livingRoomLight2: 'livingRoomLight2',
+  livingRoomLight3: 'livingRoomLight3'
+
 };

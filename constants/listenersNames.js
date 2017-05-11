@@ -14,5 +14,8 @@ export default {
   drawerMovementSensor: 'drawerMovementSensor',
   clockReadswitch1: 'clockReadswitch1',
   clockReadswitch2: 'clockReadswitch2',
-
+  railReadswitch: 'railReadswitch',
+  candlestickReadswitch1: 'candlestickReadswitch1',
+  candlestickReadswitch2: 'candlestickReadswitch2',
+  candlestickReadswitch3: 'candlestickReadswitch3'
 }
