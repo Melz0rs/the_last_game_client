@@ -6,6 +6,7 @@ export default {
   airConditionerRelay: 'airConditionerRelay',
   holeExitRelay: 'holeExitRelay',
   dollRelay: 'dollRelay',
+  playingBoxRelay: 'playingBoxRelay',
   airConditionerHatchServo: 'airConditionerHatchServo',
   airConditionerVisherServo: 'airConditionerVisherServo',
   airConditionerServosRelay: 'airConditionerServosRelay',
@@ -19,12 +20,21 @@ export default {
   vaseServoRelay: 'vaseServoRelay',
   nextToBedLightLeft: 'nextToBedLightLeft',
   nextToBedLightRight: 'nextToBedLightRight',
+  bedroomWallLight: 'bedroomWallLight',
   kidsroomLight1: 'kidsroomLight1',
   kidsroomLight2: 'kidsroomLight2',
   kidsroomLight3: 'kidsroomLight3',
-  bedroomWallLight: 'bedroomWallLight',
   livingRoomLight1: 'livingRoomLight1',
   livingRoomLight2: 'livingRoomLight2',
-  livingRoomLight3: 'livingRoomLight3'
-
+  livingRoomLight3: 'livingRoomLight3',
+  livingRoomLight4: 'livingRoomLight4',
+  livingRoomLight5: 'livingRoomLight5',
+  hallwayLight1: 'hallwayLight1',
+  hallwayLight2: 'hallwayLight2',
+  hallwayLight3: 'hallwayLight3',
+  hallwayLight4: 'hallwayLight4',
+  hallwayLight5: 'hallwayLight5',
+  hallwayLight6: 'hallwayLight6',
+  boidemDoorRelay: 'boidemDoorRelay',
+  boidemNoiserRelay: 'boidemNoiserRelay'
 };

@@ -90,22 +90,29 @@ export default class Action {
 
   playMp3() {
     if (this.mp3) {
-      const tracks = this.mp3Config.tracks;
-      const timeouts = this.mp3Config.timeouts;
+      if (this.mp3Config.toOpen) {
+        boardsSetupService.closeOpenedMp3s();
+        const that = this;
 
-      for (let i = 0; i < tracks.length; i++) {
-        const track = tracks[i];
-        let timeout = 0;
+        that.mp3.open();
+      } else {
+        const tracks = this.mp3Config.tracks;
+        const timeouts = this.mp3Config.timeouts;
 
-        if (timeouts) {
-          for (let j = 0; j <= i; j++) {
-            timeout += timeouts[j];
+        for (let i = 0; i < tracks.length; i++) {
+          const track = tracks[i];
+          let timeout = 0;
+
+          if (timeouts) {
+            for (let j = 0; j <= i; j++) {
+              timeout += timeouts[j];
+            }
           }
-        }
 
-        this.mp3TimeoutPromises.push(setTimeout(() => {
-          this.mp3.play(track);
-        }, timeout));
+          this.mp3TimeoutPromises.push(setTimeout(() => {
+            this.mp3.play(track);
+          }, timeout));
+        }
       }
     }
   }
@@ -158,7 +165,7 @@ export default class Action {
 
     this.mp3TimeoutPromises.forEach(timeoutPromise => {
       clearTimeout(timeoutPromise);
-      this.mp3.stop();
+      // this.mp3.stop();
     });
 
     this.toggleRunnerState();

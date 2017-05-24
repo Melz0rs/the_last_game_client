@@ -21,7 +21,8 @@ const ioServer = io(server);
 
 
 const ports = [
-  { id: "A", port: 'COM21' }
+  { id: "A", port: 'COM21' },
+  { id: "B", port: 'COM22' }
 ];
 
 let clients = [];
@@ -41,6 +42,7 @@ function resetGame() {
   const listeners = boardsSetupService.getListeners();
   const emitters = boardsSetupService.getEmitters();
   const runners = boardsSetupService.getRunners();
+  const mp3s = boardsSetupService.getMp3s();
 
   listeners.forEach(listener => {
     listener.reset();
@@ -53,10 +55,14 @@ function resetGame() {
   emitters.forEach(emitter => {
     emitter.reset();
   });
+
+  mp3s.forEach(mp3 => {
+      mp3.reset();
+  });
 }
 
 function emitChangesToClient(listenerName, listenerValue) {
-  console.log(listenerName, listenerValue);
+  // console.log(listenerName, listenerValue);
   clients.forEach(client => {
     client.emit(listenerName, listenerValue);
   });

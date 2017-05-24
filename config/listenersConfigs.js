@@ -66,18 +66,27 @@ export default [
       pin: 8,
       actionName: actionNames.toggleMomClosetMagnet,
       name: listenersNames.candlestickReadswitch2
-    }, {
-      pin: 9,
-      actionName: actionNames.toggleMomClosetMagnet,
-      name: listenersNames.candlestickReadswitch3
-    }, {
-      pin: 10,
-      actionName: actionNames.toggleHoleExitMagnet,
-      name: listenersNames.railReadswitch
-    }, {
+    },
+    // {
+    //   pin: 9,
+    //   actionName: actionNames.toggleMomClosetMagnet,
+    //   name: listenersNames.candlestickReadswitch3
+    // },
+    // {
+    //   pin: 'A14', // was 10
+    //   actionName: actionNames.toggleHoleExitMagnet,
+    //   name: listenersNames.railReadswitch
+    // },
+    {
       pin: 11,
       actionName: actionNames.toggleHoleExitMagnet,
       name: listenersNames.bedroomMemorialLightReadswitch
+    }
+  ], [
+    {
+      pin: '22', // was 10
+      actionName: actionNames.toggleHoleExitMagnet,
+      name: listenersNames.railReadswitch
     }
   ]
 ];

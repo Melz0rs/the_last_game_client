@@ -104,7 +104,7 @@ export default [
       }
     }, {
       pin: 45,
-      name: emittersNames.livingRoomLight1,
+      name: emittersNames.livingRoomLight5,
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.open
@@ -155,7 +155,7 @@ export default [
       name: emittersNames.airConditionerVisherServo,
       emitterType: emitterTypes.servo,
       range: [0, 180],
-      startAt: 160
+      startAt: 177
     }, {
       pin: 2,
       name: emittersNames.vaseServo,
@@ -175,6 +175,99 @@ export default [
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.open
+      }
+    }, {
+      pin: 21,
+      name: emittersNames.livingRoomLight1,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.open
+      }
+    }, {
+      pin: 20,
+      name: emittersNames.livingRoomLight2,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.open
+      }
+    }, {
+      pin: 13,
+      name: emittersNames.livingRoomLight3,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.open
+      }
+    }, {
+    pin: 19,
+    name: emittersNames.hallwayLight6,
+    emitterType: emitterTypes.relay,
+    defaults: {
+      method: relayMethods.close
+    }
+    }, {
+      pin: 18,
+      name: emittersNames.hallwayLight5,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 17,
+      name: emittersNames.hallwayLight4,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 16,
+      name: emittersNames.hallwayLight2,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 15,
+      name: emittersNames.hallwayLight3,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 14,
+      name: emittersNames.hallwayLight1,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }
+  ], [
+    {
+      pin: 24,
+      name: emittersNames.livingRoomLight4,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.open
+      }
+    }, {
+      pin: 33,
+      name: emittersNames.boidemNoiserRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 31,
+      name: emittersNames.boidemDoorRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }, {
+      pin: 32,
+      name: emittersNames.playingBoxRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
       }
     }
   ]

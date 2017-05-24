@@ -1,4 +1,5 @@
 export default {
   bedroomVanityLightRunner: 'bedroomVanityLightRunner',
-  lightningRunner: 'lightningRunner'
+  lightningRunner: 'lightningRunner',
+  twinkleTwinkleLights: 'twinkleTwinkleLights'
 };

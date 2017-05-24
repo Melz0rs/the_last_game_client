@@ -6,6 +6,7 @@ export default class Sensor extends Listener {
     super(config);
 
     this.sensor = new arduino.Sensor({pin: this.pin, board: this.board, type: "digital"});
+    this.actionExecutedCount = 0;
   }
 
   registerEvents(onChange) {
@@ -15,12 +16,17 @@ export default class Sensor extends Listener {
     const sensor = this.sensor;
 
     sensor.on("change", () => {
-      const val = sensor.value;
-      this.currentValue = val;
+      if(this.actionExecutedCount >= 2) {
+        const val = sensor.value;
+        this.currentValue = val;
 
-      onChange(this.name, val);
-      this.executeAction(val);
+        onChange(this.name, val);
+        this.executeAction(val);
+      }
+
+      this.actionExecutedCount++;
     });
+
   }
 
   emitSignalValue() {

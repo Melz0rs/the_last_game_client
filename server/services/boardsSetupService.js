@@ -133,6 +133,10 @@ export default {
     return listeners;
   },
 
+  getMp3s: function() {
+    return mp3s;
+  },
+
   getEmitters: function() {
     return emitters;
   },
@@ -155,6 +159,14 @@ export default {
 
   getMp3: function(name) {
     return utils.getFirstInstance(mp3s, 'name', name);
+  },
+
+  closeOpenedMp3s: function() {
+    mp3s.filter(mp3 => {
+      return mp3.isOpen;
+    }).forEach(mp3 => {
+      mp3.close();
+    });
   }
 
 };
