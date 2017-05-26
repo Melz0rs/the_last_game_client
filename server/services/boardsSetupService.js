@@ -1,4 +1,5 @@
 import Sensor from '../classes/Sensor';
+import Proximity from '../classes/Proximity';
 import MovementSensor from '../classes/MovementSensor';
 import Runner from '../classes/Runner';
 import Servo from '../classes/Servo';
@@ -27,6 +28,14 @@ export default {
         switch(listenerConfig.listenerType) {
           case listenerTypes.movementSensor:
             listeners.push(new MovementSensor({
+              pin: listenerConfig.pin,
+              board,
+              name: listenerConfig.name,
+              actionName: listenerConfig.actionName
+            }));
+            break;
+          case listenerTypes.proximity:
+            listeners.push(new Proximity({
               pin: listenerConfig.pin,
               board,
               name: listenerConfig.name,
@@ -113,7 +122,7 @@ export default {
 
   SetMp3ForActions: function() {
     actions.forEach(action => {
-      action.setMp3(0);
+      action.setMp3s(0);
     });
   },
 

@@ -11,15 +11,21 @@ export default class Action {
     this.expectedListeners = config.expectedListeners;
     this.runnerName = config.runnerName;
     this.emitterConfigs = config.emitterConfigs;
-    this.mp3Config = config.mp3Config;
+    this.mp3Configs = config.mp3Configs;
 
     this.reset();
 
   }
 
-  setMp3() {
-    if(this.mp3Config) {
-      this.mp3 = boardsSetupService.getMp3(this.mp3Config.name);
+  setMp3s() {
+    if(this.mp3Configs) {
+      this.mp3s = [];
+
+      this.mp3Configs.forEach(config => {
+        const currentMp3 = boardsSetupService.getMp3(config.name);
+
+        this.mp3s.push(currentMp3);
+      });
     }
   }
 
@@ -62,7 +68,7 @@ export default class Action {
       console.log('action executed, action: ', this.name);
 
       this.toggleRunnerState();
-      this.playMp3();
+      this.playMp3s();
 
       this.actionExecuted = true;
       const emittersTimeouts = this.emittersTimeouts;
@@ -88,32 +94,40 @@ export default class Action {
     }
   }
 
-  playMp3() {
-    if (this.mp3) {
-      if (this.mp3Config.toOpen) {
-        boardsSetupService.closeOpenedMp3s();
-        const that = this;
+  playMp3s() {
+    if (this.mp3s) {
 
-        that.mp3.open();
-      } else {
-        const tracks = this.mp3Config.tracks;
-        const timeouts = this.mp3Config.timeouts;
+      this.mp3Configs.forEach((mp3Config, i) => {
+        const mp3 = this.mp3s[i];
 
-        for (let i = 0; i < tracks.length; i++) {
-          const track = tracks[i];
-          let timeout = 0;
+        if (mp3Config.state) {
+          boardsSetupService.closeOpenedMp3s();
 
-          if (timeouts) {
-            for (let j = 0; j <= i; j++) {
-              timeout += timeouts[j];
-            }
-          }
-
-          this.mp3TimeoutPromises.push(setTimeout(() => {
-            this.mp3.play(track);
-          }, timeout));
+          setTimeout(function () {
+            mp3.open();
+          }, mp3Config.state.timeout);
         }
-      }
+
+        const tracks = mp3Config.tracks;
+        const timeouts = mp3Config.timeouts;
+
+        if (tracks) {
+          for (let i = 0; i < tracks.length; i++) {
+            const track = tracks[i];
+            let timeout = 0;
+
+            if (timeouts) {
+              for (let j = 0; j <= i; j++) {
+                timeout += timeouts[j];
+              }
+            }
+
+            this.mp3TimeoutPromises.push(setTimeout(() => {
+              mp3.play(track);
+            }, timeout));
+          }
+        }
+      });
     }
   }
 

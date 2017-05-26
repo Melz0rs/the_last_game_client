@@ -29,6 +29,10 @@ export default {
 
   Sensor: (config) => {
     return five.Sensor.call(config.board, config);
+  },
+
+  Proximity: (config) => {
+    return five.Proximity(config);
   }
 
 };

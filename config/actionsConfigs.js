@@ -4,31 +4,16 @@ import listenersNames from '../constants/listenersNames';
 import runnersNames from '../constants/runnersNames';
 import mp3sNames from '../constants/mp3sNames';
 import relayMethods from '../constants/relayMethods';
+import gameActions from './gameActionsConfig';
 
-
-export default [
+let actions =  [
   {
     name: actionNames.toggleClosetToBedroomMagnet,
     emitterConfigs: [
       emittersNames.closetToBedroomRelay
     ],
     emittersTimeouts: [0],
-    expectedListeners: [
-      {
-        listenerName: listenersNames.drawer1Readswitch,
-        listenerValues: [0]
-      }, {
-        listenerName: listenersNames.drawer2Readswitch,
-        listenerValues: [0]
-      }, {
-        listenerName: listenersNames.drawer3Readswitch,
-        listenerValues: [0]
-      }
-      , {
-        listenerName: listenersNames.drawer4Readswitch,
-        listenerValues: [0]
-      }
-    ]
+    expectedListeners: []
   }, {
     name: actionNames.flashBedroomVanityLight,
     emitterConfigs: [
@@ -70,13 +55,13 @@ export default [
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
-      name: actionNames.toggleNextToBedLightRight,
-      emitterConfigs: [
-        emittersNames.nextToBedLightRight
-      ],
-      emittersTimeouts: [0],
-      expectedListeners: []
-    }, {
+    name: actionNames.toggleNextToBedLightRight,
+    emitterConfigs: [
+      emittersNames.nextToBedLightRight
+    ],
+    emittersTimeouts: [0],
+    expectedListeners: []
+  }, {
     name: actionNames.toggleVaseServoRelay,
     emitterConfigs: [
       emittersNames.vaseServoRelay
@@ -326,13 +311,6 @@ export default [
       }
     ]
   }, {
-    name: actionNames.toggleClosetToBedroomMagnet,
-    emitterConfigs: [
-      emittersNames.closetToBedroomRelay
-    ],
-    emittersTimeouts: [0],
-    expectedListeners: []
-  }, {
     name: actionNames.toggleDollMagnet,
     emitterConfigs: [
       emittersNames.dollRelay
@@ -367,18 +345,6 @@ export default [
     ],
     emittersTimeouts: [0, 20000],
     expectedListeners: []
-  }, {
-    name: actionNames.toggleLettersMagnets,
-    emitterConfigs: [
-      emittersNames.lettersMagnetsRelay
-    ],
-    emittersTimeouts: [0],
-    expectedListeners: [
-      {
-        listenerName: listenersNames.drawerMovementSensor,
-        listenerValues: [0]
-      }
-    ]
   }, {
     name: actionNames.toggleLettersMagnets,
     emitterConfigs: [
@@ -603,19 +569,29 @@ export default [
     emitterConfigs: [
     ],
     emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      toOpen: true
-    }
+    mp3Configs: [
+      {
+        name: mp3sNames.kidsRoomSoundEffects,
+        state: {
+          open: true,
+          timeout: 0
+        }
+      }
+    ]
   }, {
     name: actionNames.openLivingRoomMp3,
     emitterConfigs: [
     ],
     emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      toOpen: true
-    }
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        state: {
+          open: true,
+          timeout: 0
+        }
+      }
+    ]
   }, {
     name: actionNames.playTrack1LivingRoom,
     emitterConfigs: [
@@ -767,6 +743,46 @@ export default [
       timeouts: []
     }
   }, {
+    name: actionNames.playTrack16LivingRoom,
+    emitterConfigs: [
+    ],
+    emittersTimeouts: [],
+    mp3Config: {
+      name: mp3sNames.livingRoomSoundEffects,
+      tracks: ['g'],
+      timeouts: []
+    }
+  }, {
+    name: actionNames.playTrack17LivingRoom,
+    emitterConfigs: [
+    ],
+    emittersTimeouts: [],
+    mp3Config: {
+      name: mp3sNames.livingRoomSoundEffects,
+      tracks: ['h'],
+      timeouts: []
+    }
+  }, {
+    name: actionNames.playTrack18LivingRoom,
+    emitterConfigs: [
+    ],
+    emittersTimeouts: [],
+    mp3Config: {
+      name: mp3sNames.livingRoomSoundEffects,
+      tracks: ['i'],
+      timeouts: []
+    }
+  }, {
+    name: actionNames.playTrack19LivingRoom,
+    emitterConfigs: [
+    ],
+    emittersTimeouts: [],
+    mp3Config: {
+      name: mp3sNames.livingRoomSoundEffects,
+      tracks: ['j'],
+      timeouts: []
+    }
+  }, {
     name: actionNames.playTrack1KidsRoom,
     emitterConfigs: [
     ],
@@ -858,3 +874,8 @@ export default [
     }
   }
 ];
+
+actions = actions.concat(gameActions);
+
+
+export default actions;

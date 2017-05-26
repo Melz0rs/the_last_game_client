@@ -17,5 +17,6 @@ export default {
   railReadswitch: 'railReadswitch',
   candlestickReadswitch1: 'candlestickReadswitch1',
   candlestickReadswitch2: 'candlestickReadswitch2',
-  candlestickReadswitch3: 'candlestickReadswitch3'
+  candlestickReadswitch3: 'candlestickReadswitch3',
+  hallwayProximitySensor: 'hallwayProximitySensor'
 }

@@ -29,49 +29,48 @@ export default [
       name: listenersNames.kidsroomPicture6Readswitch
     }, {
       pin: 25,
-      actionName: actionNames.toggleClosetToBedroomMagnet,
+      actionName: actionNames.openClosetToBedroomEffect,
       name: listenersNames.drawer1Readswitch
     }, {
       pin: 24,
-      actionName: actionNames.toggleClosetToBedroomMagnet,
+      actionName: actionNames.openClosetToBedroomEffect,
       name: listenersNames.drawer2Readswitch
     }, {
       pin: 23,
-      actionName: actionNames.toggleClosetToBedroomMagnet,
+      actionName: actionNames.openClosetToBedroomEffect,
       name: listenersNames.drawer3Readswitch
     },
      {
        pin: 22,
-       actionName: actionNames.toggleClosetToBedroomMagnet,
+       actionName: actionNames.openClosetToBedroomEffect,
        name: listenersNames.drawer4Readswitch
      },
     {
       pin: 4,
-      actionName: actionNames.throwCutter,
+      actionName: actionNames.throwCutterEffect,
       name: listenersNames.clockReadswitch1
     }, {
       pin: 5,
-      actionName: actionNames.throwCutter,
+      actionName: actionNames.throwCutterEffect,
       name: listenersNames.clockReadswitch2
     }, {
       pin: 6,
-      actionName: actionNames.toggleLettersMagnets,
+      actionName: actionNames.dropLettersEffect,
       name: listenersNames.drawerMovementSensor,
       listenerType: listenerTypes.movementSensor
     }, {
       pin: 7,
-      actionName: actionNames.toggleMomClosetMagnet,
+      actionName: actionNames.openBedroomCloset,
       name: listenersNames.candlestickReadswitch1
     }, {
       pin: 8,
-      actionName: actionNames.toggleMomClosetMagnet,
+      actionName: actionNames.openBedroomCloset,
       name: listenersNames.candlestickReadswitch2
+    }, {
+      pin: 9,
+      actionName: actionNames.openBedroomCloset,
+      name: listenersNames.candlestickReadswitch3
     },
-    // {
-    //   pin: 9,
-    //   actionName: actionNames.toggleMomClosetMagnet,
-    //   name: listenersNames.candlestickReadswitch3
-    // },
     // {
     //   pin: 'A14', // was 10
     //   actionName: actionNames.toggleHoleExitMagnet,
@@ -79,8 +78,8 @@ export default [
     // },
     {
       pin: 11,
-      actionName: actionNames.toggleHoleExitMagnet,
-      name: listenersNames.bedroomMemorialLightReadswitch
+      actionName: actionNames.openMemorialLight,
+      name: listenersNames.bedroomVanityPictureReadswitch
     }
   ], [
     {
@@ -88,5 +87,16 @@ export default [
       actionName: actionNames.toggleHoleExitMagnet,
       name: listenersNames.railReadswitch
     }
+    , {
+      pin: '35',
+      actionName: actionNames.openBedroomLights,
+      name: listenersNames.bedroomMemorialLightReadswitch
+    }
+    // , {
+    //   pin: '34',
+    //   actionName: actionNames.toggleHoleExitMagnet,
+    //   name: listenersNames.hallwayProximitySensor,
+    //   listenerType: listenerTypes.proximity
+    // }
   ]
 ];
