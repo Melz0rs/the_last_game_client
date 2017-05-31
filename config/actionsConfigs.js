@@ -238,6 +238,13 @@ let actions =  [
     ],
     emittersTimeouts: [0],
     expectedListeners: []
+  },{
+    name: actionNames.toggleFirePlaceCutterMagnet,
+    emitterConfigs: [
+      emittersNames.fireplaceCutterMagnetRelay
+    ],
+    emittersTimeouts: [0],
+    expectedListeners: []
   }, {
     name: actionNames.toggleKidsRoomLight3,
     emitterConfigs: [
@@ -305,16 +312,59 @@ let actions =  [
   }, {
     name: actionNames.flashLightnings,
     emitterConfigs: [
-      emittersNames.lightningRelay
-      // emittersNames.lightningReay
-      // emittersNames.lightningRelay,
-      // emittersNames.lightningRelay,
-      // emittersNames.lightningRelay,
-      // emittersNames.lightningRelay,
-      // emittersNames.lightningRelay,
-      // emittersNames.lightningRelay
+      {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.close
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.open
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.close
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.open
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.close
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.open
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.close
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.open
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.close
+        }
+      }, {
+        name: emittersNames.lightningRelay,
+        config: {
+          method:relayMethods.open
+        }
+      }
     ],
-    emittersTimeouts: [1000],
+    emittersTimeouts: [500, 200, 1500, 150, 3000, 150, 300, 100, 10000, 150],
     expectedListeners: []
   }, {
     name : actionNames.throwCutter,

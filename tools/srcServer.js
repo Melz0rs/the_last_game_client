@@ -43,6 +43,7 @@ function resetGame() {
   const emitters = boardsSetupService.getEmitters();
   const runners = boardsSetupService.getRunners();
   const mp3s = boardsSetupService.getMp3s();
+  const actions = boardsSetupService.getActions();
 
   listeners.forEach(listener => {
     listener.reset();
@@ -58,6 +59,10 @@ function resetGame() {
 
   mp3s.forEach(mp3 => {
       mp3.reset();
+  });
+
+  actions.forEach(action => {
+    action.reset();
   });
 }
 

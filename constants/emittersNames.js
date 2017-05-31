@@ -38,5 +38,6 @@ export default {
   boidemDoorRelay: 'boidemDoorRelay',
   boidemNoiserRelay: 'boidemNoiserRelay',
   airConditionerCutterMagnetRelay: 'airConditionerCutterMagnetRelay',
-  suicidedCandleRelay: 'suicidedCandleRelay'
+  suicidedCandleRelay: 'suicidedCandleRelay',
+  fireplaceCutterMagnetRelay: 'fireplaceCutterMagnetRelay'
 };

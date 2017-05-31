@@ -44,7 +44,7 @@ export default [
       name: emittersNames.airConditionerRelay,
       emitterType: emitterTypes.relay,
       defaults: {
-        method: relayMethods.open
+        method: relayMethods.close
       }
     }, {
       pin: 47,
@@ -273,11 +273,18 @@ export default [
         method: relayMethods.open
       }
     }, {
+      pin: 28,
+      name: emittersNames.fireplaceCutterMagnetRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.open
+      }
+    }, {
       pin: 27,
       name: emittersNames.suicidedCandleRelay,
       emitterType: emitterTypes.relay,
       defaults: {
-        method: relayMethods.close
+        method: relayMethods.open
       }
     }
     // , {

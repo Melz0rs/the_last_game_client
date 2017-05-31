@@ -146,6 +146,10 @@ export default {
     return mp3s;
   },
 
+  getActions: function() {
+    return actions;
+  },
+
   getEmitters: function() {
     return emitters;
   },

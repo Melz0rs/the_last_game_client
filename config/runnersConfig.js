@@ -11,9 +11,5 @@ export default [
     name: runnersNames.lightningRunner,
     actionName: actionsNames.flashLightnings,
     defaultState: states.stopped
-  }, {
-    name: runnersNames.twinkleTwinkleLights,
-    actionName: actionsNames.twinkleTwinkleLights,
-    defaultState: states.stopped
   }
 ];

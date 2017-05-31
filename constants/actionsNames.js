@@ -12,6 +12,7 @@ export default {
   toggleAirConditionerMagnet: 'toggleAirConditionerMagnet',
   toggleHoleExitMagnet: 'toggleHoleExitMagnet',
   toggleDollMagnet: 'toggleDollMagnet',
+  toggleFirePlaceCutterMagnet: 'toggleFirePlaceCutterMagnet',
   throwCutter: 'throwCutter',
   toggleLettersMagnets: 'toggleLettersMagnets',
   flashLightnings: 'flashLightnings',

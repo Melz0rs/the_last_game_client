@@ -104,9 +104,14 @@ export default [
         config: {
           method: relayMethods.open
         }
+      }, {
+        name: emittersNames.airConditionerRelay,
+        config: {
+          method: relayMethods.open
+        }
       }
     ],
-    emittersTimeouts: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // Close all lights and open light4 in living room
+    emittersTimeouts: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // Close all lights and open light4 in living room
     expectedListeners: []
   }, {
     name: actionNames.startGame,
@@ -479,7 +484,7 @@ export default [
     expectedListeners: [
       {
         listenerName: listenersNames.bedroomVanityPictureReadswitch, // TODO: Change to memorialLightReedswitch
-        listenerValues: [0]
+        listenerValues: [1]
       }
     ], mp3Configs: [
       {
@@ -509,7 +514,7 @@ export default [
       },{
         name: emittersNames.suicidedCandleRelay,
         config: {
-          method: relayMethods.open
+          method: relayMethods.close
         }
       }, {
         name: emittersNames.nextToBedLightLeft,
@@ -596,7 +601,7 @@ export default [
       {
         name: emittersNames.suicidedCandleRelay,
         config: {
-          method: relayMethods.close
+          method: relayMethods.open
         }
       }, {
         name: emittersNames.livingRoomLight1,
@@ -1292,7 +1297,7 @@ export default [
       6300, 0, // Close bedroom lights
       1500, // Close living room light
 
-      7000, 0, 100, 0, 100, 0, // Twinkle twinkle lights sync
+      8600, 0, 100, 0, 100, 0, // Twinkle twinkle lights sync
       24100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0,
       13800, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0,
       4200, 0, 100, 0, 100, 0, 100, 0,
@@ -1499,6 +1504,11 @@ export default [
     name: actionNames.openHoleExitEffect,
     emitterConfigs: [
       {
+        name: emittersNames.holeExitRelay,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
         name: emittersNames.kidsroomLight1,
         config: {
           method: relayMethods.close
@@ -1514,15 +1524,40 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.holeExitRelay,
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
         config: {
           method: relayMethods.close
         }
-      },
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }
     ],
     emittersTimeouts: [
-      3000, 3000, 3000, // open kidsroom lights
-      3000 // Open exit
+      500,  // Open exit
+      1500, 0, 0, 150, 0, 0, 100, 0, 0 // Flash kidsroom lights
     ],
     expectedListeners: [
       {
