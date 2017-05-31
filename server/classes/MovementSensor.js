@@ -16,9 +16,9 @@ export default class MovementSensor extends Listener { // TODO: Inherit from lis
     let executeActionTimeout;
 
     this.motion.on("motionstart", () => {
-      console.log('movementstart');
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
+          console.log('movementstart');
           onChange(this.name, 0);
           this.executeAction(0);
           executeActionTimeout = null;
@@ -31,9 +31,9 @@ export default class MovementSensor extends Listener { // TODO: Inherit from lis
     });
 
     this.motion.on("motionend", () => {
-      console.log('movementend');
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
+          console.log('movementend');
           onChange(this.name, 1);
           this.executeAction(1);
           executeActionTimeout = null;

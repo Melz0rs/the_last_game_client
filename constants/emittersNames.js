@@ -36,5 +36,7 @@ export default {
   hallwayLight5: 'hallwayLight5',
   hallwayLight6: 'hallwayLight6',
   boidemDoorRelay: 'boidemDoorRelay',
-  boidemNoiserRelay: 'boidemNoiserRelay'
+  boidemNoiserRelay: 'boidemNoiserRelay',
+  airConditionerCutterMagnetRelay: 'airConditionerCutterMagnetRelay',
+  suicidedCandleRelay: 'suicidedCandleRelay'
 };

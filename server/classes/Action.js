@@ -101,9 +101,10 @@ export default class Action {
         const mp3 = this.mp3s[i];
 
         if (mp3Config.state) {
-          boardsSetupService.closeOpenedMp3s();
 
           setTimeout(function () {
+            boardsSetupService.closeOpenedMp3s();
+
             mp3.open();
           }, mp3Config.state.timeout);
         }
@@ -145,7 +146,7 @@ export default class Action {
   }
 
   checkCondition() {
-    // if(this.actionExecuted) { return false; }
+    if(this.actionExecuted) { return false; }
     let condition = true;
 
     const expectedListeners = this.expectedListeners;

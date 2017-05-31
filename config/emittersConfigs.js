@@ -144,34 +144,23 @@ export default [
       defaults: {
         method: relayMethods.open
       }
-    }, {
+    },
+    {
       pin: 27,
       name: emittersNames.airConditionerHatchServo,
       emitterType: emitterTypes.servo,
       range: [0, 180],
-      startAt: 0
-    }, {
-      pin: 26,
-      name: emittersNames.airConditionerVisherServo,
-      emitterType: emitterTypes.servo,
-      range: [0, 180],
-      startAt: 177
-    }, {
+      startAt: 10
+    },
+    {
       pin: 2,
       name: emittersNames.vaseServo,
       emitterType: emitterTypes.servo,
       range: [0, 180],
       startAt: 8
     }, {
-      pin: 3,
-      name: emittersNames.nextToBedLightRight,
-      emitterType: emitterTypes.relay,
-      defaults: {
-        method: relayMethods.open
-      }
-    }, {
       pin: 12,
-      name: emittersNames.airConditionerServosRelay,
+      name: emittersNames.airConditionerCutterMagnetRelay,
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.open
@@ -239,6 +228,13 @@ export default [
       defaults: {
         method: relayMethods.close
       }
+    }, {
+      pin: 3,
+      name: emittersNames.airConditionerServosRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
     }
   ], [
     {
@@ -269,7 +265,28 @@ export default [
       defaults: {
         method: relayMethods.close
       }
+    }, {
+      pin: 26,
+      name: emittersNames.nextToBedLightRight,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.open
+      }
+    }, {
+      pin: 27,
+      name: emittersNames.suicidedCandleRelay,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
     }
+    // , {
+    //   pin: 34,
+    //   name: emittersNames.airConditionerHatchServo,
+    //   emitterType: emitterTypes.servo,
+    //   range: [0, 180],
+    //   startAt: 10
+    // }
   ]
 
 ];

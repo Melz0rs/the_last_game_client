@@ -15,20 +15,6 @@ let actions =  [
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
-    name: actionNames.flashBedroomVanityLight,
-    emitterConfigs: [
-      emittersNames.vanityLightRelay,
-      emittersNames.vanityLightRelay,
-      emittersNames.vanityLightRelay,
-      emittersNames.vanityLightRelay,
-      emittersNames.vanityLightRelay,
-      emittersNames.vanityLightRelay,
-      emittersNames.vanityLightRelay,
-      emittersNames.vanityLightRelay
-    ],
-    emittersTimeouts: [0, 150, 100, 100, 150, 200, 100, 150],
-    expectedListeners: []
-  },  {
     name: actionNames.toggleMirror,
     emitterConfigs: [
       emittersNames.mirrorRelay,
@@ -117,25 +103,7 @@ let actions =  [
     ],
     emittersTimeouts: [0],
     expectedListeners: []
-  }, {
-    name: actionNames.fadeHallwayLight,
-    emitterConfigs: [
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight6
-    ],
-    emittersTimeouts: [0, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000, 2000],
-    expectedListeners: []
-  }, {
+  },  {
     name: actionNames.toggleAllLights,
     emitterConfigs: [
       emittersNames.livingRoomLight1,
@@ -158,134 +126,6 @@ let actions =  [
     ],
     emittersTimeouts: [],
     expectedListeners: []
-  }, {
-    name: actionNames.fuckTal,
-    emitterConfigs: [
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight5,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight6,
-      emittersNames.hallwayLight4,
-      emittersNames.hallwayLight3,
-      emittersNames.hallwayLight2,
-      emittersNames.hallwayLight1,
-      emittersNames.hallwayLight3
-    ],
-    emittersTimeouts: [
-      0,
-      1000,
-      500,
-      500,
-      700,
-      1500,
-      300,
-      1000,
-      1500,
-      2000,
-      700,
-      1000,
-      1500,
-      1500,
-      300,
-      700,
-      600,
-      1000,
-      1000,
-      1000,
-      300,
-      200,
-      100,
-      200,
-      300,
-      2000,
-      1000,
-      300,
-      200,
-      500,
-      500,
-      700,
-      700,
-      0,
-      1000,
-      500,
-      500,
-      700,
-      1500,
-      300,
-      1000,
-      1500,
-      2000,
-      700,
-      1000,
-      1500,
-      1500,
-      300,
-      700,
-      600,
-      1000,
-      1000,
-      1000,
-      300,
-      200,
-      100,
-      200,
-      300,
-      2000,
-      1000,
-      300
-    ],
-    expectedListeners: []
   },{
     name: actionNames.toggleHoleDoor,
     emitterConfigs: [
@@ -293,22 +133,7 @@ let actions =  [
     ],
     emittersTimeouts: [0],
     expectedListeners: [
-      {
-        listenerName: listenersNames.kidsroomPicture1Readswitch,
-        listenerValues: [0]
-      }, {
-        listenerName: listenersNames.kidsroomPicture2Readswitch,
-        listenerValues: [0]
-      }, {
-        listenerName: listenersNames.kidsroomPicture3Readswitch,
-        listenerValues: [0]
-      }, {
-        listenerName: listenersNames.kidsroomPicture4Readswitch,
-        listenerValues: [0]
-      }, {
-        listenerName: listenersNames.kidsroomPicture5Readswitch,
-        listenerValues: [0]
-      }
+
     ]
   }, {
     name: actionNames.toggleDollMagnet,
@@ -407,6 +232,13 @@ let actions =  [
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
+    name: actionNames.toggleSuicidedCandle,
+    emitterConfigs: [
+      emittersNames.suicidedCandleRelay
+    ],
+    emittersTimeouts: [0],
+    expectedListeners: []
+  }, {
     name: actionNames.toggleKidsRoomLight3,
     emitterConfigs: [
       emittersNames.kidsroomLight3
@@ -487,42 +319,50 @@ let actions =  [
   }, {
     name : actionNames.throwCutter,
     emitterConfigs: [
-      emittersNames.airConditionerRelay,
-      emittersNames.airConditionerServosRelay,
       {
-        name: emittersNames.airConditionerHatchServo,
+        name: emittersNames.airConditionerRelay,
         config: {
-          to: 35
-        }
-      }
-      , {
-        name: emittersNames.airConditionerVisherServo,
-        config: {
-          to: 135
+          method: relayMethods.close
         }
       }, {
-        name: emittersNames.airConditionerVisherServo,
+        name: emittersNames.airConditionerServosRelay,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.airConditionerHatchServo,
+        config: {
+          to: 50
+        }
+      }, {
+        name: emittersNames.airConditionerCutterMagnetRelay,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.airConditionerCutterMagnetRelay,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.airConditionerRelay,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.airConditionerHatchServo,
         config: {
           to: -1
         }
-      }, {
-        name: emittersNames.airConditionerHatchServo,
+      },  {
+        name: emittersNames.airConditionerServosRelay,
         config: {
-          to: 0
+          method: relayMethods.close
         }
-      },
-      emittersNames.airConditionerServosRelay,
-      emittersNames.airConditionerRelay
-    ],
-    emittersTimeouts: [0, 0, 500, 2000, 1000, 1000, 1000, 0],
-    expectedListeners: [
-      {
-        listenerName: listenersNames.clockReadswitch1,
-        listenerValues: [0]
-      }, {
-        listenerName: listenersNames.clockReadswitch2,
-        listenerValues: [0]
       }
+    ],
+    emittersTimeouts: [0, 0, 500, 500, 500, 0, 0, 1000],
+    expectedListeners: [
     ]
   }, {
     name : actionNames.dropVase,
@@ -542,17 +382,6 @@ let actions =  [
       emittersNames.vaseServoRelay
     ],
     emittersTimeouts: [0, 200, 1000, 3000]
-  }, {
-    name: actionNames.twinkleTwinkle,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['3'],
-      timeouts: []
-    },
-    runnerName: runnersNames.twinkleTwinkleLights
   }, {
     name: actionNames.twinkleTwinkleLights,
     emitterConfigs: [
@@ -592,286 +421,6 @@ let actions =  [
         }
       }
     ]
-  }, {
-    name: actionNames.playTrack1LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['1'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack2LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['2'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack3LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['3'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack4LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['4'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack5LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['5'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack6LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['6'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack7LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['7'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack8LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['8'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack9LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['9'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack10LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['a'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack11LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['b'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack12LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['c'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack13LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['d'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack14LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['e'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack15LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['f'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack16LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['g'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack17LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['h'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack18LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['i'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack19LivingRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.livingRoomSoundEffects,
-      tracks: ['j'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack1KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['1'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack2KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['2'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack3KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['3'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack4KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['4'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack5KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['5'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack6KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['6'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack7KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['7'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack8KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['8'],
-      timeouts: []
-    }
-  }, {
-    name: actionNames.playTrack9KidsRoom,
-    emitterConfigs: [
-    ],
-    emittersTimeouts: [],
-    mp3Config: {
-      name: mp3sNames.kidsRoomSoundEffects,
-      tracks: ['9'],
-      timeouts: []
-    }
   }
 ];
 
