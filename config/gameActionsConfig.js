@@ -7,7 +7,7 @@ import relayMethods from '../constants/relayMethods';
 
 export default [
   {
-    name: actionNames.preGame,
+    name: actionNames.EFFECTpreGame,
     emitterConfigs: [
       {
         name: emittersNames.livingRoomLight4,
@@ -112,9 +112,34 @@ export default [
       }
     ],
     emittersTimeouts: [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0], // Close all lights and open light4 in living room
-    expectedListeners: []
+    expectedListeners: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        state:  {
+          open: true,
+          timeout: 0
+        },
+        tracks: ['4'],
+        timeouts: [5000]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        state:  {
+          open: true,
+          timeout: 7000
+        },
+        tracks: ['4'],
+        timeouts: [12000]
+      },  {
+        name: mp3sNames.livingRoomSoundEffects,
+        state:  {
+          open: true,
+          timeout: 15000
+        }
+      }
+    ]
   }, {
-    name: actionNames.startGame,
+    name: actionNames.EFFECTstartGame,
     emitterConfigs: [
       {
         name: emittersNames.livingRoomLight4,
@@ -231,7 +256,7 @@ export default [
       }
     ]
   }, {
-    name: actionNames.dropLettersEffect,
+    name: actionNames.EFFECTdropLettersEffect,
     emitterConfigs: [
       {
         name: emittersNames.livingRoomLight3,
@@ -284,11 +309,6 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.lettersMagnetsRelay,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
         name: emittersNames.livingRoomLight3,
         config: {
           method: relayMethods.close
@@ -322,7 +342,7 @@ export default [
     ],
     emittersTimeouts: [100, 150, 100, 250, 600, // Flash light
       100, 0, 0 ,0,  // Drop lights
-      2624, 200, // Drop letters
+      2624, // Drop letters
       100, 150, 100, 250, 600, 0], // Flash light and open 2 lights in the living room
     expectedListeners: [
       {
@@ -338,7 +358,7 @@ export default [
       }
     ]
   }, {
-    name: actionNames.openClosetToBedroomEffect,
+    name: actionNames.EFFECTopenClosetToBedroomEffect,
     emitterConfigs: [{
       name: emittersNames.livingRoomLight3,
       config: {
@@ -460,7 +480,7 @@ export default [
       }
     ]
   }, {
-    name: actionNames.openMemorialLight,
+    name: actionNames.EFFECTopenMemorialLight,
     emitterConfigs: [
       {
         name: emittersNames.vanityLightRelay,
@@ -479,6 +499,9 @@ export default [
         }
       }
     ],
+    actionDependencies: [
+      actionNames.EFFECTopenClosetToBedroomEffect
+    ],
     emittersTimeouts: [0, 0, // close lights
                        2000],// Open memorial light
     expectedListeners: [
@@ -494,7 +517,7 @@ export default [
       }
     ]
   }, {
-    name: actionNames.openBedroomLights,
+    name: actionNames.EFFECTopenBedroomLights,
     emitterConfigs: [
       {
         name: emittersNames.livingRoomLight1,
@@ -592,11 +615,12 @@ export default [
       {
         name: mp3sNames.livingRoomSoundEffects,
         tracks: ['g'],
-        timeouts: [0]
+        timeouts: [0],
+        volumes: [8]
       }
     ]
   }, {
-    name: actionNames.openBedroomCloset,
+    name: actionNames.EFFECTopenBedroomCloset,
     emitterConfigs: [
       {
         name: emittersNames.suicidedCandleRelay,
@@ -699,11 +723,6 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.momClosetRelay,
-        config: {
-          method: relayMethods.open
-        }
-      },  {
         name: emittersNames.nextToBedLightLeft,
         config: {
           method: relayMethods.close
@@ -723,8 +742,8 @@ export default [
     emittersTimeouts: [
       0, 0, 0, 0, 0, 0, 1000, 0, 0, 0, 0, 0, // Flash all lights
       2000, 0, 3000, 3000, 3000, 3000, 3000,// Fade lights out
-      3000, 500, // Open and close closet
-      2000, 0, 0// Turn lights on
+      3000, // Open and close closet
+      2500, 0, 0// Turn lights on
     ],
 
     expectedListeners: [
@@ -738,7 +757,11 @@ export default [
         listenerName: listenersNames.candlestickReadswitch3,
         listenerValues: [0]
       }
-    ], mp3Configs: [
+    ],
+    actionDependencies: [
+      actionNames.EFFECTopenBedroomLights
+    ],
+    mp3Configs: [
       {
         name: mp3sNames.livingRoomSoundEffects,
         tracks: ['h'],
@@ -746,7 +769,7 @@ export default [
       }
     ]
   }, {
-    name: actionNames.throwCutterEffect,
+    name: actionNames.EFFECTthrowCutterEffect,
     emitterConfigs: [
       {
         name: emittersNames.livingRoomLight1,
@@ -810,6 +833,166 @@ export default [
           method: relayMethods.open
         }
       }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
         name: emittersNames.livingRoomLight4,
         config: {
           method: relayMethods.open
@@ -820,7 +1003,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -830,7 +1013,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -840,7 +1023,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -850,7 +1033,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -860,7 +1043,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -870,7 +1053,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -880,7 +1063,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -890,7 +1073,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -900,7 +1083,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -910,7 +1093,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -920,7 +1103,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -930,7 +1113,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -940,7 +1123,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -950,7 +1133,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -960,7 +1143,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -970,7 +1153,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -980,7 +1163,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -990,7 +1173,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1000,7 +1183,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1010,7 +1193,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1020,7 +1203,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1030,7 +1213,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1040,7 +1223,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1050,7 +1233,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1060,7 +1243,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1070,7 +1253,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1080,7 +1263,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1090,7 +1273,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1100,7 +1283,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1110,7 +1293,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1120,7 +1303,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1130,7 +1313,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1140,7 +1323,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1150,7 +1333,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1160,7 +1343,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1170,7 +1353,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1180,7 +1363,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1190,7 +1373,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1200,7 +1383,7 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
@@ -1210,7 +1393,7 @@ export default [
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1220,17 +1403,37 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.livingRoomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
         }
       },  {
         name: emittersNames.livingRoomLight1,
         config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.livingRoomLight1,
+        config: {
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
@@ -1240,27 +1443,27 @@ export default [
           method: relayMethods.close
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.close
         }
-      },  {
+      }, {
         name: emittersNames.livingRoomLight1,
         config: {
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.kidsroomLight1,
+        name: emittersNames.kidsroomLight2,
         config: {
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.boidemNoiserRelay,
+        name: emittersNames.windowNoiser,
         config: {
           method: relayMethods.open
         }
       }, {
-        name: emittersNames.boidemNoiserRelay,
+        name: emittersNames.windowNoiser,
         config: {
           method: relayMethods.close
         }
@@ -1295,9 +1498,15 @@ export default [
       0, // close living room light
       1000, 0, 500, 500, 500, 0, 0, 100, 900, // Throw cutter and open living room light
       6300, 0, // Close bedroom lights
-      1500, // Close living room light
 
-      8600, 0, 100, 0, 100, 0, // Twinkle twinkle lights sync
+      5000, 1000, 3000, 500, 5000, 700,
+      7000, 500, 2000, 200, 1000, 300,
+      7000, 1000, 4000, 500, 2000, 500,
+      1000, 200, 1000, 300, 3000, 500, 2000, 500,
+      5000, 1000, 2000, 500, 1000, 500,// flash kidsroom light
+      60.3 * 1000 + 1500, // Close living room light
+
+      8500, 0, 100, 0, 100, 0, 100, 0, // Twinkle twinkle lights sync
       24100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0,
       13800, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0, 100, 0,
       4200, 0, 100, 0, 100, 0, 100, 0,
@@ -1306,7 +1515,7 @@ export default [
       700, 0, 100, 0,
       900, 0, 100, 0,
       500, 0, 100, 0,
-      300, 0, 100, 0,
+      200, 0, 100, 0, 100, 0,
       100, 0, // Drop lights
 
       21 * 1000, 200,  // Noiser
@@ -1320,7 +1529,11 @@ export default [
         listenerName: listenersNames.clockReadswitch2,
         listenerValues: [0]
       }
-    ], mp3Configs: [
+    ],
+    actionDependencies: [
+      actionNames.EFFECTopenBedroomCloset
+    ],
+    mp3Configs: [
       {
         name: mp3sNames.livingRoomSoundEffects,
         tracks: ['m'],
@@ -1332,25 +1545,25 @@ export default [
           timeout: 5000
         },
         tracks: ['f'],
-        timeouts: [15 * 1000]
+        timeouts: [120 * 1000 + 15 * 1000]
       }, {
         name: mp3sNames.livingRoomSoundEffects,
         state:  {
           open: true,
-          timeout: 20 * 1000
+          timeout: 120 * 1000 + 20 * 1000
         },
         tracks: ['1'],
-        timeouts: [74 * 1000]
+        timeouts: [120 * 1000 + 74 * 1000]
       }, {
         name: mp3sNames.kidsRoomSoundEffects,
         state:  {
           open: true,
-          timeout: 100 * 1000
+          timeout: 120 * 1000 + 100 * 1000
         }
       }
     ]
   }, {
-    name: actionNames.openHoleEffect,
+    name: actionNames.EFFECTopenHoleEffect,
     emitterConfigs: [
       {
         name: emittersNames.kidsroomLight1,
@@ -1410,7 +1623,7 @@ export default [
       {
         name: mp3sNames.kidsRoomSoundEffects,
         tracks: ['c'],
-        timeouts: [9 * 1000] // should be 9 * 1000
+        timeouts: [9 * 1000]
       }, {
         name: mp3sNames.kidsRoomSoundEffects,
         tracks: ['o'],
@@ -1418,7 +1631,7 @@ export default [
       }
     ]
   }, {
-    name: actionNames.playingBoxEffect,
+    name: actionNames.EFFECTplayingBoxEffect,
     emitterConfigs: [
       {
         name: emittersNames.kidsroomLight1,
@@ -1464,7 +1677,7 @@ export default [
     ],
     emittersTimeouts: [
       0, 0, 0, 200, 0, 0, // Zap kidsroom lights
-      2000, 15 * 1000 // Start playing box
+      0, 15 * 1000 // Start playing box
     ],
     expectedListeners: [
       {
@@ -1480,7 +1693,7 @@ export default [
       }
     ]
   }, {
-    name: actionNames.showDollEffect,
+    name: actionNames.EFFECTshowDollEffect,
     emitterConfigs: [
       {
         name: emittersNames.dollRelay,
@@ -1496,14 +1709,418 @@ export default [
     mp3Configs: [
       {
         name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['p'],
+        timeouts: [0] // depends on video length
+      },  {
+        name: mp3sNames.kidsRoomSoundEffects,
         tracks: ['n'],
-        timeouts: [20 * 1000] // depends on video length
+        timeouts: [22 * 1000] // depends on video length
       }
     ]
   }, {
-    name: actionNames.openHoleExitEffect,
+    name: actionNames.EFFECTopenHoleExitEffect,
     emitterConfigs: [
       {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.kidsroomLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
         name: emittersNames.holeExitRelay,
         config: {
           method: relayMethods.close
@@ -1538,26 +2155,29 @@ export default [
         config: {
           method: relayMethods.open
         }
-      }, {
-        name: emittersNames.kidsroomLight1,
-        config: {
-          method: relayMethods.close
-        }
-      }, {
-        name: emittersNames.kidsroomLight2,
-        config: {
-          method: relayMethods.close
-        }
-      }, {
-        name: emittersNames.kidsroomLight3,
-        config: {
-          method: relayMethods.close
-        }
       }
     ],
     emittersTimeouts: [
-      500,  // Open exit
-      1500, 0, 0, 150, 0, 0, 100, 0, 0 // Flash kidsroom lights
+      0,
+      1200, 0, 1200, 0, 1200, 0,
+      1000, 0, 1000, 0, 1000, 0,
+      900, 0, 900, 0, 900, 0,
+      700, 0, 700, 0, 700, 0,
+      600, 0, 600, 0, 600, 0,
+      500, 0, 500, 0, 500, 0,
+      400, 0, 400, 0, 400, 0,
+      300, 0, 300, 0, 300, 0,
+      200, 0, 200, 0, 200, 0,
+      200, 0, 200, 0, 200, 0,
+      200, 0, 200, 0, 200, 0,
+      150, 0, 150, 0, 150, 0, // Toggle between lights
+      150, // Close light
+
+      0,  // Open exit
+      0, 0, 0, 150, 0, 0 // Flash kidsroom lights
+    ],
+    actionDependencies: [
+      actionNames.EFFECTshowDollEffect
     ],
     expectedListeners: [
       {
@@ -1566,10 +2186,35 @@ export default [
       }
     ],
     mp3Configs: [
-      {
+       {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [0],
+        volumes: [9]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [4000],
+        volumes: [8]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [8000],
+        volumes: [7]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [13000],
+        volumes: [6]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [18000],
+        volumes: [5]
+      }, {
         name: mp3sNames.kidsRoomSoundEffects,
         tracks: ['0'],
-        timeouts: [0]
+        timeouts: [20000]
       }
     ]
   }

@@ -5,86 +5,90 @@ export default [
   [
     {
       pin: 33,
-      actionName: actionNames.openHoleEffect,
+      actionName: actionNames.EFFECTopenHoleEffect,
       name: listenersNames.kidsroomPictureDadReadswitch
     }, {
       pin: 32,
-      actionName: actionNames.openHoleEffect,
+      actionName: actionNames.EFFECTopenHoleEffect,
       name: listenersNames.kidsroomMomPictureReadswitch
     }, {
       pin: 31,
-      actionName: actionNames.openHoleEffect,
+      actionName: actionNames.EFFECTopenHoleEffect,
       name: listenersNames.kidsroomDollPictureReadswitch
     }, {
       pin: 30,
-      actionName: actionNames.playingBoxEffect,
+      actionName: actionNames.EFFECTplayingBoxEffect,
       name: listenersNames.kidsroomKillerPictureReadswitch
     }, {
       pin: 29,
-      actionName: actionNames.openHoleEffect,
+      actionName: actionNames.EFFECTopenHoleEffect,
       name: listenersNames.kidsroomFamilyReadswitch
     }, {
       pin: 28,
-      actionName: actionNames.openHoleEffect,
+      actionName: actionNames.EFFECTopenHoleEffect,
       name: listenersNames.kidsroomGhostPictureReadswitch
     }, {
       pin: 25,
-      actionName: actionNames.openClosetToBedroomEffect,
+      actionName: actionNames.EFFECTopenClosetToBedroomEffect,
       name: listenersNames.drawer1Readswitch
     }, {
       pin: 24,
-      actionName: actionNames.openClosetToBedroomEffect,
+      actionName: actionNames.EFFECTopenClosetToBedroomEffect,
       name: listenersNames.drawer2Readswitch
     }, {
       pin: 23,
-      actionName: actionNames.openClosetToBedroomEffect,
+      actionName: actionNames.EFFECTopenClosetToBedroomEffect,
       name: listenersNames.drawer3Readswitch
     },
      {
        pin: 22,
-       actionName: actionNames.openClosetToBedroomEffect,
+       actionName: actionNames.EFFECTopenClosetToBedroomEffect,
        name: listenersNames.drawer4Readswitch
      },
     {
       pin: 4,
-      actionName: actionNames.throwCutterEffect,
-      name: listenersNames.clockReadswitch1
+      actionName: actionNames.EFFECTthrowCutterEffect,
+      name: listenersNames.clockReadswitch1,
+      debounceTime: 100 // TODO: Change to 100
+
     }, {
       pin: 5,
-      actionName: actionNames.throwCutterEffect,
-      name: listenersNames.clockReadswitch2
+      actionName: actionNames.EFFECTthrowCutterEffect,
+      name: listenersNames.clockReadswitch2,
+      debounceTime: 100 // TODO: Change to 100
     },
     {
       pin: 6,
-      actionName: actionNames.dropLettersEffect,
+      actionName: actionNames.EFFECTdropLettersEffect,
       name: listenersNames.drawerMovementSensor,
       listenerType: listenerTypes.movementSensor
     },
     {
       pin: 7,
-      actionName: actionNames.openBedroomCloset,
+      actionName: actionNames.EFFECTopenBedroomCloset,
       name: listenersNames.candlestickReadswitch1
     }, {
       pin: 8,
-      actionName: actionNames.openBedroomCloset,
+      actionName: actionNames.EFFECTopenBedroomCloset,
       name: listenersNames.candlestickReadswitch2
     }, {
       pin: 9,
-      actionName: actionNames.openBedroomCloset,
+      actionName: actionNames.EFFECTopenBedroomCloset,
       name: listenersNames.candlestickReadswitch3
     }, {
       pin: 11,
-      actionName: actionNames.openMemorialLight,
-      name: listenersNames.bedroomVanityPictureReadswitch
+      actionName: actionNames.EFFECTopenMemorialLight,
+      name: listenersNames.bedroomVanityPictureReadswitch,
+      debounceTime: 100
     }, {
       pin: 10,
-      actionName: actionNames.openHoleExitEffect,
+      actionName: actionNames.EFFECTopenHoleExitEffect,
       name: listenersNames.railReadswitch
     }
   ], [
     {
       pin: '35',
-      actionName: actionNames.openBedroomLights,
+      actionName: actionNames.EFFECTopenBedroomLights,
       name: listenersNames.bedroomMemorialLightReadswitch
     }
     // , {

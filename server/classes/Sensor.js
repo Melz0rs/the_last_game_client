@@ -7,6 +7,7 @@ export default class Sensor extends Listener {
 
     this.sensor = new arduino.Sensor({pin: this.pin, board: this.board, type: "digital"});
     this.actionExecutedCount = 0;
+    this.debounceTime = 100 || config.debounceTime;
   }
 
   registerEvents(onChange) {
@@ -16,12 +17,16 @@ export default class Sensor extends Listener {
     const sensor = this.sensor;
 
     sensor.on("change", () => {
+      clearInterval(this.timeoutPromise);
+
       if(this.actionExecutedCount >= 2) {
         const val = sensor.value;
         this.currentValue = val;
 
-        onChange(this.name, val);
-        this.executeAction(val);
+        this.timeoutPromise = setTimeout(() => {
+          onChange(this.name, val);
+          this.executeAction(val);
+        }, this.debounceTime);
       }
 
       this.actionExecutedCount++;

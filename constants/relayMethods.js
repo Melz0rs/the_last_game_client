@@ -1,5 +1,6 @@
 export default {
   open: 'open',
-  close: 'close'
+  close: 'close',
+  toggle: 'toggle'
 };
 

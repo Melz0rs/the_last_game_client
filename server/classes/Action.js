@@ -12,9 +12,9 @@ export default class Action {
     this.runnerName = config.runnerName;
     this.emitterConfigs = config.emitterConfigs;
     this.mp3Configs = config.mp3Configs;
+    this.actionDependencies = config.actionDependencies;
 
     this.reset();
-
   }
 
   setMp3s() {
@@ -47,7 +47,18 @@ export default class Action {
     });
   }
 
+  setActionDependencies() {
+    if(this.actionDependencies) {
+      this.actionDependencies = this.actionDependencies.map(actionName => {
+        const action = boardsSetupService.getAction(actionName);
+
+        return action;
+      });
+    }
+  }
+
   reset() {
+    this.stop();
     this.actionExecuted = false;
     this.currentListeners = [];
     this.emitterTimeoutPromises = [];
@@ -100,21 +111,22 @@ export default class Action {
       this.mp3Configs.forEach((mp3Config, i) => {
         const mp3 = this.mp3s[i];
 
-        if (mp3Config.state) {
+        const tracks = mp3Config.tracks;
+        const timeouts = mp3Config.timeouts;
+        const volumes = mp3Config.volumes;
 
+        if (mp3Config.state) {
           setTimeout(function () {
-            boardsSetupService.closeOpenedMp3s();
+            boardsSetupService.closeOpenedMp3s(mp3.name);
 
             mp3.open();
           }, mp3Config.state.timeout);
         }
 
-        const tracks = mp3Config.tracks;
-        const timeouts = mp3Config.timeouts;
-
         if (tracks) {
           for (let i = 0; i < tracks.length; i++) {
             const track = tracks[i];
+            const volume = volumes ? volumes[i] || 10 : 10;
             let timeout = 0;
 
             if (timeouts) {
@@ -124,7 +136,11 @@ export default class Action {
             }
 
             this.mp3TimeoutPromises.push(setTimeout(() => {
-              mp3.play(track);
+              mp3.setVolume(volume);
+
+              if(track !== '-') {
+                mp3.play(track);
+              }
             }, timeout));
           }
         }
@@ -146,7 +162,8 @@ export default class Action {
   }
 
   checkCondition() {
-    if(this.actionExecuted) { return false; }
+    if(this.actionExecuted || !this.checkActionDependencies()) { return false; }
+
     let condition = true;
 
     const expectedListeners = this.expectedListeners;
@@ -173,15 +190,34 @@ export default class Action {
     return condition;
   }
 
-  stop() {
-    this.emitterTimeoutPromises.forEach(timeoutPromise => {
-      clearTimeout(timeoutPromise);
-    });
+  checkActionDependencies() {
+    let allActionsExecuted = true;
 
-    this.mp3TimeoutPromises.forEach(timeoutPromise => {
-      clearTimeout(timeoutPromise);
-      // this.mp3.stop();
-    });
+    if(this.actionDependencies && this.actionDependencies.length > 0) {
+
+      this.actionDependencies.forEach(action => {
+        if(!action.actionExecuted) {
+          allActionsExecuted = false;
+        }
+      });
+
+    }
+
+    return allActionsExecuted;
+  }
+
+  stop() {
+    if(this.emitterTimeoutPromises) {
+      this.emitterTimeoutPromises.forEach(timeoutPromise => {
+        clearTimeout(timeoutPromise);
+      });
+    }
+
+    if(this.mp3TimeoutPromises) {
+      this.mp3TimeoutPromises.forEach(timeoutPromise => {
+        clearTimeout(timeoutPromise);
+      });
+    }
 
     this.toggleRunnerState();
   }

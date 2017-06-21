@@ -54,7 +54,7 @@ export default {
 
   },
 
-  createEmitters: function(board, config) {
+  createEmitters: function(board, config, stateChangeCallback) {
     config.forEach(emitterConfig => {
       switch(emitterConfig.emitterType) {
         case emitterTypes.servo:
@@ -72,7 +72,8 @@ export default {
             board,
             pin: emitterConfig.pin,
             name: emitterConfig.name,
-            defaults: emitterConfig.defaults}
+            defaults: emitterConfig.defaults,
+            stateChangeCallback}
           ));
       }
     });
@@ -105,6 +106,12 @@ export default {
   setEmittersForActions: function() {
     actions.forEach(action => {
       action.setEmitters();
+    });
+  },
+
+  setActionDependenciesForActions: function() {
+    actions.forEach(action => {
+      action.setActionDependencies();
     });
   },
 
@@ -174,9 +181,9 @@ export default {
     return utils.getFirstInstance(mp3s, 'name', name);
   },
 
-  closeOpenedMp3s: function() {
+  closeOpenedMp3s: function(currentMp3Name) {
     mp3s.filter(mp3 => {
-      return mp3.isOpen;
+      return mp3.isOpen && mp3.name !== currentMp3Name;
     }).forEach(mp3 => {
       mp3.close();
     });

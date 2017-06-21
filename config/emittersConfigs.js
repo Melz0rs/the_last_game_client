@@ -253,7 +253,7 @@ export default [
       }
     }, {
       pin: 31,
-      name: emittersNames.boidemDoorRelay,
+      name: emittersNames.windowNoiser,
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.close
@@ -287,13 +287,14 @@ export default [
         method: relayMethods.open
       }
     }
-    // , {
-    //   pin: 34,
-    //   name: emittersNames.airConditionerHatchServo,
-    //   emitterType: emitterTypes.servo,
-    //   range: [0, 180],
-    //   startAt: 10
-    // }
+    , {
+      pin: 34,
+      name: emittersNames.memorialLightNoiser,
+      emitterType: emitterTypes.relay,
+      defaults: {
+        method: relayMethods.close
+      }
+    }
   ]
 
 ];

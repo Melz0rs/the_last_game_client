@@ -10,8 +10,11 @@ class HomePage extends React.Component {
     let actionButtonsConfigs = [];
 
     actionsNames.resetGame = 'resetGame';
+    actionsNames.stopActions = 'stopActions';
 
-    for(const actionName in actionsNames) {
+    for(let actionName in actionsNames) {
+      actionName = actionsNames[actionName];
+
       actionButtonsConfigs.push({
         onClick: () => {
           socket.emit(actionName);

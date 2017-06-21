@@ -1,13 +1,40 @@
 import actionNames from '../constants/actionsNames';
 import emittersNames from '../constants/emittersNames';
 import listenersNames from '../constants/listenersNames';
-import runnersNames from '../constants/runnersNames';
 import mp3sNames from '../constants/mp3sNames';
 import relayMethods from '../constants/relayMethods';
 import gameActions from './gameActionsConfig';
 
 let actions =  [
   {
+    name: actionNames.dropVase,
+    emitterConfigs: [
+    {
+      name: emittersNames.vaseServoRelay,
+      config: {
+        method: relayMethods.close
+      }
+    }, {
+      name: emittersNames.vaseServo,
+      config: {
+        to: 45
+      }
+    }, {
+      name: emittersNames.vaseServo,
+      config: {
+        to: -1
+      }
+    }, {
+      name: emittersNames.vaseServoRelay,
+      config: {
+        method: relayMethods.open
+      }
+    }
+  ],
+  emittersTimeouts: [
+    1000, 200, 1000, 2000
+    ]
+  }, {
     name: actionNames.toggleClosetToBedroomMagnet,
     emitterConfigs: [
       emittersNames.closetToBedroomRelay
@@ -190,35 +217,35 @@ let actions =  [
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
-    name: actionNames.toggleLivingRoomLight1,
+    name: actionNames.toggleLivingRoomShortStandingLight,
     emitterConfigs: [
       emittersNames.livingRoomLight1
     ],
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
-    name: actionNames.toggleLivingRoomLight2,
+    name: actionNames.toggleLivingRoomFirePlaceWallLight,
     emitterConfigs: [
       emittersNames.livingRoomLight2
     ],
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
-    name: actionNames.toggleLivingRoomLight3,
+    name: actionNames.toggleLivingRoomTallStandingLight,
     emitterConfigs: [
       emittersNames.livingRoomLight3
     ],
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
-    name: actionNames.toggleLivingRoomLight4,
+    name: actionNames.toggleLivingRoomAboveFamilyPictureLight,
     emitterConfigs: [
       emittersNames.livingRoomLight4
     ],
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
-    name: actionNames.toggleLivingRoomLight5,
+    name: actionNames.toggleLivingRoomDrawersWallLight,
     emitterConfigs: [
       emittersNames.livingRoomLight5
     ],
@@ -259,7 +286,15 @@ let actions =  [
     ],
     emittersTimeouts: [0],
     expectedListeners: []
-  },{
+  }, {
+    name: actionNames.toggleMemorialLightNoiser,
+    emitterConfigs: [
+      emittersNames.memorialLightNoiser,
+      emittersNames.memorialLightNoiser
+    ],
+    emittersTimeouts: [0, 200],
+    expectedListeners: []
+  }, {
     name: actionNames.toggleAirConditionerMagnet,
     emitterConfigs: [
       emittersNames.airConditionerRelay
@@ -267,12 +302,12 @@ let actions =  [
     emittersTimeouts: [0],
     expectedListeners: []
   }, {
-    name: actionNames.toggleBoidemDoor,
+    name: actionNames.toggleWindowNoiser,
     emitterConfigs: [
-      emittersNames.boidemDoorRelay,
-      emittersNames.boidemDoorRelay
+      emittersNames.windowNoiser,
+      emittersNames.windowNoiser
     ],
-    emittersTimeouts: [0, 20000],
+    emittersTimeouts: [0, 200],
     expectedListeners: []
   }, {
     name: actionNames.toggleBoidemNoiser,
@@ -308,111 +343,6 @@ let actions =  [
         listenerName: listenersNames.candlestickReadswitch3,
         listenerValues: [0]
       }
-    ]
-  }, {
-    name: actionNames.flashLightnings,
-    emitterConfigs: [
-      {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.close
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.open
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.close
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.open
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.close
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.open
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.close
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.open
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.close
-        }
-      }, {
-        name: emittersNames.lightningRelay,
-        config: {
-          method:relayMethods.open
-        }
-      }
-    ],
-    emittersTimeouts: [500, 200, 1500, 150, 3000, 150, 300, 100, 10000, 150],
-    expectedListeners: []
-  }, {
-    name : actionNames.throwCutter,
-    emitterConfigs: [
-      {
-        name: emittersNames.airConditionerRelay,
-        config: {
-          method: relayMethods.close
-        }
-      }, {
-        name: emittersNames.airConditionerServosRelay,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.airConditionerHatchServo,
-        config: {
-          to: 50
-        }
-      }, {
-        name: emittersNames.airConditionerCutterMagnetRelay,
-        config: {
-          method: relayMethods.close
-        }
-      }, {
-        name: emittersNames.airConditionerCutterMagnetRelay,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.airConditionerRelay,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.airConditionerHatchServo,
-        config: {
-          to: -1
-        }
-      },  {
-        name: emittersNames.airConditionerServosRelay,
-        config: {
-          method: relayMethods.close
-        }
-      }
-    ],
-    emittersTimeouts: [0, 0, 500, 500, 500, 0, 0, 1000],
-    expectedListeners: [
     ]
   }, {
     name : actionNames.dropVase,
@@ -459,8 +389,7 @@ let actions =  [
     ]
   }, {
     name: actionNames.openLivingRoomMp3,
-    emitterConfigs: [
-    ],
+    emitterConfigs: [],
     emittersTimeouts: [],
     mp3Configs: [
       {
@@ -475,6 +404,5 @@ let actions =  [
 ];
 
 actions = actions.concat(gameActions);
-
 
 export default actions;
