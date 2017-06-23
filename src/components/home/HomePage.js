@@ -44,18 +44,28 @@ class HomePage extends React.Component {
     return listenersConfigs;
   }
 
+  createTabObjectRow(tabName) {
+    return <Tab>{tabName}</Tab>;
+  }
+
   createTabs() {
     const tabNamesArray = [];
 
     for(const tabName in tabNames) {
-      
+      tabNamesArray.push(tabName);
     }
 
-    return (
+    return tabNamesArray.map(this.createTabObjectRow);
+  }
 
+  createTabPanels() {
+    const tabNamesArray = [];
 
-      <Tab>{tabName}</Tab>
-    );
+    for(const tabName in tabNames) {
+      tabNamesArray.push(tabName);
+    }
+
+    return tabNamesArray.map(this.createTabObjectRow);
   }
 
   render() {
@@ -63,15 +73,10 @@ class HomePage extends React.Component {
       <div>
         <Tabs>
           <TabList>
-            this.createTabs()
+            {this.createTabs()}
           </TabList>
 
-          <TabPanel>
-            <h2>Any content 1</h2>
-          </TabPanel>
-          <TabPanel>
-            <h2>Any content 2</h2>
-          </TabPanel>
+          {this.createTabPanels()}
         </Tabs>
         <div>
           <ActionButtons buttonsConfigs={this.getActionButtonsConfigs()} />
