@@ -37,32 +37,32 @@ export default [
       }, {
         name: emittersNames.hallwayLight1,
         config: {
-          method: relayMethods.close
+          method: relayMethods.open
         }
       }, {
         name: emittersNames.hallwayLight2,
         config: {
-          method: relayMethods.close
+          method: relayMethods.open
         }
       }, {
         name: emittersNames.hallwayLight3,
         config: {
-          method: relayMethods.close
+          method: relayMethods.open
         }
       }, {
         name: emittersNames.hallwayLight4,
         config: {
-          method: relayMethods.close
+          method: relayMethods.open
         }
       }, {
         name: emittersNames.hallwayLight5,
         config: {
-          method: relayMethods.close
+          method: relayMethods.open
         }
       }, {
         name: emittersNames.hallwayLight6,
         config: {
-          method: relayMethods.close
+          method: relayMethods.open
         }
       }, {
         name: emittersNames.kidsroomLight1,
@@ -765,7 +765,8 @@ export default [
       {
         name: mp3sNames.livingRoomSoundEffects,
         tracks: ['h'],
-        timeouts: [0]
+        timeouts: [0],
+        volumes: [8]
       }
     ]
   }, {
@@ -1700,10 +1701,16 @@ export default [
         config: {
           method: relayMethods.close
         }
+      }, {
+        name: emittersNames.dollRelay,
+        config: {
+          method: relayMethods.open
+        }
       }
     ],
     emittersTimeouts: [
-      20 * 1000 // Break wall - depends on video length
+      20 * 1000, // Break wall - depends on video length
+      1000
     ],
     expectedListeners: [],
     mp3Configs: [
