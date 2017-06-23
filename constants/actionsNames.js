@@ -1,4 +1,16 @@
-export default {
+export default
+// [
+//
+//   {
+//     name: '',
+//     tab: ''
+//   }
+//
+//
+//   ]
+{
+
+
   toggleMirror: 'toggleMirror',
   toggleOperativeWallKidsRoom: 'toggleOperativeWallKidsRoom',
   toggleVitrinaDoor: 'toggleVitrinaDoor',
