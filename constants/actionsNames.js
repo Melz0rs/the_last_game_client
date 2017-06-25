@@ -1,16 +1,4 @@
-export default
-// [
-//
-//   {
-//     name: '',
-//     tab: ''
-//   }
-//
-//
-//   ]
-{
-
-
+export default {
   toggleMirror: 'toggleMirror',
   toggleOperativeWallKidsRoom: 'toggleOperativeWallKidsRoom',
   toggleVitrinaDoor: 'toggleVitrinaDoor',
@@ -50,10 +38,11 @@ export default
   toggleSuicidedCandle: 'toggleSuicidedCandle',
   openKidsroomMp3: 'openKidsroomMp3',
   openLivingRoomMp3: 'openLivingRoomMp3',
+  clapBothSides: 'clapBothSides',
   EFFECTpreGame: 'EFFECTpreGame',
   EFFECTstartGame: 'EFFECTstartGame',
   EFFECTdropLettersEffect: 'EFFECTdropLettersEffect',
-  EFFECTopenClosetToBedroomEffect: 'EFFECTopenClosetToBedroomEffect',
+  EFFECTopenBlueCabinToBedroom: 'EFFECTopenBlueCabinToBedroom',
   EFFECTopenMemorialLight: 'EFFECTopenMemorialLight',
   EFFECTopenBedroomLights: 'EFFECTopenBedroomLights',
   EFFECTopenBedroomCloset: 'EFFECTopenBedroomCloset',

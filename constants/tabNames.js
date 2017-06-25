@@ -1,8 +1,10 @@
 export default {
-  GameActions : 'GameActions',
+  AllActions: 'AllActions',
+  GameEffects : 'GameEffects',
   Lights: 'Lights',
   MagnetsAndEngines: 'MagnetsAndEngines',
   Noisers: 'Noisers',
   AfterGame: 'AfterGame',
-  OperativeDoors: 'OperativeDoors'
+  OperativeDoors: 'OperativeDoors',
+  Mp3s: 'Mp3s',
 };

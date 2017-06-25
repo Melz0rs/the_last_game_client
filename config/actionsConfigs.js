@@ -400,6 +400,17 @@ let actions =  [
         }
       }
     ]
+  }, {
+    name: actionNames.clapBothSides,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['s'],
+        timeouts: [0]
+      }
+    ]
   }
 ];
 

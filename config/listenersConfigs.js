@@ -29,20 +29,20 @@ export default [
       name: listenersNames.kidsroomGhostPictureReadswitch
     }, {
       pin: 25,
-      actionName: actionNames.EFFECTopenClosetToBedroomEffect,
+      actionName: actionNames.EFFECTopenBlueCabinToBedroom,
       name: listenersNames.drawer1Readswitch
     }, {
       pin: 24,
-      actionName: actionNames.EFFECTopenClosetToBedroomEffect,
+      actionName: actionNames.EFFECTopenBlueCabinToBedroom,
       name: listenersNames.drawer2Readswitch
     }, {
       pin: 23,
-      actionName: actionNames.EFFECTopenClosetToBedroomEffect,
+      actionName: actionNames.EFFECTopenBlueCabinToBedroom,
       name: listenersNames.drawer3Readswitch
     },
      {
        pin: 22,
-       actionName: actionNames.EFFECTopenClosetToBedroomEffect,
+       actionName: actionNames.EFFECTopenBlueCabinToBedroom,
        name: listenersNames.drawer4Readswitch
      },
     {
