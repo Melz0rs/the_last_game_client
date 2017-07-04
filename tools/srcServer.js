@@ -113,6 +113,10 @@ ioServer.on('connection', function(client) {
       stopActions();
     });
 
+    client.on('setGameMode', function(gameModeName) {
+      boardsSetupService.setGameMode(gameModeName);
+    });
+
     for (let actionName in actionNames) {
 
       actionName = actionNames[actionName];

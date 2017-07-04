@@ -40,5 +40,7 @@ export default {
   airConditionerCutterMagnetRelay: 'airConditionerCutterMagnetRelay',
   suicidedCandleRelay: 'suicidedCandleRelay',
   fireplaceCutterMagnetRelay: 'fireplaceCutterMagnetRelay',
-  memorialLightNoiser: 'memorialLightNoiser'
+  memorialLightNoiser: 'memorialLightNoiser',
+  dollBoomMagnetRelay: 'dollBoomMagnetRelay',
+  exitBoomMagnetRelay: 'exitBoomMagnetRelay'
 };

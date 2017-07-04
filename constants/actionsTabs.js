@@ -22,6 +22,12 @@ export default [
     name: actionNames.toggleClosetToBedroomMagnet,
     tab: tabNames.MagnetsAndEngines
   }, {
+    name: actionNames.toggleDollBOOMMagnet,
+    tab: tabNames.MagnetsAndEngines
+  }, {
+    name: actionNames.toggleExitBOOMMagnet,
+    tab: tabNames.MagnetsAndEngines
+  }, {
     name: actionNames.togglePlayingBox,
     tab: tabNames.MagnetsAndEngines
   }, {
@@ -60,6 +66,9 @@ export default [
     tab: tabNames.Mp3s
   }, {
     name: actionNames.clapBothSides,
+    tab: tabNames.Mp3s
+  }, {
+    name: actionNames.clapBothSidesKidsroom,
     tab: tabNames.Mp3s
   },
 
@@ -185,5 +194,22 @@ export default [
   {
     name: actionNames.toggleAllLights,
     tab: tabNames.AfterGame
+  },
+
+  /* Hints */
+
+  {
+    name: actionNames.lettersHint,
+    tab: tabNames.Hints
+  }, {
+    name: actionNames.memorialLightPictureHint,
+    tab: tabNames.Hints
+  }, {
+    name: actionNames.memorialLightKeyHint,
+    tab: tabNames.Hints
+  }, {
+    name: actionNames.forgotFlashLights,
+    tab: tabNames.Hints
   }
+
 ];

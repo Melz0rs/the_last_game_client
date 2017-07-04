@@ -4,12 +4,8 @@ import states from '../constants/states';
 
 export default [
   {
-    name: runnersNames.bedroomVanityLightRunner,
-    actionName: actionsNames.flashBedroomVanityLight,
-    defaultState: states.stopped
-  },  {
-    name: runnersNames.lightningRunner,
-    actionName: actionsNames.flashLightnings,
+    name: runnersNames.preGameZapLightsRunner,
+    actionName: actionsNames.zapPreGameLight,
     defaultState: states.stopped
   }
 ];

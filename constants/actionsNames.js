@@ -17,6 +17,8 @@ export default {
   toggleLettersMagnets: 'toggleLettersMagnets',
   dropVase: 'dropVase',
   toggleMomClosetMagnet: 'toggleMomClosetMagnet',
+  toggleDollBOOMMagnet: 'toggleDollBOOMMagnet',
+  toggleExitBOOMMagnet: 'toggleExitBOOMMagnet',
   toggleVaseServoRelay: 'toggleVaseServoRelay',
   toggleNextToBedLightLeft: 'Bedroom-Next-To-Bed-Light-Left',
   toggleNextToBedLightRight: 'Bedroom-Next-To-Bed-Light-Right',
@@ -39,6 +41,7 @@ export default {
   openKidsroomMp3: 'openKidsroomMp3',
   openLivingRoomMp3: 'openLivingRoomMp3',
   clapBothSides: 'clapBothSides',
+  clapBothSidesKidsroom: 'clapBothSidesKidsroom',
   EFFECTpreGame: 'EFFECTpreGame',
   EFFECTstartGame: 'EFFECTstartGame',
   EFFECTdropLettersEffect: 'EFFECTdropLettersEffect',
@@ -51,5 +54,10 @@ export default {
   EFFECTplayingBoxEffect: 'EFFECTplayingBoxEffect',
   EFFECTshowDollEffect: 'EFFECTshowDollEffect',
   EFFECTopenHoleExitEffect: 'EFFECTopenHoleExitEffect',
-  toggleAllLights: 'toggleAllLights'
+  toggleAllLights: 'toggleAllLights',
+  lettersHint: 'lettersHint',
+  memorialLightPictureHint: 'memorialLightPictureHint',
+  memorialLightKeyHint: 'memorialLightKeyHint',
+  forgotFlashLights: 'forgotFlashLights',
+  zapPreGameLight: 'zapPreGameLight'
 };

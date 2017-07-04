@@ -1,6 +1,7 @@
 export default {
   AllActions: 'AllActions',
   GameEffects : 'GameEffects',
+  Hints: 'Hints',
   Lights: 'Lights',
   MagnetsAndEngines: 'MagnetsAndEngines',
   Noisers: 'Noisers',

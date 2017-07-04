@@ -12,13 +12,16 @@ import Mp3 from '../classes/Mp3';
 import mp3Configs from '../../config/mp3sConfigs';
 import emitterTypes from '../../constants/emitterTypes';
 import listenerTypes from '../../constants/listenerTypes';
+import gameModes from '../../constants/difficulyModes';
 
+const defaultGameMode = gameModes.scary;
 
 let emitters = [];
 let listeners = [];
 let actions = [];
 let runners = [];
 let mp3s =[];
+let currentGameMode = defaultGameMode;
 
 
 export default {
@@ -187,6 +190,15 @@ export default {
     }).forEach(mp3 => {
       mp3.close();
     });
+  },
+
+  setGameMode: function(gameModeName) {
+    currentGameMode = gameModeName;
+    this.setEmittersForActions();
+  },
+
+  getGameMode: function() {
+    return currentGameMode;
   }
 
 };

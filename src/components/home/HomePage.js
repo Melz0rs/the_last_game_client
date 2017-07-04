@@ -2,6 +2,7 @@ import React from 'react';
 import ActionButtons from '../action/ActionButtons';
 import Listeners from '../listener/Listeners';
 import actionsTabs from '../../../constants/actionsTabs';
+import difficultyModes from '../../../constants/difficulyModes';
 import listenersNames from '../../../constants/listenersNames';
 import tabNames from '../../../constants/tabNames';
 import { socket } from '../../index';
@@ -29,6 +30,7 @@ class HomePage extends React.Component {
 
     if(tabName === tabNames.GameEffects) {
       actionsTabs.push({
+
         name: 'stopActions',
         tab: tabNames.GameEffects
       });
@@ -50,6 +52,10 @@ class HomePage extends React.Component {
     });
 
     return actionButtonsConfigs;
+  }
+
+  gameModeButtonClick(gameModeName) {
+    socket.emit('setGameMode', gameModeName);
   }
 
   getListenersConfigs() {
@@ -101,9 +107,29 @@ class HomePage extends React.Component {
     );
   }
 
+  createDifficultyMode(difficultyMode) {
+    return  (
+      <button className="btn btn-primary col-md-3"
+              onClick={this.gameModeButtonClick(difficultyMode)}>
+        {difficultyMode}
+        </button>
+    );
+  }
+
+  createDifficultyModes() {
+    const difficultyModesArray = [];
+
+    for(const difficultyMode in difficultyModes) {
+      difficultyModesArray.push(difficultyMode);
+    }
+
+    return difficultyModesArray.map(this.createDifficultyMode);
+  }
+
   render() {
     return (
       <div>
+        {this.createDifficultyModes()}
         <Tabs>
           <TabList>
             {this.createTabs()}

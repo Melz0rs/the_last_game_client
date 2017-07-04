@@ -4,6 +4,7 @@ import listenersNames from '../constants/listenersNames';
 import mp3sNames from '../constants/mp3sNames';
 import relayMethods from '../constants/relayMethods';
 import gameActions from './gameActionsConfig';
+import hintActions from './hintActionsConfigs';
 
 let actions =  [
   {
@@ -411,9 +412,119 @@ let actions =  [
         timeouts: [0]
       }
     ]
+  }, {
+    name: actionNames.clapBothSidesKidsroom,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['s'],
+        timeouts: [0]
+      }
+    ]
+  }, {
+    name: actionNames.toggleDollBOOMMagnet,
+    emitterConfigs: [
+      emittersNames.dollBoomMagnetRelay
+    ],
+    emittersTimeouts: []
+  }, {
+    name: actionNames.toggleExitBOOMMagnet,
+    emitterConfigs: [
+      emittersNames.exitBoomMagnetRelay
+    ],
+    emittersTimeouts: []
+  }, {
+    name: actionNames.zapPreGameLight,
+    emitterConfigs: [
+      {
+        name: emittersNames.livingRoomLight4,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight6,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight2,
+        config: {
+          method: relayMethods.close
+        }
+      } , {
+        name: emittersNames.hallwayLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.livingRoomLight4,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight6,
+        config: {
+          method: relayMethods.close
+        }
+      },{
+        name: emittersNames.livingRoomLight4,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight6,
+        config: {
+          method: relayMethods.open
+        }
+      },{
+        name: emittersNames.livingRoomLight4,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight6,
+        config: {
+          method: relayMethods.close
+        }
+      },{
+        name: emittersNames.livingRoomLight4,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight6,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.livingRoomLight4,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight6,
+        config: {
+          method: relayMethods.close
+        }
+      }
+    ],
+    emittersTimeouts: [300, 0, 500, 400, 300, 500, 3300, 0, 300, 0, 10000, 0, 400, 0, 2000]
   }
 ];
 
 actions = actions.concat(gameActions);
+actions = actions.concat(hintActions);
 
 export default actions;

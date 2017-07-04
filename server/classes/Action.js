@@ -9,7 +9,7 @@ export default class Action {
     this.emittersTimeouts = config.emittersTimeouts;
     this.name = config.name;
     this.expectedListeners = config.expectedListeners;
-    this.runnerName = config.runnerName;
+    this.runnerConfig = config.runnerConfig;
     this.emitterConfigs = config.emitterConfigs;
     this.mp3Configs = config.mp3Configs;
     this.actionDependencies = config.actionDependencies;
@@ -30,11 +30,15 @@ export default class Action {
   }
 
   setRunner() {
-    this.runner = boardsSetupService.getRunner(this.runnerName);
+    if(this.runnerConfig) {
+      this.runner = boardsSetupService.getRunner(this.runnerConfig.name);
+    }
   }
 
   setEmitters() {
-    this.emitterconfigs = this.emitterConfigs.map(emitterConfig => {
+    const gameMode = boardsSetupService.getGameMode();
+
+    this.emitterconfigs = this.emitterConfigs[gameMode].map(emitterConfig => {
       const emitterName = emitterConfig.name || emitterConfig;
       const config = emitterConfig.config;
       const emitter = boardsSetupService.getEmitter(emitterName);
@@ -76,13 +80,15 @@ export default class Action {
 
     if( skipCondition || this.checkCondition() ) {
 
+      const gameMode = boardsSetupService.getGameMode();
+
       console.log('action executed, action: ', this.name);
 
       this.toggleRunnerState();
       this.playMp3s();
 
       this.actionExecuted = true;
-      const emittersTimeouts = this.emittersTimeouts;
+      const emittersTimeouts = this.emittersTimeouts[gameMode];
       const emitterConfigs = this.emitterconfigs;
 
       for (let i = 0; i < emitterConfigs.length; i++) {
@@ -105,10 +111,12 @@ export default class Action {
     }
   }
 
-  playMp3s() {
+  playMp3s(gameMode) {
     if (this.mp3s) {
 
-      this.mp3Configs.forEach((mp3Config, i) => {
+      const gameMode = boardsSetupService.getGameMode();
+
+      this.mp3Configs[gameMode].forEach((mp3Config, i) => {
         const mp3 = this.mp3s[i];
 
         const tracks = mp3Config.tracks;
@@ -219,12 +227,20 @@ export default class Action {
       });
     }
 
-    this.toggleRunnerState();
+    this.resetRunner();
+  }
+
+  resetRunner() {
+    if(this.runner) {
+      this.runner.reset();
+    }
   }
 
   toggleRunnerState() {
     if(this.runner) {
-      this.runner.toggleState();
+      setTimeout(() => {
+        this.runner.toggleState();
+      }, this.runnerConfig.timeout);
     }
   }
 }
