@@ -37,8 +37,9 @@ export default class Action {
 
   setEmitters() {
     const gameMode = boardsSetupService.getGameMode();
+    const emitterConfigs = this.emitterConfigs[gameMode] || this.emitterConfigs;
 
-    this.emitterconfigs = this.emitterConfigs[gameMode].map(emitterConfig => {
+    this.emitterconfigs = emitterConfigs.map(emitterConfig => {
       const emitterName = emitterConfig.name || emitterConfig;
       const config = emitterConfig.config;
       const emitter = boardsSetupService.getEmitter(emitterName);
@@ -88,7 +89,7 @@ export default class Action {
       this.playMp3s();
 
       this.actionExecuted = true;
-      const emittersTimeouts = this.emittersTimeouts[gameMode];
+      const emittersTimeouts = this.emittersTimeouts[gameMode] || this.emittersTimeouts;
       const emitterConfigs = this.emitterconfigs;
 
       for (let i = 0; i < emitterConfigs.length; i++) {
@@ -115,8 +116,9 @@ export default class Action {
     if (this.mp3s) {
 
       const gameMode = boardsSetupService.getGameMode();
+      const mp3Configs = this.mp3Configs[gameMode] || this.mp3Configs;
 
-      this.mp3Configs[gameMode].forEach((mp3Config, i) => {
+      mp3Configs.forEach((mp3Config, i) => {
         const mp3 = this.mp3s[i];
 
         const tracks = mp3Config.tracks;

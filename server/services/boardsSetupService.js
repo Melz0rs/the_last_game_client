@@ -193,6 +193,7 @@ export default {
   },
 
   setGameMode: function(gameModeName) {
+    console.log('Changing game mode to: ', gameModeName);
     currentGameMode = gameModeName;
     this.setEmittersForActions();
   },

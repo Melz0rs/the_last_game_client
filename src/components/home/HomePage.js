@@ -15,6 +15,7 @@ class HomePage extends React.Component {
 
     this.createTabPanels = this.createTabPanels.bind(this);
     this.createTabPanel = this.createTabPanel.bind(this);
+    this.createDifficultyMode = this.createDifficultyMode.bind(this);
 
   }
 
@@ -97,7 +98,7 @@ class HomePage extends React.Component {
     return tabNamesArray.map(this.createTabPanel);
   }
 
-  createTabPanel(tabName) {
+  createTabPanel(tabName){
     const actionButtonsConfigsForTab = this.getActionButtonsConfigsForTab(tabName);
 
     return (
@@ -110,7 +111,7 @@ class HomePage extends React.Component {
   createDifficultyMode(difficultyMode) {
     return  (
       <button className="btn btn-primary col-md-3"
-              onClick={this.gameModeButtonClick(difficultyMode)}>
+              onClick={this.gameModeButtonClick.bind(this, difficultyMode)}>
         {difficultyMode}
         </button>
     );
