@@ -1,4 +1,5 @@
 export default {
   notScary: 'notScary',
-  scary: 'scary'
+  scary: 'scary',
+  bigTeams: 'bigTeams'
 };

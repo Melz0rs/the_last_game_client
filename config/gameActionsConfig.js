@@ -623,6 +623,94 @@ export default [
             method: relayMethods.close
           }
         }
+      ],
+      bigTeams: [
+        {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.close
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.close
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.livingRoomLight1,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.livingRoomLight2,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.livingRoomLight4,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.livingRoomLight5,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.closetToBedroomRelay,
+          config: {
+            method: relayMethods.close
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.close
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.close
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.open
+          }
+        }, {
+          name: emittersNames.livingRoomLight3,
+          config: {
+            method: relayMethods.close
+          }
+        }, {
+          name: emittersNames.livingRoomLight4,
+          config: {
+            method: relayMethods.close
+          }
+        }, {
+          name: emittersNames.lettersMagnetsRelay,
+          config: {
+            method: relayMethods.close
+          }
+        }
       ]
     },
     actionDependencies: [
@@ -637,6 +725,15 @@ export default [
       ],
       notScary: [
         500
+      ],
+      bigTeams: [
+        100, 150, 100, 250, 600, // Flash light
+        100, 0, 0 ,0,  // Drop lights
+
+        0, // Open closet to bedroom
+
+        2624, 150, 100, 250, 600, 0, // open lights
+        2000 // dropLetters
       ]
     }, // Flash light and open 2 lights in the living room
     expectedListeners: [
@@ -863,6 +960,20 @@ export default [
             method: relayMethods.close
           }
         }
+      ],
+      bigTeams: [
+        emittersNames.livingRoomLight1,
+        emittersNames.livingRoomLight1,
+        emittersNames.livingRoomLight1,
+        emittersNames.livingRoomLight1,
+        emittersNames.livingRoomLight1,
+        emittersNames.livingRoomLight1,
+        {
+          name: emittersNames.fireplaceCutterMagnetRelay,
+          config: {
+            method: relayMethods.close
+          }
+        }
       ]
     },
     emittersTimeouts: {
@@ -880,6 +991,10 @@ export default [
         540, 0, 0, // Dying lights
         1000, // Move closet
         0, 0 // Bedroom lights adjustments
+      ],
+      bigTeams: [
+        0, 200, 200, 200, 200, 200, // Flash living room light
+        0 // Throw key from fireplace
       ]
     }, // Open light in living room
     expectedListeners: [
@@ -911,7 +1026,8 @@ export default [
           tracks: ['8'],
           timeouts: [0]
         }
-      ]
+      ],
+      bigTeams: []
     }
   }, {
     name: actionNames.EFFECTopenMemorialLight,
