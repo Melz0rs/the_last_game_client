@@ -76,12 +76,13 @@ export default class Action {
     const listenerName = options.listenerName;
     const val = options.value;
     const skipCondition = options.skipCondition;
+    const systemLocked = boardsSetupService.isSystemLocked();
 
     if(!skipCondition) {
       this.updateCurrentListeners(val, listenerName);
     }
 
-    if( skipCondition || this.checkCondition() ) {
+    if( skipCondition || ( !systemLocked && this.checkCondition()) ) {
 
       const gameMode = boardsSetupService.getGameMode();
 
