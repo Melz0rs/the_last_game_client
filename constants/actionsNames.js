@@ -59,5 +59,10 @@ export default {
   memorialLightPictureHint: 'memorialLightPictureHint',
   memorialLightKeyHint: 'memorialLightKeyHint',
   forgotFlashLights: 'forgotFlashLights',
-  zapPreGameLight: 'zapPreGameLight'
+  zapPreGameLight: 'zapPreGameLight',
+  howlingWolves: 'howlingWolves',
+  lightningStrike: 'lightningStrike',
+  despacito: 'despacito',
+  volumeDown: 'volumeDown',
+  volumeUp: 'volumeUp'
 };

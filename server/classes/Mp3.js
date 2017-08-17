@@ -22,7 +22,7 @@ export default class Mp3{
 
   setVolume(volume) {
     const message = volumesMapping[volume];
-
+    console.log('Setting volume to ', volume);
     this.write(message);
   }
 

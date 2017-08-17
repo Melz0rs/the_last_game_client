@@ -424,6 +424,87 @@ let actions =  [
       }
     ]
   }, {
+    name: actionNames.howlingWolves,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['x'],
+        timeouts: [0]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['x'],
+        timeouts: [0]
+      }
+    ]
+  },  {
+    name: actionNames.despacito,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['A'],
+        timeouts: [0],
+        volumes: [5]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['A'],
+        timeouts: [0],
+        volumes: [5]
+      }
+    ]
+  }, {
+    name: actionNames.lightningStrike,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['w'],
+        timeouts: [0]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['w'],
+        timeouts: [0]
+      }
+    ]
+  }, {
+    name: actionNames.volumeUp,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [],
+        volumes: [10]
+      }, {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [],
+        volumes: [10]
+      }
+    ]
+  }, {
+    name: actionNames.volumeDown,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [],
+        volumes: [6]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['-'],
+        timeouts: [],
+        volumes: [6]
+      }
+    ]
+  }, {
     name: actionNames.toggleDollBOOMMagnet,
     emitterConfigs: [
       emittersNames.dollBoomMagnetRelay

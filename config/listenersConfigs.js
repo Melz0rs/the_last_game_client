@@ -66,15 +66,15 @@ export default [
     {
       pin: 7,
       actionName: actionNames.EFFECTopenBedroomCloset,
-      name: listenersNames.candlestickReadswitch1
+      name: listenersNames.momCandlestickReadswitch
     }, {
       pin: 8,
       actionName: actionNames.EFFECTopenBedroomCloset,
-      name: listenersNames.candlestickReadswitch2
+      name: listenersNames.suicidedCandlestickReadswitch
     }, {
       pin: 9,
       actionName: actionNames.EFFECTopenBedroomCloset,
-      name: listenersNames.candlestickReadswitch3
+      name: listenersNames.closetCandlestickReadSwitch
     }, {
       pin: 11,
       actionName: actionNames.EFFECTopenMemorialLight,

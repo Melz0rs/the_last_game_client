@@ -70,6 +70,21 @@ export default [
   }, {
     name: actionNames.clapBothSidesKidsroom,
     tab: tabNames.Mp3s
+  }, {
+    name: actionNames.howlingWolves,
+    tab: tabNames.Mp3s
+  }, {
+    name: actionNames.lightningStrike,
+    tab: tabNames.Mp3s
+  },  {
+    name: actionNames.despacito,
+    tab: tabNames.Mp3s
+  }, {
+    name: actionNames.volumeDown,
+    tab: tabNames.Mp3s
+  }, {
+    name: actionNames.volumeUp,
+    tab: tabNames.Mp3s
   },
 
   /* Lights */

@@ -18,10 +18,12 @@ export default class Action {
   }
 
   setMp3s() {
-    if(this.mp3Configs) {
+    if (this.mp3Configs) {
+      const gameMode = boardsSetupService.getGameMode();
+      const mp3Configs = this.mp3Configs[gameMode] || this.mp3Configs;
       this.mp3s = [];
 
-      this.mp3Configs.forEach(config => {
+      mp3Configs.forEach(config => {
         const currentMp3 = boardsSetupService.getMp3(config.name);
 
         this.mp3s.push(currentMp3);

@@ -196,6 +196,7 @@ export default {
     console.log('Changing game mode to: ', gameModeName);
     currentGameMode = gameModeName;
     this.setEmittersForActions();
+    this.SetMp3ForActions();
   },
 
   getGameMode: function() {
