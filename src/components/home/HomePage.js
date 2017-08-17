@@ -31,8 +31,14 @@ class HomePage extends React.Component {
 
     if(tabName === tabNames.GameEffects) {
       actionsTabs.push({
-
         name: 'stopActions',
+        tab: tabNames.GameEffects
+      });
+    }
+
+    if(tabName === tabNames.GameEffects) {
+      actionsTabs.push({
+        name: 'lockSystem',
         tab: tabNames.GameEffects
       });
     }

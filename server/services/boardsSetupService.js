@@ -201,6 +201,18 @@ export default {
 
   getGameMode: function() {
     return currentGameMode;
+  },
+
+  isSystemLocked: function() {
+    return this.systemLocked;
+  },
+
+  lockSystem: function() {
+    this.systemLocked = true;
+  },
+
+  unlockSystem: function() {
+    this.systemLocked = false;
   }
 
 };

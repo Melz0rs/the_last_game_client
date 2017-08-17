@@ -26,6 +26,7 @@ const ports = [
 ];
 
 let clients = [];
+let lockSystemTimeout;
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -51,6 +52,16 @@ function stopActions() {
   mp3s.forEach(mp3 => {
     mp3.stop();
   });
+}
+
+function lockSystem() {
+  clearTimeout(lockSystemTimeout);
+
+  boardsSetupService.lockSystem();
+
+  lockSystemTimeout = setTimeout(() => {
+    boardsSetupService.unlockSystem();
+  }, 3000);
 }
 
 function resetGame() {
@@ -111,6 +122,10 @@ ioServer.on('connection', function(client) {
 
     client.on('stopActions', function() {
       stopActions();
+    });
+
+    client.on('lockSystem', function() {
+      lockSystem();
     });
 
     client.on('setGameMode', function(gameModeName) {
