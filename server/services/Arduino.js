@@ -23,6 +23,10 @@ export default {
     return five.Motion(config);
   },
 
+  Button: (config) => {
+    return five.Button(config);
+  },
+
   Boards: (config) => {
     return five.Boards(config);
   }
