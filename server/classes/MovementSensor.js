@@ -1,24 +1,25 @@
- import Module from './Module';
-import boardsSetupService from '../services/boardsSetupService';
+ import Listener from './Listener';
 import arduino from '../services/Arduino';
 
-export default class MovementSensor extends Module {
+
+export default class MovementSensor extends Listener { // TODO: Inherit from listener !!!
   constructor(config) {
     super(config);
 
-    this.actionName = config.actionName;
-    this.name = config.name;
     this.motion = new arduino.Motion({pin: this.pin, board: this.board});
-
   }
 
-  registerPins(onChange) {
+  registerEvents(onChange) {
+
+    super.registerEvents(onChange);
+
     let executeActionTimeout;
 
     this.motion.on("motionstart", () => {
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
-          onChange(0);
+          console.log('movementstart');
+          onChange(this.name, 0);
           this.executeAction(0);
           executeActionTimeout = null;
         }, 100);
@@ -32,7 +33,8 @@ export default class MovementSensor extends Module {
     this.motion.on("motionend", () => {
       if (!executeActionTimeout) {
         executeActionTimeout = setTimeout(() => {
-          onChange(1);
+          console.log('movementend');
+          onChange(this.name, 1);
           this.executeAction(1);
           executeActionTimeout = null;
         }, 100);
@@ -42,49 +44,23 @@ export default class MovementSensor extends Module {
         executeActionTimeout = null;
       }
     });
-    // const that = this;
-    // this.pinPrevVal = null;
-    // this.actionExecutedCounter = 0;
-    //
-    // this.pin.read(function(err, val) {
-    //
-    //   if (that.pinPrevVal !== null) {
-    //     if (that.pinPrevVal !== val) {
-    //       that.pinPrevVal = val;
-    //       if(that.pin.pin === 12) {
-    //         console.log(val);
-    //       }
-    //       if(that.actionExecutedCounter >= 1) {
-    //         if (!executeActionTimeout) {
-    //           executeActionTimeout = setTimeout(() => {
-    //             that.executeAction(val);
-    //             executeActionTimeout = null;
-    //           }, 100);
-    //         } else {
-    //           // console.log('pulse was detected from ', that.name);
-    //           clearTimeout(executeActionTimeout);
-    //           executeActionTimeout = null;
-    //         }
-    //       }
-    //
-    //       that.actionExecutedCounter++;
-    //
-    //     }
-    //   } else {
-    //     that.pinPrevVal = val;
-    //   }
-    // });
+
+  }
+
+  emitSignalValue() {
+    super.emitSignalValue();
   }
 
   setAction() {
-    this.action = boardsSetupService.getAction(this.actionName);
+    super.setAction();
   }
 
   executeAction(val) {
-    this.action.execute({ value: val, listenerName: this.name });
+    super.executeAction(val);
   }
 
   reset() {
-
+    super.reset();
   }
+
 }

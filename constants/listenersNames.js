@@ -1,14 +1,22 @@
 export default {
   bedroomVanityPictureReadswitch: 'bedroomVanityPictureReadswitch',
   bedroomMemorialLightReadswitch: 'bedroomMemorialLightReadswitch',
-  kidsroomPicture1Readswitch: 'kidsroomPicture1Readswitch',
-  kidsroomPicture2Readswitch: 'kidsroomPicture2Readswitch',
-  kidsroomPicture3Readswitch: 'kidsroomPicture3Readswitch',
-  kidsroomPicture4Readswitch: 'kidsroomPicture4Readswitch',
-  kidsroomPicture5Readswitch: 'kidsroomPicture5Readswitch',
+  kidsroomFamilyReadswitch: 'kidsroomFamilyReadswitch',
+  kidsroomDollPictureReadswitch: 'kidsroomDollPictureReadswitch',
+  kidsroomPictureDadReadswitch: 'kidsroomPictureDadReadswitch',
+  kidsroomKillerPictureReadswitch: 'kidsroomKillerPictureReadswitch',
+  kidsroomMomPictureReadswitch: 'kidsroomMomPictureReadswitch',
+  kidsroomGhostPictureReadswitch: 'kidsroomGhostPictureReadswitch',
   drawer1Readswitch: 'drawer1Readswitch',
   drawer2Readswitch: 'drawer2Readswitch',
   drawer3Readswitch: 'drawer3Readswitch',
   drawer4Readswitch: 'drawer4Readswitch',
-  tempMovementSensor: 'tempMovementSensor'
+  drawerMovementSensor: 'drawerMovementSensor',
+  clockReadswitch1: 'clockReadswitch1',
+  clockReadswitch2: 'clockReadswitch2',
+  railReadswitch: 'railReadswitch',
+  momCandlestickReadswitch: 'momCandlestickReadswitch',
+  suicidedCandlestickReadswitch: 'suicidedCandlestickReadswitch',
+  closetCandlestickReadSwitch: 'closetCandlestickReadSwitch',
+  hallwayProximitySensor: 'hallwayProximitySensor'
 }

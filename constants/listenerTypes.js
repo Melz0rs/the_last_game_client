@@ -1,3 +1,5 @@
 export default {
-  movementSensor: 'movementSensor'
-}
+  movementSensor: 'movementSensor',
+  sensor: 'sensor',
+  proximity: 'proximity'
+};

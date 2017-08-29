@@ -29,5 +29,14 @@ export default {
 
   Boards: (config) => {
     return five.Boards(config);
+  },
+
+  Sensor: (config) => {
+    return five.Sensor.call(config.board, config);
+  },
+
+  Proximity: (config) => {
+    return five.Proximity(config);
   }
-}
+
+};

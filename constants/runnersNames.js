@@ -1,4 +1,3 @@
 export default {
-  bedroomVanityLightRunner: 'bedroomVanityLightRunner',
-  lightningRunner: 'lightningRunner'
+  preGameZapLightsRunner: 'preGameZapLightsRunner'
 };

@@ -1,3 +1,4 @@
 export default {
-  kidsRoomSoundEffects: 'kidsRoomSoundEffects'
-}
+  kidsRoomSoundEffects: 'kidsRoomSoundEffects',
+  livingRoomSoundEffects: 'livingRoomSoundEffects'
+};

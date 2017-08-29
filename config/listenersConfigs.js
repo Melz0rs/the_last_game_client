@@ -4,59 +4,98 @@ import listenerTypes from '../constants/listenerTypes';
 export default [
   [
     {
-      pin: 3,
-      actionName: actionNames.toggleHoleDoor,
-      name: listenersNames.kidsroomPicture1Readswitch
+      pin: 33,
+      actionName: actionNames.EFFECTopenHoleEffect,
+      name: listenersNames.kidsroomPictureDadReadswitch
     }, {
+      pin: 32,
+      actionName: actionNames.EFFECTopenHoleEffect,
+      name: listenersNames.kidsroomMomPictureReadswitch
+    }, {
+      pin: 31,
+      actionName: actionNames.EFFECTopenHoleEffect,
+      name: listenersNames.kidsroomDollPictureReadswitch
+    }, {
+      pin: 30,
+      actionName: actionNames.EFFECTplayingBoxEffect,
+      name: listenersNames.kidsroomKillerPictureReadswitch
+    }, {
+      pin: 29,
+      actionName: actionNames.EFFECTopenHoleEffect,
+      name: listenersNames.kidsroomFamilyReadswitch
+    }, {
+      pin: 28,
+      actionName: actionNames.EFFECTopenHoleEffect,
+      name: listenersNames.kidsroomGhostPictureReadswitch
+    }, {
+      pin: 25,
+      actionName: actionNames.EFFECTopenBlueCabinToBedroom,
+      name: listenersNames.drawer1Readswitch
+    }, {
+      pin: 24,
+      actionName: actionNames.EFFECTopenBlueCabinToBedroom,
+      name: listenersNames.drawer2Readswitch
+    }, {
+      pin: 23,
+      actionName: actionNames.EFFECTopenBlueCabinToBedroom,
+      name: listenersNames.drawer3Readswitch
+    },
+     {
+       pin: 22,
+       actionName: actionNames.EFFECTopenBlueCabinToBedroom,
+       name: listenersNames.drawer4Readswitch
+     },
+    {
       pin: 4,
-      actionName: actionNames.toggleHoleDoor,
-      name: listenersNames.kidsroomPicture2Readswitch
+      actionName: actionNames.EFFECTthrowCutterEffect,
+      name: listenersNames.clockReadswitch1,
+      debounceTime: 100 // TODO: Change to 100
+
+    }, {
+      pin: 5,
+      actionName: actionNames.EFFECTthrowCutterEffect,
+      name: listenersNames.clockReadswitch2,
+      debounceTime: 100 // TODO: Change to 100
     },
     {
-      pin: 5,
-      actionName: actionNames.toggleHoleDoor,
-      name: listenersNames.kidsroomPicture3Readswitch
-    }, {
       pin: 6,
-      actionName: actionNames.toggleHoleDoor,
-      name: listenersNames.kidsroomPicture4Readswitch
+      actionName: actionNames.EFFECTdropLettersEffect,
+      name: listenersNames.drawerMovementSensor,
+      listenerType: listenerTypes.movementSensor
     },
     {
       pin: 7,
-      actionName: actionNames.toggleHoleDoor,
-      name: listenersNames.kidsroomPicture5Readswitch
+      actionName: actionNames.EFFECTopenBedroomCloset,
+      name: listenersNames.momCandlestickReadswitch
+    }, {
+      pin: 8,
+      actionName: actionNames.EFFECTopenBedroomCloset,
+      name: listenersNames.suicidedCandlestickReadswitch
     }, {
       pin: 9,
-      actionName: actionNames.toggleMemorialLight,
-      name: listenersNames.bedroomVanityPictureReadswitch
+      actionName: actionNames.EFFECTopenBedroomCloset,
+      name: listenersNames.closetCandlestickReadSwitch
+    }, {
+      pin: 11,
+      actionName: actionNames.EFFECTopenMemorialLight,
+      name: listenersNames.bedroomVanityPictureReadswitch,
+      debounceTime: 100
+    }, {
+      pin: 10,
+      actionName: actionNames.EFFECTopenHoleExitEffect,
+      name: listenersNames.railReadswitch
     }
   ], [
     {
-      pin: 6,
-      actionName: actionNames.toggleClosetToBedroomMagnet,
-      name: listenersNames.drawer1Readswitch
-    },
-    // {
-    //   pin: 7,
-    //   actionName: actionNames.toggleClosetToBedroomMagnet,
-    //   name: listenersNames.drawer2Readswitch
-    // },
-    {
-      pin: 8,
-      actionName: actionNames.toggleClosetToBedroomMagnet,
-      name: listenersNames.drawer3Readswitch
-    }, {
-      pin: 9,
-      actionName: actionNames.toggleClosetToBedroomMagnet,
-      name: listenersNames.drawer4Readswitch
+      pin: '35',
+      actionName: actionNames.EFFECTopenBedroomLights,
+      name: listenersNames.bedroomMemorialLightReadswitch
     }
     // , {
-    //   pin: 11,
-    //   actionName: actionNames.toggleMirror,
-    //   name: listenersNames.tempMovementSensor,
-    //   listenerType: listenerTypes.movementSensor
+    //   pin: '34',
+    //   actionName: actionNames.toggleHoleExitMagnet,
+    //   name: listenersNames.hallwayProximitySensor,
+    //   listenerType: listenerTypes.proximity
     // }
-  ], [
-
   ]
 ];

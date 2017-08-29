@@ -25,6 +25,5 @@ export default {
      return arr.reduce(function(acc, val) {
        return acc + val;
      });
-   }
-
+   },
 };

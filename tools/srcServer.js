@@ -21,11 +21,12 @@ const ioServer = io(server);
 
 
 const ports = [
-  { id: "A", port: 'COM4' },
-  { id: "B", port: 'COM3' }
+  { id: "A", port: 'COM21' },
+  { id: "B", port: 'COM22' }
 ];
 
 let clients = [];
+let lockSystemTimeout;
 
 app.use(require('webpack-dev-middleware')(compiler, {
   noInfo: true,
@@ -38,10 +39,37 @@ app.get('*', function(req, res) {
   res.sendFile(path.join( __dirname, '../src/index.html'));
 });
 
+function stopActions() {
+  const actions = boardsSetupService.getActions();
+  const mp3s = boardsSetupService.getMp3s();
+
+  console.log('stopping actions');
+
+  actions.forEach(action => {
+    action.stop();
+  });
+
+  mp3s.forEach(mp3 => {
+    mp3.stop();
+  });
+}
+
+function lockSystem() {
+  clearTimeout(lockSystemTimeout);
+
+  boardsSetupService.lockSystem();
+
+  lockSystemTimeout = setTimeout(() => {
+    boardsSetupService.unlockSystem();
+  }, 3000);
+}
+
 function resetGame() {
   const listeners = boardsSetupService.getListeners();
   const emitters = boardsSetupService.getEmitters();
   const runners = boardsSetupService.getRunners();
+  const mp3s = boardsSetupService.getMp3s();
+  const actions = boardsSetupService.getActions();
 
   listeners.forEach(listener => {
     listener.reset();
@@ -54,11 +82,26 @@ function resetGame() {
   emitters.forEach(emitter => {
     emitter.reset();
   });
+
+  mp3s.forEach(mp3 => {
+      mp3.reset();
+  });
+
+  actions.forEach(action => {
+    action.reset();
+  });
+}
+
+function emitRelayStateToClient(emitterName, emitterAction) {
+  clients.forEach(client => {
+    client.emit(emitterName, emitterAction);
+  });
 }
 
 function emitChangesToClient(listenerName, listenerValue) {
+  // console.log(listenerName, listenerValue);
   clients.forEach(client => {
-    client.emit({ listenerName, listenerValue });
+    client.emit(listenerName, listenerValue);
   });
 }
 
@@ -67,11 +110,32 @@ ioServer.on('connection', function(client) {
     console.log(handshake);
     clients.push(client);
 
+    const listeners = boardsSetupService.getListeners();
+
+    listeners.forEach(listener => {
+       listener.emitSignalValue();
+    } );
+
     client.on('resetGame', function() {
       resetGame();
     });
 
+    client.on('stopActions', function() {
+      stopActions();
+    });
+
+    client.on('lockSystem', function() {
+      lockSystem();
+    });
+
+    client.on('setGameMode', function(gameModeName) {
+      boardsSetupService.setGameMode(gameModeName);
+    });
+
     for (let actionName in actionNames) {
+
+      actionName = actionNames[actionName];
+
       client.on(actionName, () => {
         const action = boardsSetupService.getAction(actionName);
 
@@ -91,7 +155,7 @@ new arduino.Boards(ports).on("ready", function() {
     console.log('setupping arduino! ID:', board.id);
 
     const emittersConfig = emittersConfigs[i];
-    boardsSetupService.createEmitters(board, emittersConfig);
+    boardsSetupService.createEmitters(board, emittersConfig, emitRelayStateToClient);
 
     const listenersConfig = listenersConfigs[i];
     boardsSetupService.createListeners(board, listenersConfig);
@@ -106,8 +170,9 @@ new arduino.Boards(ports).on("ready", function() {
   boardsSetupService.setRunnersForActions();
   boardsSetupService.setEmittersForActions();
   boardsSetupService.SetMp3ForActions();
+  boardsSetupService.setActionDependenciesForActions();
 
-  boardsSetupService.registerPins(emitChangesToClient);
+  boardsSetupService.registerEvents(emitChangesToClient);
   boardsSetupService.resetRunners();
 
   resetGame();

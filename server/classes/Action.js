@@ -9,26 +9,39 @@ export default class Action {
     this.emittersTimeouts = config.emittersTimeouts;
     this.name = config.name;
     this.expectedListeners = config.expectedListeners;
-    this.runnerName = config.runnerName;
+    this.runnerConfig = config.runnerConfig;
     this.emitterConfigs = config.emitterConfigs;
-    this.mp3Config = config.mp3Config;
+    this.mp3Configs = config.mp3Configs;
+    this.actionDependencies = config.actionDependencies;
 
     this.reset();
-
   }
 
-  setMp3() {
-    if(this.mp3Config) {
-      this.mp3 = boardsSetupService.getMp3(this.mp3Config.name);
+  setMp3s() {
+    if (this.mp3Configs) {
+      const gameMode = boardsSetupService.getGameMode();
+      const mp3Configs = this.mp3Configs[gameMode] || this.mp3Configs;
+      this.mp3s = [];
+
+      mp3Configs.forEach(config => {
+        const currentMp3 = boardsSetupService.getMp3(config.name);
+
+        this.mp3s.push(currentMp3);
+      });
     }
   }
 
   setRunner() {
-    this.runner = boardsSetupService.getRunner(this.runnerName);
+    if(this.runnerConfig) {
+      this.runner = boardsSetupService.getRunner(this.runnerConfig.name);
+    }
   }
 
   setEmitters() {
-    this.emitterconfigs = this.emitterConfigs.map(emitterConfig => {
+    const gameMode = boardsSetupService.getGameMode();
+    const emitterConfigs = this.emitterConfigs[gameMode] || this.emitterConfigs;
+
+    this.emitterconfigs = emitterConfigs.map(emitterConfig => {
       const emitterName = emitterConfig.name || emitterConfig;
       const config = emitterConfig.config;
       const emitter = boardsSetupService.getEmitter(emitterName);
@@ -41,7 +54,18 @@ export default class Action {
     });
   }
 
+  setActionDependencies() {
+    if(this.actionDependencies) {
+      this.actionDependencies = this.actionDependencies.map(actionName => {
+        const action = boardsSetupService.getAction(actionName);
+
+        return action;
+      });
+    }
+  }
+
   reset() {
+    this.stop();
     this.actionExecuted = false;
     this.currentListeners = [];
     this.emitterTimeoutPromises = [];
@@ -52,20 +76,23 @@ export default class Action {
     const listenerName = options.listenerName;
     const val = options.value;
     const skipCondition = options.skipCondition;
+    const systemLocked = boardsSetupService.isSystemLocked();
 
     if(!skipCondition) {
       this.updateCurrentListeners(val, listenerName);
     }
 
-    if( skipCondition || this.checkCondition() ) {
+    if( skipCondition || ( !systemLocked && this.checkCondition()) ) {
+
+      const gameMode = boardsSetupService.getGameMode();
 
       console.log('action executed, action: ', this.name);
 
       this.toggleRunnerState();
-      this.playMp3();
+      this.playMp3s();
 
       this.actionExecuted = true;
-      const emittersTimeouts = this.emittersTimeouts;
+      const emittersTimeouts = this.emittersTimeouts[gameMode] || this.emittersTimeouts;
       const emitterConfigs = this.emitterconfigs;
 
       for (let i = 0; i < emitterConfigs.length; i++) {
@@ -88,25 +115,49 @@ export default class Action {
     }
   }
 
-  playMp3() {
-    if (this.mp3) {
-      const tracks = this.mp3Config.tracks;
-      const timeouts = this.mp3Config.timeouts;
+  playMp3s(gameMode) {
+    if (this.mp3s) {
 
-      for (let i = 0; i < tracks.length; i++) {
-        const track = tracks[i];
-        let timeout = 0;
+      const gameMode = boardsSetupService.getGameMode();
+      const mp3Configs = this.mp3Configs[gameMode] || this.mp3Configs;
 
-        if (timeouts) {
-          for (let j = 0; j <= i; j++) {
-            timeout += timeouts[j];
-          }
+      mp3Configs.forEach((mp3Config, i) => {
+        const mp3 = this.mp3s[i];
+
+        const tracks = mp3Config.tracks;
+        const timeouts = mp3Config.timeouts;
+        const volumes = mp3Config.volumes;
+
+        if (mp3Config.state) {
+          setTimeout(function () {
+            boardsSetupService.closeOpenedMp3s(mp3.name);
+
+            mp3.open();
+          }, mp3Config.state.timeout);
         }
 
-        this.mp3TimeoutPromises.push(setTimeout(() => {
-          this.mp3.play(track);
-        }, timeout));
-      }
+        if (tracks) {
+          for (let i = 0; i < tracks.length; i++) {
+            const track = tracks[i];
+            const volume = volumes ? volumes[i] || 10 : 10;
+            let timeout = 0;
+
+            if (timeouts) {
+              for (let j = 0; j <= i; j++) {
+                timeout += timeouts[j];
+              }
+            }
+
+            this.mp3TimeoutPromises.push(setTimeout(() => {
+              mp3.setVolume(volume);
+
+              if(track !== '-') {
+                mp3.play(track);
+              }
+            }, timeout));
+          }
+        }
+      });
     }
   }
 
@@ -124,7 +175,8 @@ export default class Action {
   }
 
   checkCondition() {
-    // if(this.actionExecuted) { return false; }
+    if(this.actionExecuted || !this.checkActionDependencies()) { return false; }
+
     let condition = true;
 
     const expectedListeners = this.expectedListeners;
@@ -151,22 +203,49 @@ export default class Action {
     return condition;
   }
 
+  checkActionDependencies() {
+    let allActionsExecuted = true;
+
+    if(this.actionDependencies && this.actionDependencies.length > 0) {
+
+      this.actionDependencies.forEach(action => {
+        if(!action.actionExecuted) {
+          allActionsExecuted = false;
+        }
+      });
+
+    }
+
+    return allActionsExecuted;
+  }
+
   stop() {
-    this.emitterTimeoutPromises.forEach(timeoutPromise => {
-      clearTimeout(timeoutPromise);
-    });
+    if(this.emitterTimeoutPromises) {
+      this.emitterTimeoutPromises.forEach(timeoutPromise => {
+        clearTimeout(timeoutPromise);
+      });
+    }
 
-    this.mp3TimeoutPromises.forEach(timeoutPromise => {
-      clearTimeout(timeoutPromise);
-      this.mp3.stop();
-    });
+    if(this.mp3TimeoutPromises) {
+      this.mp3TimeoutPromises.forEach(timeoutPromise => {
+        clearTimeout(timeoutPromise);
+      });
+    }
 
-    this.toggleRunnerState();
+    this.resetRunner();
+  }
+
+  resetRunner() {
+    if(this.runner) {
+      this.runner.reset();
+    }
   }
 
   toggleRunnerState() {
     if(this.runner) {
-      this.runner.toggleState();
+      setTimeout(() => {
+        this.runner.toggleState();
+      }, this.runnerConfig.timeout);
     }
   }
 }

@@ -1,10 +1,10 @@
 import React from 'react';
-import Button from '../common/Button';
+import ActionButton from './ActionButton';
 
-class ButtonList extends React.Component {
+export default class ActionButtons extends React.Component {
   createObjectRow(buttonConfig, i) {
     return (
-      <Button buttonConfig={buttonConfig}  key={i} />
+      <ActionButton buttonConfig={buttonConfig}  key={i} />
     );
   }
 
@@ -17,8 +17,7 @@ class ButtonList extends React.Component {
   }
 }
 
-ButtonList.propTypes = {
+ActionButtons.propTypes = {
   buttonsConfigs: React.PropTypes.array.isRequired
 };
 
-export default ButtonList;

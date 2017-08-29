@@ -1,4 +1,5 @@
-import Listener from '../classes/Listener';
+import Sensor from '../classes/Sensor';
+import Proximity from '../classes/Proximity';
 import MovementSensor from '../classes/MovementSensor';
 import Runner from '../classes/Runner';
 import Servo from '../classes/Servo';
@@ -11,13 +12,16 @@ import Mp3 from '../classes/Mp3';
 import mp3Configs from '../../config/mp3sConfigs';
 import emitterTypes from '../../constants/emitterTypes';
 import listenerTypes from '../../constants/listenerTypes';
+import gameModes from '../../constants/difficulyModes';
 
+const defaultGameMode = gameModes.scary;
 
 let emitters = [];
 let listeners = [];
 let actions = [];
 let runners = [];
 let mp3s =[];
+let currentGameMode = defaultGameMode;
 
 
 export default {
@@ -33,8 +37,16 @@ export default {
               actionName: listenerConfig.actionName
             }));
             break;
+          case listenerTypes.proximity:
+            listeners.push(new Proximity({
+              pin: listenerConfig.pin,
+              board,
+              name: listenerConfig.name,
+              actionName: listenerConfig.actionName
+            }));
+            break;
           default:
-            listeners.push(new Listener({
+            listeners.push(new Sensor({
               pin: listenerConfig.pin,
               board,
               name: listenerConfig.name,
@@ -45,7 +57,7 @@ export default {
 
   },
 
-  createEmitters: function(board, config) {
+  createEmitters: function(board, config, stateChangeCallback) {
     config.forEach(emitterConfig => {
       switch(emitterConfig.emitterType) {
         case emitterTypes.servo:
@@ -63,7 +75,8 @@ export default {
             board,
             pin: emitterConfig.pin,
             name: emitterConfig.name,
-            defaults: emitterConfig.defaults}
+            defaults: emitterConfig.defaults,
+            stateChangeCallback}
           ));
       }
     });
@@ -87,15 +100,21 @@ export default {
     });
   },
 
-  registerPins: function(onChange) {
+  registerEvents: function(onChange) {
     listeners.forEach(listener => {
-      listener.registerPins(onChange);
+      listener.registerEvents(onChange);
     });
   },
 
   setEmittersForActions: function() {
     actions.forEach(action => {
       action.setEmitters();
+    });
+  },
+
+  setActionDependenciesForActions: function() {
+    actions.forEach(action => {
+      action.setActionDependencies();
     });
   },
 
@@ -113,7 +132,7 @@ export default {
 
   SetMp3ForActions: function() {
     actions.forEach(action => {
-      action.setMp3(0);
+      action.setMp3s(0);
     });
   },
 
@@ -131,6 +150,14 @@ export default {
 
   getListeners: function() {
     return listeners;
+  },
+
+  getMp3s: function() {
+    return mp3s;
+  },
+
+  getActions: function() {
+    return actions;
   },
 
   getEmitters: function() {
@@ -155,6 +182,37 @@ export default {
 
   getMp3: function(name) {
     return utils.getFirstInstance(mp3s, 'name', name);
+  },
+
+  closeOpenedMp3s: function(currentMp3Name) {
+    mp3s.filter(mp3 => {
+      return mp3.isOpen && mp3.name !== currentMp3Name;
+    }).forEach(mp3 => {
+      mp3.close();
+    });
+  },
+
+  setGameMode: function(gameModeName) {
+    console.log('Changing game mode to: ', gameModeName);
+    currentGameMode = gameModeName;
+    this.setEmittersForActions();
+    this.SetMp3ForActions();
+  },
+
+  getGameMode: function() {
+    return currentGameMode;
+  },
+
+  isSystemLocked: function() {
+    return this.systemLocked;
+  },
+
+  lockSystem: function() {
+    this.systemLocked = true;
+  },
+
+  unlockSystem: function() {
+    this.systemLocked = false;
   }
 
 };
