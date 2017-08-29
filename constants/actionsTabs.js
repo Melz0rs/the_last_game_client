@@ -65,12 +65,6 @@ export default [
     name: actionNames.openLivingRoomMp3,
     tab: tabNames.Mp3s
   }, {
-    name: actionNames.clapBothSides,
-    tab: tabNames.Mp3s
-  }, {
-    name: actionNames.clapBothSidesKidsroom,
-    tab: tabNames.Mp3s
-  }, {
     name: actionNames.howlingWolves,
     tab: tabNames.Mp3s
   }, {
@@ -78,6 +72,15 @@ export default [
     tab: tabNames.Mp3s
   },  {
     name: actionNames.despacito,
+    tab: tabNames.Mp3s
+  },  {
+    name: actionNames.creakingDoor,
+    tab: tabNames.Mp3s
+  },  {
+    name: actionNames.creepyChillMusic,
+    tab: tabNames.Mp3s
+  },  {
+    name: actionNames.ghostBreath,
     tab: tabNames.Mp3s
   }, {
     name: actionNames.volumeDown,
@@ -168,6 +171,9 @@ export default [
 
   {
     name: actionNames.EFFECTpreGame,
+    tab: tabNames.GameEffects
+  },{
+    name: actionNames.EFFECTHallWay,
     tab: tabNames.GameEffects
   }, {
     name: actionNames.EFFECTstartGame,

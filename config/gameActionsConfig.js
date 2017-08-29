@@ -14,9 +14,39 @@ export default [
     },
     emitterConfigs: [
       {
-        name: emittersNames.livingRoomLight4,
+        name: emittersNames.hallwayLight6,
         config: {
           method: relayMethods.close
+        }
+      },{
+        name: emittersNames.hallwayLight5,
+        config: {
+          method: relayMethods.open
+        }
+      },{
+        name: emittersNames.hallwayLight4,
+        config: {
+          method: relayMethods.open
+        }
+      },{
+        name: emittersNames.hallwayLight3,
+        config: {
+          method: relayMethods.open
+        }
+      },{
+        name: emittersNames.hallwayLight2,
+        config: {
+          method: relayMethods.open
+        }
+      },{
+        name: emittersNames.hallwayLight1,
+        config: {
+          method: relayMethods.open
+        }
+      },{
+        name: emittersNames.livingRoomLight4,
+        config: {
+          method: relayMethods.open
         }
       }, {
         name: emittersNames.livingRoomLight1,
@@ -35,36 +65,6 @@ export default [
         }
       }, {
         name: emittersNames.livingRoomLight5,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight1,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight2,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight3,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight4,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight5,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight6,
         config: {
           method: relayMethods.open
         }
@@ -142,6 +142,75 @@ export default [
         }
       }
     ]
+  }, {
+    name: actionNames.EFFECTHallWay,
+    runnerConfig: {
+
+    },
+    emitterConfigs: [
+      {
+        name: emittersNames.hallwayLight1,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight1,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight2,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight2,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight3,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight3,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight4,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight4,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight5,
+        config: {
+          method: relayMethods.open
+        }
+      }, {
+        name: emittersNames.hallwayLight5,
+        config: {
+          method: relayMethods.close
+        }
+      }, {
+        name: emittersNames.hallwayLight6,
+        config: {
+          method: relayMethods.open
+        }
+      }
+    ],
+    emittersTimeouts: [
+      0, 3000, 0, 3000, 0, 3000, // Open hallway lights
+      0, 3000, 0, 1500, 0 // Close hallway lights
+    ],
+    expectedListeners: [],
+    mp3Configs: []
   }, {
     name: actionNames.EFFECTstartGame,
     runnerConfig: {
@@ -1050,7 +1119,7 @@ export default [
       }
     ],
     actionDependencies: [
-      actionNames.EFFECTopenBlueCabinToBedroom
+      actionNames.EFFECTdropLettersEffect
     ],
     emittersTimeouts: [0, 0, // close lights
       2000],// Open memorial light
@@ -2840,7 +2909,7 @@ export default [
         1000, 0, 500, 0, 2000, 0,
         200, 0, 1000, 0, 300, 0, 1000, 0, 500, 0, 2000, 0,
         1000, 0,  500, 0, 2000, 0, 500, 0, 1000, 0,// flash kidsroom light
-        25.3 * 1000 + 1500, // Close living room light
+        30.3 * 1000 + 1500, // Close living room light
 
         2000, // Boom from living room
 
@@ -2898,28 +2967,28 @@ export default [
             timeout: 5000
           },
           tracks: ['f'],
-          timeouts: [55 * 1000 + 15 * 1000]
+          timeouts: [60 * 1000 + 15 * 1000]
         }, {
           name: mp3sNames.livingRoomSoundEffects,
           state:  {
             open: true,
-            timeout: 55 * 1000 + 20 * 1000
+            timeout: 60 * 1000 + 20 * 1000
           },
           tracks: ['1'],
-          timeouts: [55 * 1000 + 74 * 1000]
+          timeouts: [60 * 1000 + 74 * 1000]
         }, {
           name: mp3sNames.kidsRoomSoundEffects,
           state:  {
             open: true,
-            timeout: 55 * 1000 + 90 * 1000
+            timeout: 60 * 1000 + 90 * 1000
           },
           tracks: ['a', '-', '-', '-', '-'],
           timeouts: [
-            55 * 1000 + 95 * 1000,
-            55 * 1000 + 95.5 * 1000,
-            55 * 1000 + 96 * 1000,
-            55 * 1000 + 96.5 * 1000,
-            55 * 1000 + 97 * 1000
+            60 * 1000 + 95 * 1000,
+            60 * 1000 + 95.5 * 1000,
+            60 * 1000 + 96 * 1000,
+            60 * 1000 + 96.5 * 1000,
+            60 * 1000 + 97 * 1000
           ],
           volumes: [5, 6, 7, 8, 9]
         }

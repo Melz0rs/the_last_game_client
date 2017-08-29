@@ -455,6 +455,57 @@ let actions =  [
         volumes: [5]
       }
     ]
+  },  {
+    name: actionNames.creakingDoor,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['4'],
+        timeouts: [0],
+        volumes: [10]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['4'],
+        timeouts: [0],
+        volumes: [10]
+      }
+    ]
+  },  {
+    name: actionNames.creepyChillMusic,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['6'],
+        timeouts: [0],
+        volumes: [10]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['6'],
+        timeouts: [0],
+        volumes: [10]
+      }
+    ]
+  },  {
+    name: actionNames.ghostBreath,
+    emitterConfigs: [],
+    emittersTimeouts: [],
+    mp3Configs: [
+      {
+        name: mp3sNames.livingRoomSoundEffects,
+        tracks: ['j'],
+        timeouts: [0],
+        volumes: [6]
+      }, {
+        name: mp3sNames.kidsRoomSoundEffects,
+        tracks: ['j'],
+        timeouts: [0],
+        volumes: [6]
+      }
+    ]
   }, {
     name: actionNames.lightningStrike,
     emitterConfigs: [],
@@ -519,89 +570,24 @@ let actions =  [
   }, {
     name: actionNames.zapPreGameLight,
     emitterConfigs: [
-      {
-        name: emittersNames.livingRoomLight4,
-        config: {
-          method: relayMethods.close
-        }
-      }, {
-        name: emittersNames.hallwayLight6,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight2,
-        config: {
-          method: relayMethods.close
-        }
-      }, {
-        name: emittersNames.hallwayLight2,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight2,
-        config: {
-          method: relayMethods.close
-        }
-      } , {
-        name: emittersNames.hallwayLight2,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.livingRoomLight4,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight6,
-        config: {
-          method: relayMethods.close
-        }
-      },{
-        name: emittersNames.livingRoomLight4,
-        config: {
-          method: relayMethods.close
-        }
-      }, {
-        name: emittersNames.hallwayLight6,
-        config: {
-          method: relayMethods.open
-        }
-      },{
-        name: emittersNames.livingRoomLight4,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight6,
-        config: {
-          method: relayMethods.close
-        }
-      },{
-        name: emittersNames.livingRoomLight4,
-        config: {
-          method: relayMethods.close
-        }
-      }, {
-        name: emittersNames.hallwayLight6,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.livingRoomLight4,
-        config: {
-          method: relayMethods.open
-        }
-      }, {
-        name: emittersNames.hallwayLight6,
-        config: {
-          method: relayMethods.close
-        }
-      }
+        emittersNames.livingRoomLight4,
+        emittersNames.hallwayLight6,
+        emittersNames.hallwayLight2,
+        emittersNames.hallwayLight2,
+        emittersNames.hallwayLight2,
+        emittersNames.hallwayLight2,
+        emittersNames.livingRoomLight4,
+        emittersNames.hallwayLight6,
+        emittersNames.livingRoomLight4,
+        emittersNames.hallwayLight6,
+        emittersNames.livingRoomLight4,
+        emittersNames.hallwayLight6,
+        emittersNames.livingRoomLight4,
+        emittersNames.hallwayLight6,
+        emittersNames.livingRoomLight4,
+        emittersNames.hallwayLight6
     ],
-    emittersTimeouts: [300, 0, 500, 400, 300, 500, 3300, 0, 300, 0, 10000, 0, 400, 0, 2000]
+    emittersTimeouts: [300, 0, 500, 400, 300, 500, 3300, 0, 300, 0, 10000, 0, 400, 0, 2000, 200]
   }
 ];
 

@@ -54,6 +54,7 @@ export default {
   EFFECTplayingBoxEffect: 'EFFECTplayingBoxEffect',
   EFFECTshowDollEffect: 'EFFECTshowDollEffect',
   EFFECTopenHoleExitEffect: 'EFFECTopenHoleExitEffect',
+  EFFECTHallWay: 'EFFECTHallWay',
   toggleAllLights: 'toggleAllLights',
   lettersHint: 'lettersHint',
   memorialLightPictureHint: 'memorialLightPictureHint',
@@ -63,6 +64,19 @@ export default {
   howlingWolves: 'howlingWolves',
   lightningStrike: 'lightningStrike',
   despacito: 'despacito',
+  creakingDoor: 'creakingDoor',
+  creakingDoor2: 'creakingDoor2',
+  creepyChillMusic: 'creepyChillMusic',
+  creepyWhispering: 'creepyWhispering',
+  holophonicSound: 'holophonicSound',
+  scream: 'scream',
+  screamingWoman: 'screamWoman',
+  twistedJazz: 'twistedJazz',
+  ghostBreath: 'ghostBreath',
+  laughingKid: 'laughingKid',
+  airSucking: 'airSucking',
+  inhale: 'inhale',
   volumeDown: 'volumeDown',
   volumeUp: 'volumeUp'
+
 };
