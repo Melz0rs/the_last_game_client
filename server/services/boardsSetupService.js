@@ -1,5 +1,6 @@
 import Sensor from '../classes/Sensor';
 import Proximity from '../classes/Proximity';
+import Button from '../classes/Button';
 import MovementSensor from '../classes/MovementSensor';
 import Runner from '../classes/Runner';
 import Servo from '../classes/Servo';
@@ -39,6 +40,14 @@ export default {
             break;
           case listenerTypes.proximity:
             listeners.push(new Proximity({
+              pin: listenerConfig.pin,
+              board,
+              name: listenerConfig.name,
+              actionName: listenerConfig.actionName
+            }));
+            break;
+          case listenerTypes.button:
+            listeners.push(new Button({
               pin: listenerConfig.pin,
               board,
               name: listenerConfig.name,
