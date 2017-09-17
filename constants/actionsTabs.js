@@ -22,12 +22,6 @@ export default [
     name: actionNames.toggleClosetToBedroomMagnet,
     tab: tabNames.MagnetsAndEngines
   }, {
-    name: actionNames.toggleDollBOOMMagnet,
-    tab: tabNames.MagnetsAndEngines
-  }, {
-    name: actionNames.toggleExitBOOMMagnet,
-    tab: tabNames.MagnetsAndEngines
-  }, {
     name: actionNames.togglePlayingBox,
     tab: tabNames.MagnetsAndEngines
   }, {
@@ -106,6 +100,9 @@ export default [
     tab: tabNames.Lights
   }, {
     name: actionNames.toggleLivingRoomDrawersWallLight,
+    tab: tabNames.Lights
+  }, {
+    name: actionNames.toggleVitrinaLights,
     tab: tabNames.Lights
   }, {
     name: actionNames.toggleMemorialLight,

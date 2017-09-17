@@ -239,7 +239,7 @@ export default [
   ], [
     {
       pin: 23,
-      name: emittersNames.exitBoomMagnetRelay,
+      name: emittersNames.vitrinaLightsRelay,
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.open
@@ -247,13 +247,6 @@ export default [
     }, {
       pin: 24,
       name: emittersNames.livingRoomLight4,
-      emitterType: emitterTypes.relay,
-      defaults: {
-        method: relayMethods.open
-      }
-    }, {
-      pin: 25,
-      name: emittersNames.dollBoomMagnetRelay,
       emitterType: emitterTypes.relay,
       defaults: {
         method: relayMethods.open

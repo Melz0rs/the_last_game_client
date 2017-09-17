@@ -314,11 +314,9 @@ let actions =  [
     name: actionNames.toggleBoidemNoiser,
     emitterConfigs: [
       emittersNames.boidemNoiserRelay,
-      emittersNames.boidemNoiserRelay,
-      emittersNames.boidemNoiserRelay,
       emittersNames.boidemNoiserRelay
     ],
-    emittersTimeouts: [0, 200, 200, 200],
+    emittersTimeouts: [0, 200],
     expectedListeners: []
   }, {
     name: actionNames.toggleBedroomWallLight,
@@ -556,15 +554,9 @@ let actions =  [
       }
     ]
   }, {
-    name: actionNames.toggleDollBOOMMagnet,
+    name: actionNames.toggleVitrinaLights,
     emitterConfigs: [
-      emittersNames.dollBoomMagnetRelay
-    ],
-    emittersTimeouts: []
-  }, {
-    name: actionNames.toggleExitBOOMMagnet,
-    emitterConfigs: [
-      emittersNames.exitBoomMagnetRelay
+      emittersNames.vitrinaLightsRelay
     ],
     emittersTimeouts: []
   }, {
@@ -588,6 +580,21 @@ let actions =  [
         emittersNames.hallwayLight6
     ],
     emittersTimeouts: [300, 0, 500, 400, 300, 500, 3300, 0, 300, 0, 10000, 0, 400, 0, 2000, 200]
+  }, {
+    name: actionNames.zapFireplaceLight,
+    emitterConfigs: [
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2,
+      emittersNames.livingRoomLight2
+    ],
+    emittersTimeouts: [3000, 200, 6000, 200, 500, 200, 10000, 200, 5000, 200]
   }
 ];
 

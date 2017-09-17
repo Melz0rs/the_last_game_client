@@ -16,7 +16,7 @@ export default class Button extends Listener {
 
     const button = this.button;
 
-    button.on("press", function() {
+    button.on("hold", () => {
       clearTimeout(this.timeoutPromise);
 
         this.timeoutPromise = setTimeout(() => {
@@ -26,7 +26,6 @@ export default class Button extends Listener {
       }
 
     );
-
   }
 
   emitSignalValue() {

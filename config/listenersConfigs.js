@@ -89,8 +89,16 @@ export default [
     {
       pin: '35',
       actionName: actionNames.EFFECTopenBedroomLights,
-      name: listenersNames.bedroomMemorialLightReadswitch
+      name: listenersNames.bedroomMemorialLightReadswitch,
+      debounceTime: 1000
     }
+    // , {
+    //   pin: 37,
+    //   actionName: actionNames.EFFECTHallWay,
+    //   name: listenersNames.hallwayButton,
+    //   listenerType: listenerTypes.button,
+    //   debounceTime: 240
+    // }
     // , {
     //   pin: '34',
     //   actionName: actionNames.toggleHoleExitMagnet,

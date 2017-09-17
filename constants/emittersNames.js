@@ -41,6 +41,5 @@ export default {
   suicidedCandleRelay: 'suicidedCandleRelay',
   fireplaceCutterMagnetRelay: 'fireplaceCutterMagnetRelay',
   memorialLightNoiser: 'memorialLightNoiser',
-  dollBoomMagnetRelay: 'dollBoomMagnetRelay',
-  exitBoomMagnetRelay: 'exitBoomMagnetRelay'
+  vitrinaLightsRelay: 'vitrinaLightsRelay'
 };

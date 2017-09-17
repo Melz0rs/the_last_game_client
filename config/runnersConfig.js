@@ -7,5 +7,9 @@ export default [
     name: runnersNames.preGameZapLightsRunner,
     actionName: actionsNames.zapPreGameLight,
     defaultState: states.stopped
+  }, {
+    name: runnersNames.zapFireplaceLight,
+    actionName: actionsNames.zapFireplaceLight,
+    defaultState: states.stopped
   }
 ];

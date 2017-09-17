@@ -1,3 +1,4 @@
 export default {
-  preGameZapLightsRunner: 'preGameZapLightsRunner'
+  preGameZapLightsRunner: 'preGameZapLightsRunner',
+  zapFireplaceLight: 'zapFireplaceLight'
 };

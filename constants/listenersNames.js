@@ -18,5 +18,6 @@ export default {
   momCandlestickReadswitch: 'momCandlestickReadswitch',
   suicidedCandlestickReadswitch: 'suicidedCandlestickReadswitch',
   closetCandlestickReadSwitch: 'closetCandlestickReadSwitch',
-  hallwayProximitySensor: 'hallwayProximitySensor'
-}
+  hallwayProximitySensor: 'hallwayProximitySensor',
+  hallwayButton: 'hallwayButton'
+};
